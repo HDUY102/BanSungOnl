@@ -78,14 +78,14 @@ ABanSungOnlGameMode::~ABanSungOnlGameMode() {}
 // End Class ABanSungOnlGameMode
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnline_BanSungOnl_Source_BanSungOnl_BanSungOnlGameMode_h_Statics
+struct Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlGameMode_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
 		{ Z_Construct_UClass_ABanSungOnlGameMode, ABanSungOnlGameMode::StaticClass, TEXT("ABanSungOnlGameMode"), &Z_Registration_Info_UClass_ABanSungOnlGameMode, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABanSungOnlGameMode), 1866930448U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnline_BanSungOnl_Source_BanSungOnl_BanSungOnlGameMode_h_2167896612(TEXT("/Script/BanSungOnl"),
-	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnline_BanSungOnl_Source_BanSungOnl_BanSungOnlGameMode_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnline_BanSungOnl_Source_BanSungOnl_BanSungOnlGameMode_h_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlGameMode_h_2167896612(TEXT("/Script/BanSungOnl"),
+	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlGameMode_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlGameMode_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // End Registration

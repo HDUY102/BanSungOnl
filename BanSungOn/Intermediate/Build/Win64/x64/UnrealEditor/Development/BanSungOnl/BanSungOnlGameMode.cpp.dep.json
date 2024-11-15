@@ -1,20 +1,20 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "d:\\code_c++_training\\bansungonline\\bansungonl\\source\\bansungonl\\bansungonlgamemode.cpp",
+        "Source": "d:\\code_c++_training\\bansungonl\\bansungon\\source\\bansungonl\\bansungonlgamemode.cpp",
         "ProvidedModule": "",
-        "PCH": "d:\\code_c++_training\\bansungonline\\bansungonl\\intermediate\\build\\win64\\x64\\bansungonleditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "PCH": "d:\\code_c++_training\\bansungonl\\bansungon\\intermediate\\build\\win64\\x64\\bansungonleditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
         "Includes": [
-            "d:\\code_c++_training\\bansungonline\\bansungonl\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\bansungonl\\definitions.bansungonl.h",
-            "d:\\code_c++_training\\bansungonline\\bansungonl\\source\\bansungonl\\bansungonlgamemode.h",
+            "d:\\code_c++_training\\bansungonl\\bansungon\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\bansungonl\\definitions.bansungonl.h",
+            "d:\\code_c++_training\\bansungonl\\bansungon\\source\\bansungonl\\bansungonlgamemode.h",
             "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\source\\runtime\\engine\\classes\\gameframework\\gamemodebase.h",
             "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\source\\runtime\\engine\\classes\\engine\\serverstatreplicator.h",
             "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\serverstatreplicator.generated.h",
             "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\gamemodebase.generated.h",
-            "d:\\code_c++_training\\bansungonline\\bansungonl\\intermediate\\build\\win64\\unrealeditor\\inc\\bansungonl\\uht\\bansungonlgamemode.generated.h",
-            "d:\\code_c++_training\\bansungonline\\bansungonl\\source\\bansungonl\\bansungonlplayercontroller.h",
-            "d:\\code_c++_training\\bansungonline\\bansungonl\\intermediate\\build\\win64\\unrealeditor\\inc\\bansungonl\\uht\\bansungonlplayercontroller.generated.h",
-            "d:\\code_c++_training\\bansungonline\\bansungonl\\source\\bansungonl\\bansungonlcharacter.h",
+            "d:\\code_c++_training\\bansungonl\\bansungon\\intermediate\\build\\win64\\unrealeditor\\inc\\bansungonl\\uht\\bansungonlgamemode.generated.h",
+            "d:\\code_c++_training\\bansungonl\\bansungon\\source\\bansungonl\\bansungonlplayercontroller.h",
+            "d:\\code_c++_training\\bansungonl\\bansungon\\intermediate\\build\\win64\\unrealeditor\\inc\\bansungonl\\uht\\bansungonlplayercontroller.generated.h",
+            "d:\\code_c++_training\\bansungonl\\bansungon\\source\\bansungonl\\bansungonlcharacter.h",
             "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\source\\runtime\\engine\\classes\\gameframework\\character.h",
             "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\source\\runtime\\engine\\classes\\gameframework\\charactermovementreplication.h",
             "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\source\\runtime\\experimental\\iris\\core\\public\\iris\\serialization\\irisobjectreferencepackagemap.h",
@@ -23,7 +23,7 @@
             "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\source\\runtime\\engine\\classes\\gameframework\\rootmotionsource.h",
             "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\rootmotionsource.generated.h",
             "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\character.generated.h",
-            "d:\\code_c++_training\\bansungonline\\bansungonl\\intermediate\\build\\win64\\unrealeditor\\inc\\bansungonl\\uht\\bansungonlcharacter.generated.h"
+            "d:\\code_c++_training\\bansungonl\\bansungon\\intermediate\\build\\win64\\unrealeditor\\inc\\bansungonl\\uht\\bansungonlcharacter.generated.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

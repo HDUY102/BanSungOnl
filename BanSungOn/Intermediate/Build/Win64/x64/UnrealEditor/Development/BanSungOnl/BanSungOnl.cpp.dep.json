@@ -1,12 +1,12 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "d:\\code_c++_training\\bansungonline\\bansungonl\\source\\bansungonl\\bansungonl.cpp",
+        "Source": "d:\\code_c++_training\\bansungonl\\bansungon\\source\\bansungonl\\bansungonl.cpp",
         "ProvidedModule": "",
-        "PCH": "d:\\code_c++_training\\bansungonline\\bansungonl\\intermediate\\build\\win64\\x64\\bansungonleditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "PCH": "d:\\code_c++_training\\bansungonl\\bansungon\\intermediate\\build\\win64\\x64\\bansungonleditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
         "Includes": [
-            "d:\\code_c++_training\\bansungonline\\bansungonl\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\bansungonl\\definitions.bansungonl.h",
-            "d:\\code_c++_training\\bansungonline\\bansungonl\\source\\bansungonl\\bansungonl.h"
+            "d:\\code_c++_training\\bansungonl\\bansungon\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\bansungonl\\definitions.bansungonl.h",
+            "d:\\code_c++_training\\bansungonl\\bansungon\\source\\bansungonl\\bansungonl.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []
