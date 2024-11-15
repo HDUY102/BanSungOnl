@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "BanSungOnl",
+			"Path": "..\\Source\\BanSungOnl.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "BanSungOnlEditor",
+			"Path": "..\\Source\\BanSungOnlEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
