@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "InputActionValue.h"
 #include "Templates/SubclassOf.h"
 #include "GameFramework/PlayerController.h"
 #include "BanSungOnlPlayerController.generated.h"
@@ -33,14 +34,21 @@ public:
 	/** MappingContext */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputMappingContext* DefaultMappingContext;
-	
-	/** Jump Input Action */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
-	UInputAction* SetDestinationClickAction;
 
-	/** Jump Input Action */
+	/** Variable Move Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
-	UInputAction* SetDestinationTouchAction;
+	UInputAction* MoveAction;
+	/** Variable Fire Input Action */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* FireAction;
+	/** Change gun */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* OnKeyBoardPistol;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* OnKeyBoardRifle;
+	/** Reload Ammo */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* ReloadAmmo;
 
 protected:
 	/** True if the controlled character should navigate to the mouse cursor. */
@@ -48,6 +56,7 @@ protected:
 
 	virtual void SetupInputComponent() override;
 	
+	virtual void Tick(float DeltaSeconds) override;
 	// To add mapping context
 	virtual void BeginPlay();
 
@@ -57,10 +66,20 @@ protected:
 	void OnSetDestinationReleased();
 	void OnTouchTriggered();
 	void OnTouchReleased();
+	void OnPistolKeyBoard(const FInputActionValue& Value); 
+	void OnRifleKeyBoard(const FInputActionValue& Value);
+	void OnReloadAmmo(const FInputActionValue& Value);
+	void Reload();
+	
+	void OnMoveAction(const FInputActionValue& Value);
 
+	UFUNCTION(Server, Unreliable)
+	void Server_SetRotation(const FVector MousePosition);
+	
 private:
 	FVector CachedDestination;
-
+	UPROPERTY()
+	FHitResult Hit;
 	bool bIsTouch; // Is it a touch device
 	float FollowTime; // For how long it has been pressed
 };

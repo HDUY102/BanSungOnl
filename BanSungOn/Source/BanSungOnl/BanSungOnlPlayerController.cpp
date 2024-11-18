@@ -11,11 +11,13 @@
 #include "InputActionValue.h"
 #include "EnhancedInputSubsystems.h"
 #include "Engine/LocalPlayer.h"
+#include "Kismet/KismetSystemLibrary.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
 ABanSungOnlPlayerController::ABanSungOnlPlayerController()
 {
+	bReplicates = true;
 	bShowMouseCursor = true;
 	DefaultMouseCursor = EMouseCursor::Default;
 	CachedDestination = FVector::ZeroVector;
@@ -42,21 +44,32 @@ void ABanSungOnlPlayerController::SetupInputComponent()
 	// Set up action bindings
 	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(InputComponent))
 	{
-		// Setup mouse input events
-		EnhancedInputComponent->BindAction(SetDestinationClickAction, ETriggerEvent::Started, this, &ABanSungOnlPlayerController::OnInputStarted);
-		EnhancedInputComponent->BindAction(SetDestinationClickAction, ETriggerEvent::Triggered, this, &ABanSungOnlPlayerController::OnSetDestinationTriggered);
-		EnhancedInputComponent->BindAction(SetDestinationClickAction, ETriggerEvent::Completed, this, &ABanSungOnlPlayerController::OnSetDestinationReleased);
-		EnhancedInputComponent->BindAction(SetDestinationClickAction, ETriggerEvent::Canceled, this, &ABanSungOnlPlayerController::OnSetDestinationReleased);
-
-		// Setup touch input events
-		EnhancedInputComponent->BindAction(SetDestinationTouchAction, ETriggerEvent::Started, this, &ABanSungOnlPlayerController::OnInputStarted);
-		EnhancedInputComponent->BindAction(SetDestinationTouchAction, ETriggerEvent::Triggered, this, &ABanSungOnlPlayerController::OnTouchTriggered);
-		EnhancedInputComponent->BindAction(SetDestinationTouchAction, ETriggerEvent::Completed, this, &ABanSungOnlPlayerController::OnTouchReleased);
-		EnhancedInputComponent->BindAction(SetDestinationTouchAction, ETriggerEvent::Canceled, this, &ABanSungOnlPlayerController::OnTouchReleased);
+		// Move W S A D
+		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ABanSungOnlPlayerController::OnMoveAction);
+		// Fire
+		EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Triggered, this, &ABanSungOnlPlayerController::OnSetDestinationTriggered);
+		// Change gun
+		EnhancedInputComponent->BindAction(OnKeyBoardPistol, ETriggerEvent::Started, this, &ABanSungOnlPlayerController::OnPistolKeyBoard);
+		EnhancedInputComponent->BindAction(OnKeyBoardRifle, ETriggerEvent::Started, this, &ABanSungOnlPlayerController::OnRifleKeyBoard);
+		// Reload Ammo
+		EnhancedInputComponent->BindAction(ReloadAmmo, ETriggerEvent::Started, this, &ABanSungOnlPlayerController::OnReloadAmmo);
 	}
 	else
 	{
 		UE_LOG(LogTemplateCharacter, Error, TEXT("'%s' Failed to find an Enhanced Input Component! This template is built to use the Enhanced Input system. If you intend to use the legacy system, then you will need to update this C++ file."), *GetNameSafe(this));
+	}
+}
+
+void ABanSungOnlPlayerController::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+	if (!HasAuthority())
+	{
+		bool bHitSuccessful = GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, true, Hit);
+		if (bHitSuccessful)
+		{
+			Server_SetRotation(Hit.ImpactPoint);
+		}
 	}
 }
 
@@ -72,7 +85,6 @@ void ABanSungOnlPlayerController::OnSetDestinationTriggered()
 	FollowTime += GetWorld()->GetDeltaSeconds();
 	
 	// We look for the location in the world where the player has pressed the input
-	FHitResult Hit;
 	bool bHitSuccessful = false;
 	if (bIsTouch)
 	{
@@ -89,12 +101,11 @@ void ABanSungOnlPlayerController::OnSetDestinationTriggered()
 		CachedDestination = Hit.Location;
 	}
 	
-	// Move towards mouse pointer or touch
-	APawn* ControlledPawn = GetPawn();
-	if (ControlledPawn != nullptr)
+	// Fire
+	ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(GetPawn());
+	if (IsValid(PlayerCharacter))
 	{
-		FVector WorldDirection = (CachedDestination - ControlledPawn->GetActorLocation()).GetSafeNormal();
-		ControlledPawn->AddMovementInput(WorldDirection, 1.0, false);
+		UKismetSystemLibrary::PrintString(this,"Hello");
 	}
 }
 
@@ -107,7 +118,6 @@ void ABanSungOnlPlayerController::OnSetDestinationReleased()
 		UAIBlueprintHelperLibrary::SimpleMoveToLocation(this, CachedDestination);
 		UNiagaraFunctionLibrary::SpawnSystemAtLocation(this, FXCursor, CachedDestination, FRotator::ZeroRotator, FVector(1.f, 1.f, 1.f), true, true, ENCPoolMethod::None, true);
 	}
-
 	FollowTime = 0.f;
 }
 
@@ -122,4 +132,52 @@ void ABanSungOnlPlayerController::OnTouchReleased()
 {
 	bIsTouch = false;
 	OnSetDestinationReleased();
+}
+
+void ABanSungOnlPlayerController::OnMoveAction(const FInputActionValue& Value)
+{
+	const FVector2D MovementVector = Value.Get<FVector2D>();
+	if (MovementVector.SizeSquared() > 0.0f)
+	{
+		const FRotator Rotation = GetControlRotation();
+		const FRotator YawRotation(0, Rotation.Yaw, 0);
+
+		const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
+		const FVector RightDirection = FRotationMatrix(Rotation).GetUnitAxis(EAxis::Y);
+
+		GetPawn()->AddMovementInput(ForwardDirection, MovementVector.Y);
+		GetPawn()->AddMovementInput(RightDirection, MovementVector.X);
+	}
+}
+
+void ABanSungOnlPlayerController::Server_SetRotation_Implementation(const FVector MousePosition)
+{
+	APawn* ControlledPawn = GetPawn();
+	if(IsValid(ControlledPawn))
+	{
+		FVector Direction = MousePosition - ControlledPawn->GetActorLocation();
+		FRotator NewRotation = Direction.Rotation();
+		NewRotation.Pitch = ControlledPawn->GetActorRotation().Pitch;
+		ControlledPawn->SetActorRotation(NewRotation);
+	}
+}
+
+void ABanSungOnlPlayerController::OnPistolKeyBoard(const FInputActionValue& Value)
+{
+	
+}
+
+void ABanSungOnlPlayerController::OnRifleKeyBoard(const FInputActionValue& Value)
+{
+	
+}
+
+void ABanSungOnlPlayerController::OnReloadAmmo(const FInputActionValue& Value)
+{
+	
+}
+
+void ABanSungOnlPlayerController::Reload()
+{
+	
 }

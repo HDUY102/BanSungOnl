@@ -10,10 +10,12 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Materials/Material.h"
 #include "Engine/World.h"
+#include "Net/UnrealNetwork.h"
 
 ABanSungOnlCharacter::ABanSungOnlCharacter()
 {
 	// Set size for player capsule
+	bReplicates = true; // Enable replication for the character
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
 
 	// Don't rotate character to camera direction
@@ -48,4 +50,28 @@ ABanSungOnlCharacter::ABanSungOnlCharacter()
 void ABanSungOnlCharacter::Tick(float DeltaSeconds)
 {
     Super::Tick(DeltaSeconds);
+}
+
+void ABanSungOnlCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+	Health = 50;
+	MaxHealth = 50;
+}
+
+void ABanSungOnlCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(ABanSungOnlCharacter, Health);
+}
+
+void ABanSungOnlCharacter::SpawnPistol_Implementation()
+{
+	Pistol = GetWorld()->SpawnActor<APistol>()
+}
+
+void ABanSungOnlCharacter::SpawnRifle_Implementation()
+{
+	
 }
