@@ -14,16 +14,30 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define BANSUNGONL_BanSungOnlCharacter_generated_h
 
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_12_INCLASS_NO_PURE_DECLS \
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_8_DELEGATE \
+BANSUNGONL_API void FShowHealth_DelegateWrapper(const FMulticastScriptDelegate& ShowHealth);
+
+
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_9_DELEGATE \
+BANSUNGONL_API void FShowWinGame_DelegateWrapper(const FMulticastScriptDelegate& ShowWinGame);
+
+
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_14_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesABanSungOnlCharacter(); \
 	friend struct Z_Construct_UClass_ABanSungOnlCharacter_Statics; \
 public: \
 	DECLARE_CLASS(ABanSungOnlCharacter, ACharacter, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/BanSungOnl"), NO_API) \
-	DECLARE_SERIALIZER(ABanSungOnlCharacter)
+	DECLARE_SERIALIZER(ABanSungOnlCharacter) \
+	enum class ENetFields_Private : uint16 \
+	{ \
+		NETFIELD_REP_START=(uint16)((int32)Super::ENetFields_Private::NETFIELD_REP_END + (int32)1), \
+		Health=NETFIELD_REP_START, \
+		NETFIELD_REP_END=Health	}; \
+	NO_API virtual void ValidateGeneratedRepEnums(const TArray<struct FRepRecord>& ClassReps) const override;
 
 
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_12_ENHANCED_CONSTRUCTORS \
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	ABanSungOnlCharacter(ABanSungOnlCharacter&&); \
@@ -35,12 +49,12 @@ public: \
 	NO_API virtual ~ABanSungOnlCharacter();
 
 
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_9_PROLOG
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_12_GENERATED_BODY \
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_11_PROLOG
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_14_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_12_INCLASS_NO_PURE_DECLS \
-	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_12_ENHANCED_CONSTRUCTORS \
+	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_14_INCLASS_NO_PURE_DECLS \
+	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

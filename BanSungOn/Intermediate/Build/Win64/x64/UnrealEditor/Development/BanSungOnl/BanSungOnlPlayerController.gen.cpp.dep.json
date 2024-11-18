@@ -7,6 +7,8 @@
         "Includes": [
             "d:\\code_c++_training\\bansungonl\\bansungon\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\bansungonl\\definitions.bansungonl.h",
             "d:\\code_c++_training\\bansungonl\\bansungon\\source\\bansungonl\\bansungonlplayercontroller.h",
+            "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\plugins\\enhancedinput\\source\\enhancedinput\\public\\inputactionvalue.h",
+            "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\plugins\\enhancedinput\\intermediate\\build\\win64\\unrealeditor\\inc\\enhancedinput\\uht\\inputactionvalue.generated.h",
             "d:\\code_c++_training\\bansungonl\\bansungon\\intermediate\\build\\win64\\unrealeditor\\inc\\bansungonl\\uht\\bansungonlplayercontroller.generated.h"
         ],
         "ImportedModules": [],

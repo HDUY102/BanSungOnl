@@ -7,23 +7,29 @@
 #include "UObject/GeneratedCppIncludes.h"
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeBanSungOnl_init() {}
+	BANSUNGONL_API UFunction* Z_Construct_UDelegateFunction_BanSungOnl_ShowHealth__DelegateSignature();
+	BANSUNGONL_API UFunction* Z_Construct_UDelegateFunction_BanSungOnl_ShowWinGame__DelegateSignature();
 	static FPackageRegistrationInfo Z_Registration_Info_UPackage__Script_BanSungOnl;
 	FORCENOINLINE UPackage* Z_Construct_UPackage__Script_BanSungOnl()
 	{
 		if (!Z_Registration_Info_UPackage__Script_BanSungOnl.OuterSingleton)
 		{
+			static UObject* (*const SingletonFuncArray[])() = {
+				(UObject* (*)())Z_Construct_UDelegateFunction_BanSungOnl_ShowHealth__DelegateSignature,
+				(UObject* (*)())Z_Construct_UDelegateFunction_BanSungOnl_ShowWinGame__DelegateSignature,
+			};
 			static const UECodeGen_Private::FPackageParams PackageParams = {
 				"/Script/BanSungOnl",
-				nullptr,
-				0,
+				SingletonFuncArray,
+				UE_ARRAY_COUNT(SingletonFuncArray),
 				PKG_CompiledIn | 0x00000000,
-				0x13C8A7AF,
-				0x56C80B1D,
+				0xF2D4BE59,
+				0x069E4B86,
 				METADATA_PARAMS(0, nullptr)
 			};
 			UECodeGen_Private::ConstructUPackage(Z_Registration_Info_UPackage__Script_BanSungOnl.OuterSingleton, PackageParams);
 		}
 		return Z_Registration_Info_UPackage__Script_BanSungOnl.OuterSingleton;
 	}
-	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_BanSungOnl(Z_Construct_UPackage__Script_BanSungOnl, TEXT("/Script/BanSungOnl"), Z_Registration_Info_UPackage__Script_BanSungOnl, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x13C8A7AF, 0x56C80B1D));
+	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_BanSungOnl(Z_Construct_UPackage__Script_BanSungOnl, TEXT("/Script/BanSungOnl"), Z_Registration_Info_UPackage__Script_BanSungOnl, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0xF2D4BE59, 0x069E4B86));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
