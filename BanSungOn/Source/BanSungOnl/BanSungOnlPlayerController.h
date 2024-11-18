@@ -66,8 +66,7 @@ protected:
 	void OnSetDestinationReleased();
 	void OnTouchTriggered();
 	void OnTouchReleased();
-	void OnPistolKeyBoard(const FInputActionValue& Value); 
-	void OnRifleKeyBoard(const FInputActionValue& Value);
+	
 	void OnReloadAmmo(const FInputActionValue& Value);
 	void Reload();
 	
@@ -75,6 +74,13 @@ protected:
 
 	UFUNCTION(Server, Unreliable)
 	void Server_SetRotation(const FVector MousePosition);
+	
+	// UFUNCTION(Server, Unreliable)
+	// void Server_PistolKeyBoard(const FInputActionValue& Value);
+	void OnPistolKeyBoard(const FInputActionValue& Value);
+	// UFUNCTION(Server, Unreliable)
+	// void Server_RifleKeyBoard(const FInputActionValue& Value);
+	void OnRifleKeyBoard(const FInputActionValue& Value);
 	
 private:
 	FVector CachedDestination;

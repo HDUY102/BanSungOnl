@@ -164,12 +164,22 @@ void ABanSungOnlPlayerController::Server_SetRotation_Implementation(const FVecto
 
 void ABanSungOnlPlayerController::OnPistolKeyBoard(const FInputActionValue& Value)
 {
-	
+	// Server_PistolKeyBoard(Value);
+	ABanSungOnlCharacter* LocalCharacter = Cast<ABanSungOnlCharacter>(GetPawn());
+	if(IsValid(LocalCharacter))
+	{
+		LocalCharacter->EquipPistol();
+	}
 }
 
 void ABanSungOnlPlayerController::OnRifleKeyBoard(const FInputActionValue& Value)
 {
-	
+	// Server_RifleKeyBoard(Value);
+	ABanSungOnlCharacter* LocalCharacter = Cast<ABanSungOnlCharacter>(GetPawn());
+	if(IsValid(LocalCharacter))
+	{
+		LocalCharacter->EquipRifle();
+	}
 }
 
 void ABanSungOnlPlayerController::OnReloadAmmo(const FInputActionValue& Value)

@@ -32,23 +32,30 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Health")
 	float MaxHealth;
 	
-	UPROPERTY(Replicated)
-	ARifle* Rifle;
-	UPROPERTY(Replicated)
-	APistol* Pistol;
-	UPROPERTY(EditAnywhere, Category="input", Replicated)
-	TSubclassOf<AActor> RifleToSpawn;
-	UPROPERTY(EditAnywhere, Category="input", Replicated)
-	TSubclassOf<AActor> PistolToSpawn;
-	
 	/* Server -> Client
 	 * Send to client when properties change*/
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
+	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category="Weapon",Replicated)
+	AWeapon* CurWeapon;
+	UPROPERTY()
+	ARifle* Rifle;
+	UPROPERTY()
+	APistol* Pistol;
 	UFUNCTION(Server, Unreliable)
-	void SpawnRifle();
+	void Server_EquipPistol();
+	void EquipPistol();
 	UFUNCTION(Server, Unreliable)
-	void SpawnPistol();
+	void Server_EquipRifle();
+	void EquipRifle();
+	UPROPERTY(EditAnywhere, Category="input")
+	TSubclassOf<AActor> RifleToSpawn;
+	UPROPERTY(EditAnywhere, Category="input")
+	TSubclassOf<AActor> PistolToSpawn;
+	UFUNCTION(Server,Unreliable)
+	void Server_SpawnRifle();
+	UFUNCTION(Server,Unreliable)
+	void Server_SpawnPistol();
 	
 	// Var show HUD attacked
 	UPROPERTY(BlueprintAssignable, Category = "Show HUD Attacked")

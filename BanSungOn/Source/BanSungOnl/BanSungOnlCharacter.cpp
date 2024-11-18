@@ -10,6 +10,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Materials/Material.h"
 #include "Engine/World.h"
+#include "Kismet/KismetSystemLibrary.h"
 #include "Net/UnrealNetwork.h"
 
 ABanSungOnlCharacter::ABanSungOnlCharacter()
@@ -55,8 +56,14 @@ void ABanSungOnlCharacter::Tick(float DeltaSeconds)
 void ABanSungOnlCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	Health = 50;
-	MaxHealth = 50;
+	Health = MaxHealth = 50;
+
+	if(!HasAuthority())
+	{
+		Server_SpawnPistol();
+		Server_SpawnRifle();
+		Server_EquipRifle();
+	}
 }
 
 void ABanSungOnlCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
@@ -64,14 +71,49 @@ void ABanSungOnlCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>&
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(ABanSungOnlCharacter, Health);
+	DOREPLIFETIME(ABanSungOnlCharacter, CurWeapon);
 }
 
-void ABanSungOnlCharacter::SpawnPistol_Implementation()
+void ABanSungOnlCharacter::EquipPistol()
 {
-	Pistol = GetWorld()->SpawnActor<APistol>()
+	Server_EquipPistol();
 }
 
-void ABanSungOnlCharacter::SpawnRifle_Implementation()
+void ABanSungOnlCharacter::EquipRifle()
 {
-	
+	Server_EquipRifle();
+}
+
+void ABanSungOnlCharacter::Server_SpawnPistol_Implementation()
+{
+	Pistol = GetWorld()->SpawnActor<APistol>(PistolToSpawn, GetActorLocation(),FRotator::ZeroRotator);
+	Pistol->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale, TEXT("PistolSocket"));
+}
+
+void ABanSungOnlCharacter::Server_SpawnRifle_Implementation()
+{
+	Rifle = GetWorld()->SpawnActor<ARifle>(RifleToSpawn, GetActorLocation(),FRotator::ZeroRotator);
+	Rifle->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale, TEXT("RifleSocket"));
+}
+
+void ABanSungOnlCharacter::Server_EquipRifle_Implementation()
+{
+	if(IsValid(Rifle))
+	{
+		Rifle->SetActorHiddenInGame(false); //Hidden Rifle
+		Pistol->SetActorHiddenInGame(true); // Display Pistol
+		CurWeapon = Rifle;
+		UKismetSystemLibrary::PrintString(this, CurWeapon->GetName());
+	}
+}
+
+void ABanSungOnlCharacter::Server_EquipPistol_Implementation()
+{
+	if(IsValid(Pistol))
+	{
+		Rifle->SetActorHiddenInGame(true); //Hidden Rifle
+		Pistol->SetActorHiddenInGame(false); // Display Pistol
+		CurWeapon = Pistol;
+		UKismetSystemLibrary::PrintString(this, CurWeapon->GetName());
+	}
 }
