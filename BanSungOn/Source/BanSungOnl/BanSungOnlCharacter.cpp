@@ -5,6 +5,7 @@
 #include "Camera/CameraComponent.h"
 #include "Components/DecalComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "Components/WidgetComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/PlayerController.h"
 #include "GameFramework/SpringArmComponent.h"
@@ -46,6 +47,9 @@ ABanSungOnlCharacter::ABanSungOnlCharacter()
 	// Activate ticking in order to update the cursor every frame.
 	PrimaryActorTick.bCanEverTick = true;
 	PrimaryActorTick.bStartWithTickEnabled = true;
+
+	WidgetComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("HealthWidget"));
+	WidgetComponent->SetupAttachment(RootComponent);
 }
 
 void ABanSungOnlCharacter::Tick(float DeltaSeconds)
@@ -56,7 +60,8 @@ void ABanSungOnlCharacter::Tick(float DeltaSeconds)
 void ABanSungOnlCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	Health = MaxHealth = 50;
+	Health = 50.f;
+	MaxHealth = 50.f;
 
 	if(!HasAuthority())
 	{
@@ -84,6 +89,11 @@ void ABanSungOnlCharacter::EquipRifle()
 	Server_EquipRifle();
 }
 
+void ABanSungOnlCharacter::ShootBullet(FVector& Location)
+{
+	CurWeapon->ShootBullet(Location);
+}
+
 void ABanSungOnlCharacter::Server_SpawnPistol_Implementation()
 {
 	Pistol = GetWorld()->SpawnActor<APistol>(PistolToSpawn, GetActorLocation(),FRotator::ZeroRotator);
@@ -103,7 +113,6 @@ void ABanSungOnlCharacter::Server_EquipRifle_Implementation()
 		Rifle->SetActorHiddenInGame(false); //Hidden Rifle
 		Pistol->SetActorHiddenInGame(true); // Display Pistol
 		CurWeapon = Rifle;
-		UKismetSystemLibrary::PrintString(this, CurWeapon->GetName());
 	}
 }
 
@@ -114,6 +123,5 @@ void ABanSungOnlCharacter::Server_EquipPistol_Implementation()
 		Rifle->SetActorHiddenInGame(true); //Hidden Rifle
 		Pistol->SetActorHiddenInGame(false); // Display Pistol
 		CurWeapon = Pistol;
-		UKismetSystemLibrary::PrintString(this, CurWeapon->GetName());
 	}
 }

@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Components/WidgetComponent.h"
 #include "GameFramework/Character.h"
 #include "Weapon/Pistol.h"
 #include "Weapon/Rifle.h"
@@ -48,6 +49,7 @@ public:
 	UFUNCTION(Server, Unreliable)
 	void Server_EquipRifle();
 	void EquipRifle();
+	
 	UPROPERTY(EditAnywhere, Category="input")
 	TSubclassOf<AActor> RifleToSpawn;
 	UPROPERTY(EditAnywhere, Category="input")
@@ -56,6 +58,8 @@ public:
 	void Server_SpawnRifle();
 	UFUNCTION(Server,Unreliable)
 	void Server_SpawnPistol();
+
+	void ShootBullet(FVector &Location);
 	
 	// Var show HUD attacked
 	UPROPERTY(BlueprintAssignable, Category = "Show HUD Attacked")
@@ -72,5 +76,9 @@ private:
 	/** Camera boom positioning the camera above the character */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class USpringArmComponent* CameraBoom;
+
+	// Display HealthBar
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UI", meta = (AllowPrivateAccess = "true"))
+	UWidgetComponent* WidgetComponent;
 };
 
