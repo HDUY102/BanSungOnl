@@ -22,6 +22,188 @@ NIAGARA_API UClass* Z_Construct_UClass_UNiagaraSystem_NoRegister();
 UPackage* Z_Construct_UPackage__Script_BanSungOnl();
 // End Cross Module References
 
+// Begin Class ABanSungOnlPlayerController Function Client_PlayFireSound
+static FName NAME_ABanSungOnlPlayerController_Client_PlayFireSound = FName(TEXT("Client_PlayFireSound"));
+void ABanSungOnlPlayerController::Client_PlayFireSound()
+{
+	ProcessEvent(FindFunctionChecked(NAME_ABanSungOnlPlayerController_Client_PlayFireSound),NULL);
+}
+struct Z_Construct_UFunction_ABanSungOnlPlayerController_Client_PlayFireSound_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "BanSungOnlPlayerController.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ABanSungOnlPlayerController_Client_PlayFireSound_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ABanSungOnlPlayerController, nullptr, "Client_PlayFireSound", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x01080C40, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ABanSungOnlPlayerController_Client_PlayFireSound_Statics::Function_MetaDataParams), Z_Construct_UFunction_ABanSungOnlPlayerController_Client_PlayFireSound_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_ABanSungOnlPlayerController_Client_PlayFireSound()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ABanSungOnlPlayerController_Client_PlayFireSound_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ABanSungOnlPlayerController::execClient_PlayFireSound)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->Client_PlayFireSound_Implementation();
+	P_NATIVE_END;
+}
+// End Class ABanSungOnlPlayerController Function Client_PlayFireSound
+
+// Begin Class ABanSungOnlPlayerController Function Client_PlayReloadSound
+static FName NAME_ABanSungOnlPlayerController_Client_PlayReloadSound = FName(TEXT("Client_PlayReloadSound"));
+void ABanSungOnlPlayerController::Client_PlayReloadSound()
+{
+	ProcessEvent(FindFunctionChecked(NAME_ABanSungOnlPlayerController_Client_PlayReloadSound),NULL);
+}
+struct Z_Construct_UFunction_ABanSungOnlPlayerController_Client_PlayReloadSound_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "BanSungOnlPlayerController.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ABanSungOnlPlayerController_Client_PlayReloadSound_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ABanSungOnlPlayerController, nullptr, "Client_PlayReloadSound", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x01080C40, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ABanSungOnlPlayerController_Client_PlayReloadSound_Statics::Function_MetaDataParams), Z_Construct_UFunction_ABanSungOnlPlayerController_Client_PlayReloadSound_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_ABanSungOnlPlayerController_Client_PlayReloadSound()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ABanSungOnlPlayerController_Client_PlayReloadSound_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ABanSungOnlPlayerController::execClient_PlayReloadSound)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->Client_PlayReloadSound_Implementation();
+	P_NATIVE_END;
+}
+// End Class ABanSungOnlPlayerController Function Client_PlayReloadSound
+
+// Begin Class ABanSungOnlPlayerController Function Server_FirePistol
+static FName NAME_ABanSungOnlPlayerController_Server_FirePistol = FName(TEXT("Server_FirePistol"));
+void ABanSungOnlPlayerController::Server_FirePistol()
+{
+	ProcessEvent(FindFunctionChecked(NAME_ABanSungOnlPlayerController_Server_FirePistol),NULL);
+}
+struct Z_Construct_UFunction_ABanSungOnlPlayerController_Server_FirePistol_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// Fire Input\n" },
+#endif
+		{ "ModuleRelativePath", "BanSungOnlPlayerController.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Fire Input" },
+#endif
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ABanSungOnlPlayerController_Server_FirePistol_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ABanSungOnlPlayerController, nullptr, "Server_FirePistol", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00280C40, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ABanSungOnlPlayerController_Server_FirePistol_Statics::Function_MetaDataParams), Z_Construct_UFunction_ABanSungOnlPlayerController_Server_FirePistol_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_ABanSungOnlPlayerController_Server_FirePistol()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ABanSungOnlPlayerController_Server_FirePistol_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ABanSungOnlPlayerController::execServer_FirePistol)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->Server_FirePistol_Implementation();
+	P_NATIVE_END;
+}
+// End Class ABanSungOnlPlayerController Function Server_FirePistol
+
+// Begin Class ABanSungOnlPlayerController Function Server_FireRifle
+static FName NAME_ABanSungOnlPlayerController_Server_FireRifle = FName(TEXT("Server_FireRifle"));
+void ABanSungOnlPlayerController::Server_FireRifle()
+{
+	ProcessEvent(FindFunctionChecked(NAME_ABanSungOnlPlayerController_Server_FireRifle),NULL);
+}
+struct Z_Construct_UFunction_ABanSungOnlPlayerController_Server_FireRifle_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "BanSungOnlPlayerController.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ABanSungOnlPlayerController_Server_FireRifle_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ABanSungOnlPlayerController, nullptr, "Server_FireRifle", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00280C40, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ABanSungOnlPlayerController_Server_FireRifle_Statics::Function_MetaDataParams), Z_Construct_UFunction_ABanSungOnlPlayerController_Server_FireRifle_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_ABanSungOnlPlayerController_Server_FireRifle()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ABanSungOnlPlayerController_Server_FireRifle_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ABanSungOnlPlayerController::execServer_FireRifle)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->Server_FireRifle_Implementation();
+	P_NATIVE_END;
+}
+// End Class ABanSungOnlPlayerController Function Server_FireRifle
+
+// Begin Class ABanSungOnlPlayerController Function Server_Reload
+static FName NAME_ABanSungOnlPlayerController_Server_Reload = FName(TEXT("Server_Reload"));
+void ABanSungOnlPlayerController::Server_Reload()
+{
+	ProcessEvent(FindFunctionChecked(NAME_ABanSungOnlPlayerController_Server_Reload),NULL);
+}
+struct Z_Construct_UFunction_ABanSungOnlPlayerController_Server_Reload_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// Reload Input\n" },
+#endif
+		{ "ModuleRelativePath", "BanSungOnlPlayerController.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Reload Input" },
+#endif
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ABanSungOnlPlayerController_Server_Reload_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ABanSungOnlPlayerController, nullptr, "Server_Reload", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00280C40, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ABanSungOnlPlayerController_Server_Reload_Statics::Function_MetaDataParams), Z_Construct_UFunction_ABanSungOnlPlayerController_Server_Reload_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_ABanSungOnlPlayerController_Server_Reload()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ABanSungOnlPlayerController_Server_Reload_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ABanSungOnlPlayerController::execServer_Reload)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->Server_Reload_Implementation();
+	P_NATIVE_END;
+}
+// End Class ABanSungOnlPlayerController Function Server_Reload
+
 // Begin Class ABanSungOnlPlayerController Function Server_SetRotation
 struct BanSungOnlPlayerController_eventServer_SetRotation_Parms
 {
@@ -38,7 +220,13 @@ struct Z_Construct_UFunction_ABanSungOnlPlayerController_Server_SetRotation_Stat
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// Move Input\n" },
+#endif
 		{ "ModuleRelativePath", "BanSungOnlPlayerController.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Move Input" },
+#endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MousePosition_MetaData[] = {
 		{ "NativeConst", "" },
@@ -79,6 +267,11 @@ void ABanSungOnlPlayerController::StaticRegisterNativesABanSungOnlPlayerControll
 {
 	UClass* Class = ABanSungOnlPlayerController::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
+		{ "Client_PlayFireSound", &ABanSungOnlPlayerController::execClient_PlayFireSound },
+		{ "Client_PlayReloadSound", &ABanSungOnlPlayerController::execClient_PlayReloadSound },
+		{ "Server_FirePistol", &ABanSungOnlPlayerController::execServer_FirePistol },
+		{ "Server_FireRifle", &ABanSungOnlPlayerController::execServer_FireRifle },
+		{ "Server_Reload", &ABanSungOnlPlayerController::execServer_Reload },
 		{ "Server_SetRotation", &ABanSungOnlPlayerController::execServer_SetRotation },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
@@ -192,7 +385,12 @@ struct Z_Construct_UClass_ABanSungOnlPlayerController_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_ABanSungOnlPlayerController_Server_SetRotation, "Server_SetRotation" }, // 6307275
+		{ &Z_Construct_UFunction_ABanSungOnlPlayerController_Client_PlayFireSound, "Client_PlayFireSound" }, // 2524822919
+		{ &Z_Construct_UFunction_ABanSungOnlPlayerController_Client_PlayReloadSound, "Client_PlayReloadSound" }, // 2461445346
+		{ &Z_Construct_UFunction_ABanSungOnlPlayerController_Server_FirePistol, "Server_FirePistol" }, // 2947245062
+		{ &Z_Construct_UFunction_ABanSungOnlPlayerController_Server_FireRifle, "Server_FireRifle" }, // 2030136717
+		{ &Z_Construct_UFunction_ABanSungOnlPlayerController_Server_Reload, "Server_Reload" }, // 197696860
+		{ &Z_Construct_UFunction_ABanSungOnlPlayerController_Server_SetRotation, "Server_SetRotation" }, // 3440356538
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -261,10 +459,10 @@ ABanSungOnlPlayerController::~ABanSungOnlPlayerController() {}
 struct Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlPlayerController_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ABanSungOnlPlayerController, ABanSungOnlPlayerController::StaticClass, TEXT("ABanSungOnlPlayerController"), &Z_Registration_Info_UClass_ABanSungOnlPlayerController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABanSungOnlPlayerController), 312428442U) },
+		{ Z_Construct_UClass_ABanSungOnlPlayerController, ABanSungOnlPlayerController::StaticClass, TEXT("ABanSungOnlPlayerController"), &Z_Registration_Info_UClass_ABanSungOnlPlayerController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABanSungOnlPlayerController), 1370231423U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlPlayerController_h_3470516172(TEXT("/Script/BanSungOnl"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlPlayerController_h_717389800(TEXT("/Script/BanSungOnl"),
 	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlPlayerController_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlPlayerController_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

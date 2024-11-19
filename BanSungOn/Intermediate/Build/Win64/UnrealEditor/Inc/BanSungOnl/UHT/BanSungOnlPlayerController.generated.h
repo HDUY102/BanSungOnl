@@ -15,7 +15,17 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define BANSUNGONL_BanSungOnlPlayerController_generated_h
 
 #define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlPlayerController_h_21_RPC_WRAPPERS_NO_PURE_DECLS \
+	virtual void Client_PlayFireSound_Implementation(); \
+	virtual void Server_FireRifle_Implementation(); \
+	virtual void Server_FirePistol_Implementation(); \
+	virtual void Client_PlayReloadSound_Implementation(); \
+	virtual void Server_Reload_Implementation(); \
 	virtual void Server_SetRotation_Implementation(const FVector MousePosition); \
+	DECLARE_FUNCTION(execClient_PlayFireSound); \
+	DECLARE_FUNCTION(execServer_FireRifle); \
+	DECLARE_FUNCTION(execServer_FirePistol); \
+	DECLARE_FUNCTION(execClient_PlayReloadSound); \
+	DECLARE_FUNCTION(execServer_Reload); \
 	DECLARE_FUNCTION(execServer_SetRotation);
 
 
