@@ -48,6 +48,7 @@ void ABanSungOnlPlayerController::SetupInputComponent()
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ABanSungOnlPlayerController::OnMoveAction);
 		// Fire
 		EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Triggered, this, &ABanSungOnlPlayerController::OnSetDestinationTriggered);
+		EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Started, this, &ABanSungOnlPlayerController::OnFirePistol);
 		// Change gun
 		EnhancedInputComponent->BindAction(OnKeyBoardPistol, ETriggerEvent::Started, this, &ABanSungOnlPlayerController::OnPistolKeyBoard);
 		EnhancedInputComponent->BindAction(OnKeyBoardRifle, ETriggerEvent::Started, this, &ABanSungOnlPlayerController::OnRifleKeyBoard);
@@ -105,7 +106,7 @@ void ABanSungOnlPlayerController::OnSetDestinationTriggered()
 	ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(GetPawn());
 	if (IsValid(PlayerCharacter))
 	{
-		UKismetSystemLibrary::PrintString(this,"Hello");
+		Server_FireRifle();
 	}
 }
 
@@ -164,7 +165,6 @@ void ABanSungOnlPlayerController::Server_SetRotation_Implementation(const FVecto
 
 void ABanSungOnlPlayerController::OnPistolKeyBoard(const FInputActionValue& Value)
 {
-	// Server_PistolKeyBoard(Value);
 	ABanSungOnlCharacter* LocalCharacter = Cast<ABanSungOnlCharacter>(GetPawn());
 	if(IsValid(LocalCharacter))
 	{
@@ -174,7 +174,6 @@ void ABanSungOnlPlayerController::OnPistolKeyBoard(const FInputActionValue& Valu
 
 void ABanSungOnlPlayerController::OnRifleKeyBoard(const FInputActionValue& Value)
 {
-	// Server_RifleKeyBoard(Value);
 	ABanSungOnlCharacter* LocalCharacter = Cast<ABanSungOnlCharacter>(GetPawn());
 	if(IsValid(LocalCharacter))
 	{
@@ -184,10 +183,77 @@ void ABanSungOnlPlayerController::OnRifleKeyBoard(const FInputActionValue& Value
 
 void ABanSungOnlPlayerController::OnReloadAmmo(const FInputActionValue& Value)
 {
-	
+	ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(GetPawn());
+	if(IsValid(PlayerCharacter))
+	{
+		Server_Reload();
+	}
 }
 
-void ABanSungOnlPlayerController::Reload()
+void ABanSungOnlPlayerController::OnFirePistol()
 {
-	
+	if(IsValid(GetPawn()))
+	{
+		Server_FirePistol();
+	}
+}
+
+void ABanSungOnlPlayerController::Client_PlayFireSound_Implementation()
+{
+	if (IsValid(GetPawn()))
+	{
+		ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(GetPawn());
+		if (IsValid(PlayerCharacter) && IsValid(PlayerCharacter->CurWeapon))
+		{
+			PlayerCharacter->CurWeapon->ShootSound();
+		}
+	}
+}
+
+void ABanSungOnlPlayerController::Server_FireRifle_Implementation()
+{
+	if (ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(GetPawn()))
+	{
+		if (PlayerCharacter->CurWeapon == PlayerCharacter->Rifle && !isReloading && !bIsShootRifle)
+		{
+			bIsShootRifle = true;
+			PlayerCharacter->ShootBullet(CachedDestination);
+			Client_PlayFireSound();
+			GetWorld()->GetTimerManager().SetTimer(FireRifleTime, [this](){bIsShootRifle = false;}, 0.25f, false);
+		}
+	}
+}
+
+void ABanSungOnlPlayerController::Server_FirePistol_Implementation()
+{
+	if (ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(GetPawn()))
+	{
+		if (PlayerCharacter->CurWeapon == PlayerCharacter->Pistol && !isReloading && !StepByOne)
+		{
+			StepByOne = true;
+			PlayerCharacter->ShootBullet(CachedDestination);
+			Client_PlayFireSound();
+			GetWorld()->GetTimerManager().SetTimer(FirePistolTime, [this](){StepByOne = false;}, 0.25f, false);
+		}
+	}
+}
+
+void ABanSungOnlPlayerController::Client_PlayReloadSound_Implementation()
+{
+	ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(GetPawn());
+	if (IsValid(PlayerCharacter) && IsValid(PlayerCharacter->CurWeapon))
+	{
+		PlayerCharacter->CurWeapon->ReloadSound();
+	}
+}
+
+void ABanSungOnlPlayerController::Server_Reload_Implementation()
+{
+	ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(GetPawn());
+	if (IsValid(PlayerCharacter) && PlayerCharacter->CurWeapon->Ammo > 0 && PlayerCharacter->CurWeapon->CurAmmo < PlayerCharacter->CurWeapon->Magazine)
+	{
+		isReloading = true;
+		PlayerCharacter->CurWeapon->ReloadAmmo(); 
+		Client_PlayReloadSound();
+	}
 }

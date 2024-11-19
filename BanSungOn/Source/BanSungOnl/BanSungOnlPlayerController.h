@@ -67,21 +67,29 @@ protected:
 	void OnTouchTriggered();
 	void OnTouchReleased();
 	
-	void OnReloadAmmo(const FInputActionValue& Value);
-	void Reload();
-	
-	void OnMoveAction(const FInputActionValue& Value);
+	void OnMoveAction(const FInputActionValue& Value); // Move Input
 
 	UFUNCTION(Server, Unreliable)
-	void Server_SetRotation(const FVector MousePosition);
+	void Server_SetRotation(const FVector MousePosition); // Rotation
 	
-	// UFUNCTION(Server, Unreliable)
-	// void Server_PistolKeyBoard(const FInputActionValue& Value);
-	void OnPistolKeyBoard(const FInputActionValue& Value);
-	// UFUNCTION(Server, Unreliable)
-	// void Server_RifleKeyBoard(const FInputActionValue& Value);
-	void OnRifleKeyBoard(const FInputActionValue& Value);
-	
+	void OnPistolKeyBoard(const FInputActionValue& Value); // Change Pistol Input
+	void OnRifleKeyBoard(const FInputActionValue& Value); // Change Rifle Input
+
+	void OnReloadAmmo(const FInputActionValue& Value); // Reload Input
+	UFUNCTION(Server, Unreliable)
+	void Server_Reload();
+	UFUNCTION(Client,Unreliable)
+	void Client_PlayReloadSound();
+
+	FTimerHandle FireRifleTime,FirePistolTime;
+	bool bIsShootRifle, StepByOne, isReloading;
+	void OnFirePistol(); // Fire Input
+	UFUNCTION(Server, Unreliable)
+	void Server_FirePistol();
+	UFUNCTION(Server, Unreliable)
+	void Server_FireRifle();
+	UFUNCTION(Client,Unreliable)
+	void Client_PlayFireSound();
 private:
 	FVector CachedDestination;
 	UPROPERTY()
