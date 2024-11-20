@@ -26,7 +26,7 @@ void ARifle::BeginPlay()
 	CurAmmo = 30;
 	LastAmmo = 0;
 	Damage = 20.f;
-	Speed = 180.f;
+	Speed = 80.f;
 }
 
 void ARifle::ShootSound()
