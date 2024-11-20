@@ -11,6 +11,7 @@
 #include "InputActionValue.h"
 #include "EnhancedInputSubsystems.h"
 #include "Engine/LocalPlayer.h"
+#include "Engine/Engine.h"
 #include "Kismet/KismetSystemLibrary.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
@@ -106,7 +107,7 @@ void ABanSungOnlPlayerController::OnSetDestinationTriggered()
 	ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(GetPawn());
 	if (IsValid(PlayerCharacter))
 	{
-		Server_FireRifle();
+		Server_FireRifle(CachedDestination);
 	}
 }
 
@@ -190,6 +191,15 @@ void ABanSungOnlPlayerController::OnReloadAmmo(const FInputActionValue& Value)
 	}
 }
 
+void ABanSungOnlPlayerController::Reload(ABanSungOnlCharacter* PlayerCharacter)
+{
+	if (IsValid(PlayerCharacter) && IsValid(PlayerCharacter->CurWeapon))
+	{
+		PlayerCharacter->CurWeapon->ReloadAmmo();
+		isReloading = false;
+	}
+}
+
 void ABanSungOnlPlayerController::OnFirePistol()
 {
 	if(IsValid(GetPawn()))
@@ -210,16 +220,25 @@ void ABanSungOnlPlayerController::Client_PlayFireSound_Implementation()
 	}
 }
 
-void ABanSungOnlPlayerController::Server_FireRifle_Implementation()
+void ABanSungOnlPlayerController::Server_FireRifle_Implementation(FVector Mouse)
 {
 	if (ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(GetPawn()))
 	{
-		if (PlayerCharacter->CurWeapon == PlayerCharacter->Rifle && !isReloading && !bIsShootRifle)
+		if(PlayerCharacter->CurWeapon->CurAmmo > 0 && !isReloading)
 		{
-			bIsShootRifle = true;
-			PlayerCharacter->ShootBullet(CachedDestination);
-			Client_PlayFireSound();
-			GetWorld()->GetTimerManager().SetTimer(FireRifleTime, [this](){bIsShootRifle = false;}, 0.25f, false);
+			if (PlayerCharacter->CurWeapon == PlayerCharacter->Rifle && !bIsShootRifle)
+			{
+				bIsShootRifle = true;
+				PlayerCharacter->CurWeapon->ShootBullet(Mouse);
+				Client_PlayFireSound();
+				GetWorld()->GetTimerManager().SetTimer(FireRifleTime, [this](){bIsShootRifle = false;}, 0.3f, false);
+			}
+			else if(PlayerCharacter->CurWeapon == PlayerCharacter->Pistol && !StepByOne)
+			{
+				StepByOne = true;
+				PlayerCharacter->CurWeapon->ShootBullet(Mouse);
+				Client_PlayFireSound();
+			}
 		}
 	}
 }
@@ -228,13 +247,7 @@ void ABanSungOnlPlayerController::Server_FirePistol_Implementation()
 {
 	if (ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(GetPawn()))
 	{
-		if (PlayerCharacter->CurWeapon == PlayerCharacter->Pistol && !isReloading && !StepByOne)
-		{
-			StepByOne = true;
-			PlayerCharacter->ShootBullet(CachedDestination);
-			Client_PlayFireSound();
-			GetWorld()->GetTimerManager().SetTimer(FirePistolTime, [this](){StepByOne = false;}, 0.25f, false);
-		}
+		StepByOne = false;
 	}
 }
 
@@ -252,8 +265,9 @@ void ABanSungOnlPlayerController::Server_Reload_Implementation()
 	ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(GetPawn());
 	if (IsValid(PlayerCharacter) && PlayerCharacter->CurWeapon->Ammo > 0 && PlayerCharacter->CurWeapon->CurAmmo < PlayerCharacter->CurWeapon->Magazine)
 	{
+		FTimerHandle ReloadTime;
 		isReloading = true;
-		PlayerCharacter->CurWeapon->ReloadAmmo(); 
 		Client_PlayReloadSound();
+		GetWorld()->GetTimerManager().SetTimer(ReloadTime, FTimerDelegate::CreateUObject(this, &ABanSungOnlPlayerController::Reload, PlayerCharacter), 0.8f, false);
 	}
 }

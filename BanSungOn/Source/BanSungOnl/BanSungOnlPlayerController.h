@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "BanSungOnlCharacter.h"
 #include "InputActionValue.h"
 #include "Templates/SubclassOf.h"
 #include "GameFramework/PlayerController.h"
@@ -75,7 +76,10 @@ protected:
 	void OnPistolKeyBoard(const FInputActionValue& Value); // Change Pistol Input
 	void OnRifleKeyBoard(const FInputActionValue& Value); // Change Rifle Input
 
+	UPROPERTY()
+	AWeapon* ReloadingWeapon;
 	void OnReloadAmmo(const FInputActionValue& Value); // Reload Input
+	void Reload(ABanSungOnlCharacter* PlayerCharacter);
 	UFUNCTION(Server, Unreliable)
 	void Server_Reload();
 	UFUNCTION(Client,Unreliable)
@@ -87,7 +91,7 @@ protected:
 	UFUNCTION(Server, Unreliable)
 	void Server_FirePistol();
 	UFUNCTION(Server, Unreliable)
-	void Server_FireRifle();
+	void Server_FireRifle(FVector Mouse);
 	UFUNCTION(Client,Unreliable)
 	void Client_PlayFireSound();
 private:
