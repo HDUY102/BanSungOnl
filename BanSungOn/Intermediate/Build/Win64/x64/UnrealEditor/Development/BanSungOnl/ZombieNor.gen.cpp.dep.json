@@ -1,0 +1,17 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\code_c++_training\\bansungonl\\bansungon\\intermediate\\build\\win64\\unrealeditor\\inc\\bansungonl\\uht\\zombienor.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\code_c++_training\\bansungonl\\bansungon\\intermediate\\build\\win64\\x64\\bansungonleditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "d:\\code_c++_training\\bansungonl\\bansungon\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\bansungonl\\definitions.bansungonl.h",
+            "d:\\code_c++_training\\bansungonl\\bansungon\\source\\bansungonl\\zombie\\zombienor.h",
+            "d:\\code_c++_training\\bansungonl\\bansungon\\source\\bansungonl\\zombie\\zombie.h",
+            "d:\\code_c++_training\\bansungonl\\bansungon\\intermediate\\build\\win64\\unrealeditor\\inc\\bansungonl\\uht\\zombie.generated.h",
+            "d:\\code_c++_training\\bansungonl\\bansungon\\intermediate\\build\\win64\\unrealeditor\\inc\\bansungonl\\uht\\zombienor.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
