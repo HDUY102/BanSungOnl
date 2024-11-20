@@ -59,7 +59,7 @@ void ABullet::OnOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor,
 	{
 		if (BulletSpeed > 0.1f) // Check speed Bullet
 		{
-			Zombies->HealthZomb -= BulletDmg;
+			Zombies->TakeDmg(BulletDmg);
 			Destroy();
 		}
 	}
