@@ -51,6 +51,4 @@ public:
 	UPROPERTY(EditAnywhere,BlueprintReadOnly)
 	TSubclassOf<ABullet> BulletSpawned;
 	void ShootBullet(FVector &Location);
-	UFUNCTION(Server, Unreliable)
-	void Server_ShootBullet(const FVector Location);
 };
