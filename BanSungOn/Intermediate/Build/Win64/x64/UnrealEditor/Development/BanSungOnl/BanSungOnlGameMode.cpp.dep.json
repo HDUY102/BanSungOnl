@@ -13,9 +13,6 @@
             "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\gamemodebase.generated.h",
             "d:\\code_c++_training\\bansungonl\\bansungon\\intermediate\\build\\win64\\unrealeditor\\inc\\bansungonl\\uht\\bansungonlgamemode.generated.h",
             "d:\\code_c++_training\\bansungonl\\bansungon\\source\\bansungonl\\bansungonlplayercontroller.h",
-            "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\plugins\\enhancedinput\\source\\enhancedinput\\public\\inputactionvalue.h",
-            "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\plugins\\enhancedinput\\intermediate\\build\\win64\\unrealeditor\\inc\\enhancedinput\\uht\\inputactionvalue.generated.h",
-            "d:\\code_c++_training\\bansungonl\\bansungon\\intermediate\\build\\win64\\unrealeditor\\inc\\bansungonl\\uht\\bansungonlplayercontroller.generated.h",
             "d:\\code_c++_training\\bansungonl\\bansungon\\source\\bansungonl\\bansungonlcharacter.h",
             "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\source\\runtime\\umg\\public\\components\\widgetcomponent.h",
             "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\source\\runtime\\umg\\public\\blueprint\\userwidget.h",
@@ -63,7 +60,10 @@
             "d:\\code_c++_training\\bansungonl\\bansungon\\intermediate\\build\\win64\\unrealeditor\\inc\\bansungonl\\uht\\pistol.generated.h",
             "d:\\code_c++_training\\bansungonl\\bansungon\\source\\bansungonl\\weapon\\rifle.h",
             "d:\\code_c++_training\\bansungonl\\bansungon\\intermediate\\build\\win64\\unrealeditor\\inc\\bansungonl\\uht\\rifle.generated.h",
-            "d:\\code_c++_training\\bansungonl\\bansungon\\intermediate\\build\\win64\\unrealeditor\\inc\\bansungonl\\uht\\bansungonlcharacter.generated.h"
+            "d:\\code_c++_training\\bansungonl\\bansungon\\intermediate\\build\\win64\\unrealeditor\\inc\\bansungonl\\uht\\bansungonlcharacter.generated.h",
+            "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\plugins\\enhancedinput\\source\\enhancedinput\\public\\inputactionvalue.h",
+            "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\plugins\\enhancedinput\\intermediate\\build\\win64\\unrealeditor\\inc\\enhancedinput\\uht\\inputactionvalue.generated.h",
+            "d:\\code_c++_training\\bansungonl\\bansungon\\intermediate\\build\\win64\\unrealeditor\\inc\\bansungonl\\uht\\bansungonlplayercontroller.generated.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

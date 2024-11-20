@@ -253,10 +253,12 @@
     <ClCompile Include="..\..\Source\BanSungOnl\Weapon\Pistol.cpp" />
     <ClCompile Include="..\..\Source\BanSungOnl\Weapon\Rifle.cpp" />
     <ClCompile Include="..\..\Source\BanSungOnl\Weapon\Weapon.cpp" />
+    <ClCompile Include="..\..\Source\BanSungOnl\Zombie\Zombie.cpp" />
     <ClInclude Include="..\..\Source\BanSungOnl\Projectitle\Bullet.h" />
     <ClInclude Include="..\..\Source\BanSungOnl\Weapon\Pistol.h" />
     <ClInclude Include="..\..\Source\BanSungOnl\Weapon\Rifle.h" />
     <ClInclude Include="..\..\Source\BanSungOnl\Weapon\Weapon.h" />
+    <ClInclude Include="..\..\Source\BanSungOnl\Zombie\Zombie.h" />
     <None Include="..\..\BanSungOnl.uproject"/>
     <None Include="..\..\Source\BanSungOnl.Target.cs"/>
     <None Include="..\..\Source\BanSungOnlEditor.Target.cs"/>
