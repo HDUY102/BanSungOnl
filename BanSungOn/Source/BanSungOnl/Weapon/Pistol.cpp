@@ -26,7 +26,7 @@ void APistol::BeginPlay()
 	CurAmmo = 15;
 	LastAmmo = 0;
 	Damage = 10.f;
-	Speed = 50.f;
+	Speed = 230.f;
 }
 
 void APistol::ShootSound()
