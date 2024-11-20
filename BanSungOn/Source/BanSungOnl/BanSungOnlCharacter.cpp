@@ -89,11 +89,6 @@ void ABanSungOnlCharacter::EquipRifle()
 	Server_EquipRifle();
 }
 
-void ABanSungOnlCharacter::ShootBullet(FVector& Location)
-{
-	CurWeapon->ShootBullet(Location);
-}
-
 void ABanSungOnlCharacter::Server_SpawnPistol_Implementation()
 {
 	Pistol = GetWorld()->SpawnActor<APistol>(PistolToSpawn, GetActorLocation(),FRotator::ZeroRotator);

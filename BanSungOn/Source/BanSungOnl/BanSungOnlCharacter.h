@@ -58,8 +58,6 @@ public:
 	void Server_SpawnRifle();
 	UFUNCTION(Server,Unreliable)
 	void Server_SpawnPistol();
-
-	void ShootBullet(FVector &Location);
 	
 	// Var show HUD attacked
 	UPROPERTY(BlueprintAssignable, Category = "Show HUD Attacked")
