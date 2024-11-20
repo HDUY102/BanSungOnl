@@ -9,12 +9,24 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class AActor;
+class UPrimitiveComponent;
+struct FHitResult;
 #ifdef BANSUNGONL_Zombies_generated_h
 #error "Zombies.generated.h already included, missing '#pragma once' in Zombies.h"
 #endif
 #define BANSUNGONL_Zombies_generated_h
 
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_13_INCLASS_NO_PURE_DECLS \
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
+	virtual void Server_AtkCharacter_Implementation(); \
+	DECLARE_FUNCTION(execOnEndOverlap); \
+	DECLARE_FUNCTION(execOnOverlap); \
+	DECLARE_FUNCTION(execTakeDmg); \
+	DECLARE_FUNCTION(execServer_AtkCharacter);
+
+
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_16_CALLBACK_WRAPPERS
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_16_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAZombies(); \
 	friend struct Z_Construct_UClass_AZombies_Statics; \
@@ -30,7 +42,7 @@ public: \
 	NO_API virtual void ValidateGeneratedRepEnums(const TArray<struct FRepRecord>& ClassReps) const override;
 
 
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_13_ENHANCED_CONSTRUCTORS \
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_16_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	AZombies(AZombies&&); \
@@ -42,12 +54,14 @@ public: \
 	NO_API virtual ~AZombies();
 
 
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_10_PROLOG
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_13_GENERATED_BODY \
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_13_PROLOG
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_16_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_13_INCLASS_NO_PURE_DECLS \
-	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_13_ENHANCED_CONSTRUCTORS \
+	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_16_CALLBACK_WRAPPERS \
+	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_16_INCLASS_NO_PURE_DECLS \
+	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_16_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

@@ -14,7 +14,6 @@ BANSUNGONL_API UClass* Z_Construct_UClass_ABullet_NoRegister();
 BANSUNGONL_API UClass* Z_Construct_UClass_AWeapon();
 BANSUNGONL_API UClass* Z_Construct_UClass_AWeapon_NoRegister();
 COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
-COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 ENGINE_API UClass* Z_Construct_UClass_AActor();
 ENGINE_API UClass* Z_Construct_UClass_USkeletalMeshComponent_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_USoundBase_NoRegister();
@@ -49,58 +48,6 @@ DEFINE_FUNCTION(AWeapon::execReloadSound)
 	P_NATIVE_END;
 }
 // End Class AWeapon Function ReloadSound
-
-// Begin Class AWeapon Function Server_ShootBullet
-struct Weapon_eventServer_ShootBullet_Parms
-{
-	FVector Location;
-};
-static FName NAME_AWeapon_Server_ShootBullet = FName(TEXT("Server_ShootBullet"));
-void AWeapon::Server_ShootBullet(const FVector Location)
-{
-	Weapon_eventServer_ShootBullet_Parms Parms;
-	Parms.Location=Location;
-	ProcessEvent(FindFunctionChecked(NAME_AWeapon_Server_ShootBullet),&Parms);
-}
-struct Z_Construct_UFunction_AWeapon_Server_ShootBullet_Statics
-{
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "ModuleRelativePath", "Weapon/Weapon.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Location_MetaData[] = {
-		{ "NativeConst", "" },
-	};
-#endif // WITH_METADATA
-	static const UECodeGen_Private::FStructPropertyParams NewProp_Location;
-	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
-	static const UECodeGen_Private::FFunctionParams FuncParams;
-};
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AWeapon_Server_ShootBullet_Statics::NewProp_Location = { "Location", nullptr, (EPropertyFlags)0x0010000000000082, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Weapon_eventServer_ShootBullet_Parms, Location), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Location_MetaData), NewProp_Location_MetaData) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AWeapon_Server_ShootBullet_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AWeapon_Server_ShootBullet_Statics::NewProp_Location,
-};
-static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AWeapon_Server_ShootBullet_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AWeapon_Server_ShootBullet_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AWeapon, nullptr, "Server_ShootBullet", nullptr, nullptr, Z_Construct_UFunction_AWeapon_Server_ShootBullet_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AWeapon_Server_ShootBullet_Statics::PropPointers), sizeof(Weapon_eventServer_ShootBullet_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00A20C40, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AWeapon_Server_ShootBullet_Statics::Function_MetaDataParams), Z_Construct_UFunction_AWeapon_Server_ShootBullet_Statics::Function_MetaDataParams) };
-static_assert(sizeof(Weapon_eventServer_ShootBullet_Parms) < MAX_uint16);
-UFunction* Z_Construct_UFunction_AWeapon_Server_ShootBullet()
-{
-	static UFunction* ReturnFunction = nullptr;
-	if (!ReturnFunction)
-	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AWeapon_Server_ShootBullet_Statics::FuncParams);
-	}
-	return ReturnFunction;
-}
-DEFINE_FUNCTION(AWeapon::execServer_ShootBullet)
-{
-	P_GET_STRUCT(FVector,Z_Param_Location);
-	P_FINISH;
-	P_NATIVE_BEGIN;
-	P_THIS->Server_ShootBullet_Implementation(Z_Param_Location);
-	P_NATIVE_END;
-}
-// End Class AWeapon Function Server_ShootBullet
 
 // Begin Class AWeapon Function ShootSound
 struct Z_Construct_UFunction_AWeapon_ShootSound_Statics
@@ -137,7 +84,6 @@ void AWeapon::StaticRegisterNativesAWeapon()
 	UClass* Class = AWeapon::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
 		{ "ReloadSound", &AWeapon::execReloadSound },
-		{ "Server_ShootBullet", &AWeapon::execServer_ShootBullet },
 		{ "ShootSound", &AWeapon::execShootSound },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
@@ -200,7 +146,6 @@ struct Z_Construct_UClass_AWeapon_Statics
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_AWeapon_ReloadSound, "ReloadSound" }, // 2102349448
-		{ &Z_Construct_UFunction_AWeapon_Server_ShootBullet, "Server_ShootBullet" }, // 3252953574
 		{ &Z_Construct_UFunction_AWeapon_ShootSound, "ShootSound" }, // 2321030508
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
@@ -273,10 +218,10 @@ AWeapon::~AWeapon() {}
 struct Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Weapon_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AWeapon, AWeapon::StaticClass, TEXT("AWeapon"), &Z_Registration_Info_UClass_AWeapon, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AWeapon), 248142591U) },
+		{ Z_Construct_UClass_AWeapon, AWeapon::StaticClass, TEXT("AWeapon"), &Z_Registration_Info_UClass_AWeapon, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AWeapon), 1407797741U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Weapon_h_2306113272(TEXT("/Script/BanSungOnl"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Weapon_h_2614002260(TEXT("/Script/BanSungOnl"),
 	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Weapon_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Weapon_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
