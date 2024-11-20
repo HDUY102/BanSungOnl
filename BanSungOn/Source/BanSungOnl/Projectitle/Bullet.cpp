@@ -3,6 +3,8 @@
 
 #include "Bullet.h"
 
+#include "BanSungOnl/Zombie/Zombies.h"
+#include "Kismet/KismetSystemLibrary.h"
 #include "Net/UnrealNetwork.h"
 
 
@@ -12,13 +14,20 @@ ABullet::ABullet()
 	bReplicates = true;
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+
+	SphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComponent"));
+	SphereComponent->SetupAttachment(RootComponent);
+	SphereComponent->OnComponentBeginOverlap.AddDynamic(this, &ABullet::OnOverlap);
 }
 
 // Called when the game starts or when spawned
 void ABullet::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	if (HasAuthority())
+	{
+		SetLifeSpan(3.f);
+	}
 }
 
 // Called every frame
@@ -28,7 +37,7 @@ void ABullet::Tick(float DeltaTime)
 
 	if(HasAuthority())
 	{
-		FVector NewLocation = GetActorLocation() + Direction * BulletSpeed * DeltaTime;
+		FVector NewLocation = GetActorLocation() + Direction * DeltaTime;
 		SetActorLocation(NewLocation);
 	}
 }
@@ -42,6 +51,20 @@ void ABullet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeP
 	DOREPLIFETIME(ABullet, BulletSpeed);
 }
 
+void ABullet::OnOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
+	int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	AZombies* Zombies = Cast<AZombies>(OtherActor);
+	if(IsValid(Zombies))
+	{
+		if (BulletSpeed > 0.1f) // Check speed Bullet
+		{
+			Zombies->HealthZomb -= BulletDmg;
+			Destroy();
+		}
+	}
+}
+
 void ABullet::SetBulletProperties_Implementation(float Damage, float Speed)
 {
 	BulletDmg = Damage;
@@ -50,7 +73,8 @@ void ABullet::SetBulletProperties_Implementation(float Damage, float Speed)
 
 void ABullet::SetDirectionBullet_Implementation(const FVector NewDirection)
 {
-	Direction = (NewDirection - GetActorLocation()).GetSafeNormal();
+	Direction = NewDirection - GetActorLocation();
+	Direction.Normalize();
 	Direction *= BulletSpeed;
 	Direction.Z = 0.f;
 }
