@@ -22,7 +22,11 @@ BANSUNGONL_API void FShowHealth_DelegateWrapper(const FMulticastScriptDelegate& 
 BANSUNGONL_API void FShowWinGame_DelegateWrapper(const FMulticastScriptDelegate& ShowWinGame);
 
 
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_13_DELEGATE \
+BANSUNGONL_API void FShowLoseGame_DelegateWrapper(const FMulticastScriptDelegate& ShowLoseGame);
+
+
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_18_RPC_WRAPPERS_NO_PURE_DECLS \
 	virtual void Server_SpawnPistol_Implementation(); \
 	virtual void Server_SpawnRifle_Implementation(); \
 	virtual void Server_EquipRifle_Implementation(); \
@@ -30,11 +34,13 @@ BANSUNGONL_API void FShowWinGame_DelegateWrapper(const FMulticastScriptDelegate&
 	DECLARE_FUNCTION(execServer_SpawnPistol); \
 	DECLARE_FUNCTION(execServer_SpawnRifle); \
 	DECLARE_FUNCTION(execServer_EquipRifle); \
-	DECLARE_FUNCTION(execServer_EquipPistol);
+	DECLARE_FUNCTION(execServer_EquipPistol); \
+	DECLARE_FUNCTION(execPlayerTakeDmg); \
+	DECLARE_FUNCTION(execOnRep_ChangeHealth);
 
 
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_17_CALLBACK_WRAPPERS
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_17_INCLASS_NO_PURE_DECLS \
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_18_CALLBACK_WRAPPERS
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_18_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesABanSungOnlCharacter(); \
 	friend struct Z_Construct_UClass_ABanSungOnlCharacter_Statics; \
@@ -50,7 +56,7 @@ public: \
 	NO_API virtual void ValidateGeneratedRepEnums(const TArray<struct FRepRecord>& ClassReps) const override;
 
 
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_17_ENHANCED_CONSTRUCTORS \
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_18_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	ABanSungOnlCharacter(ABanSungOnlCharacter&&); \
@@ -62,14 +68,14 @@ public: \
 	NO_API virtual ~ABanSungOnlCharacter();
 
 
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_14_PROLOG
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_17_GENERATED_BODY \
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_15_PROLOG
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_18_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_17_CALLBACK_WRAPPERS \
-	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_17_INCLASS_NO_PURE_DECLS \
-	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_17_ENHANCED_CONSTRUCTORS \
+	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_18_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_18_CALLBACK_WRAPPERS \
+	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_18_INCLASS_NO_PURE_DECLS \
+	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_18_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

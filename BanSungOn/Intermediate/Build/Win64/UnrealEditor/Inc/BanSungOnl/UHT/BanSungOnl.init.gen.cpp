@@ -8,6 +8,7 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeBanSungOnl_init() {}
 	BANSUNGONL_API UFunction* Z_Construct_UDelegateFunction_BanSungOnl_ShowHealth__DelegateSignature();
+	BANSUNGONL_API UFunction* Z_Construct_UDelegateFunction_BanSungOnl_ShowLoseGame__DelegateSignature();
 	BANSUNGONL_API UFunction* Z_Construct_UDelegateFunction_BanSungOnl_ShowWinGame__DelegateSignature();
 	static FPackageRegistrationInfo Z_Registration_Info_UPackage__Script_BanSungOnl;
 	FORCENOINLINE UPackage* Z_Construct_UPackage__Script_BanSungOnl()
@@ -16,6 +17,7 @@ void EmptyLinkFunctionForGeneratedCodeBanSungOnl_init() {}
 		{
 			static UObject* (*const SingletonFuncArray[])() = {
 				(UObject* (*)())Z_Construct_UDelegateFunction_BanSungOnl_ShowHealth__DelegateSignature,
+				(UObject* (*)())Z_Construct_UDelegateFunction_BanSungOnl_ShowLoseGame__DelegateSignature,
 				(UObject* (*)())Z_Construct_UDelegateFunction_BanSungOnl_ShowWinGame__DelegateSignature,
 			};
 			static const UECodeGen_Private::FPackageParams PackageParams = {
@@ -23,13 +25,13 @@ void EmptyLinkFunctionForGeneratedCodeBanSungOnl_init() {}
 				SingletonFuncArray,
 				UE_ARRAY_COUNT(SingletonFuncArray),
 				PKG_CompiledIn | 0x00000000,
-				0xF1270094,
-				0x52647A83,
+				0xAF12B648,
+				0xE5C093C2,
 				METADATA_PARAMS(0, nullptr)
 			};
 			UECodeGen_Private::ConstructUPackage(Z_Registration_Info_UPackage__Script_BanSungOnl.OuterSingleton, PackageParams);
 		}
 		return Z_Registration_Info_UPackage__Script_BanSungOnl.OuterSingleton;
 	}
-	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_BanSungOnl(Z_Construct_UPackage__Script_BanSungOnl, TEXT("/Script/BanSungOnl"), Z_Registration_Info_UPackage__Script_BanSungOnl, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0xF1270094, 0x52647A83));
+	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_BanSungOnl(Z_Construct_UPackage__Script_BanSungOnl, TEXT("/Script/BanSungOnl"), Z_Registration_Info_UPackage__Script_BanSungOnl, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0xAF12B648, 0xE5C093C2));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

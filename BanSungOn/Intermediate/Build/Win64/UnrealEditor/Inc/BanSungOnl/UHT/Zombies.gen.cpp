@@ -335,7 +335,7 @@ void Z_Construct_UClass_AZombies_Statics::NewProp_CanAtk_SetBit(void* Obj)
 {
 	((AZombies*)Obj)->CanAtk = 1;
 }
-const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AZombies_Statics::NewProp_CanAtk = { "CanAtk", nullptr, (EPropertyFlags)0x0020080000000014, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(AZombies), &Z_Construct_UClass_AZombies_Statics::NewProp_CanAtk_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CanAtk_MetaData), NewProp_CanAtk_MetaData) };
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AZombies_Statics::NewProp_CanAtk = { "CanAtk", nullptr, (EPropertyFlags)0x0020080000000034, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(AZombies), &Z_Construct_UClass_AZombies_Statics::NewProp_CanAtk_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CanAtk_MetaData), NewProp_CanAtk_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AZombies_Statics::NewProp_WidgetComponent = { "WidgetComponent", nullptr, (EPropertyFlags)0x00200800000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AZombies, WidgetComponent), Z_Construct_UClass_UWidgetComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_WidgetComponent_MetaData), NewProp_WidgetComponent_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AZombies_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AZombies_Statics::NewProp_HealthZomb,
@@ -382,9 +382,11 @@ void AZombies::ValidateGeneratedRepEnums(const TArray<struct FRepRecord>& ClassR
 {
 	static const FName Name_HealthZomb(TEXT("HealthZomb"));
 	static const FName Name_DamageZomb(TEXT("DamageZomb"));
+	static const FName Name_CanAtk(TEXT("CanAtk"));
 	const bool bIsValid = true
 		&& Name_HealthZomb == ClassReps[(int32)ENetFields_Private::HealthZomb].Property->GetFName()
-		&& Name_DamageZomb == ClassReps[(int32)ENetFields_Private::DamageZomb].Property->GetFName();
+		&& Name_DamageZomb == ClassReps[(int32)ENetFields_Private::DamageZomb].Property->GetFName()
+		&& Name_CanAtk == ClassReps[(int32)ENetFields_Private::CanAtk].Property->GetFName();
 	checkf(bIsValid, TEXT("UHT Generated Rep Indices do not match runtime populated Rep Indices for properties in AZombies"));
 }
 DEFINE_VTABLE_PTR_HELPER_CTOR(AZombies);
@@ -395,10 +397,10 @@ AZombies::~AZombies() {}
 struct Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AZombies, AZombies::StaticClass, TEXT("AZombies"), &Z_Registration_Info_UClass_AZombies, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AZombies), 3556795906U) },
+		{ Z_Construct_UClass_AZombies, AZombies::StaticClass, TEXT("AZombies"), &Z_Registration_Info_UClass_AZombies, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AZombies), 2794468449U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_3029152760(TEXT("/Script/BanSungOnl"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_4078223274(TEXT("/Script/BanSungOnl"),
 	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

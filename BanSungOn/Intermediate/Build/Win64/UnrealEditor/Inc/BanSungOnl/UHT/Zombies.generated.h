@@ -38,7 +38,8 @@ public: \
 		NETFIELD_REP_START=(uint16)((int32)Super::ENetFields_Private::NETFIELD_REP_END + (int32)1), \
 		HealthZomb=NETFIELD_REP_START, \
 		DamageZomb, \
-		NETFIELD_REP_END=DamageZomb	}; \
+		CanAtk, \
+		NETFIELD_REP_END=CanAtk	}; \
 	NO_API virtual void ValidateGeneratedRepEnums(const TArray<struct FRepRecord>& ClassReps) const override;
 
 
