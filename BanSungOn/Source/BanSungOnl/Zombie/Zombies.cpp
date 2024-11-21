@@ -3,7 +3,10 @@
 
 #include "Zombies.h"
 
+#include <string>
+
 #include "BanSungOnl/BanSungOnlCharacter.h"
+#include "Engine/RendererSettings.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Net/UnrealNetwork.h"
 
@@ -35,6 +38,7 @@ void AZombies::BeginPlay()
 void AZombies::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	Server_AtkCharacter();
 }
 
 // Called to bind functionality to input
@@ -87,31 +91,29 @@ void AZombies::OnEndOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherAc
 void AZombies::Server_AtkCharacter_Implementation()
 {
 	FVector Start = GetMesh()->GetSocketLocation(FName("A"));
-	FVector End = GetMesh()->GetSocketLocation(FName("RightHandMiddle1"));
+	FVector End = GetMesh()->GetSocketLocation(FName("B"));
 
+	TArray<AActor*> IgnoreActors;
+	IgnoreActors.Add(this); 
 	FHitResult HitResult;
-	TArray<AActor*> ActorsToIgnore;
-	ActorsToIgnore.Add(this);
-	
 	bool bHit = UKismetSystemLibrary::LineTraceSingle(GetWorld(),Start,End,
-			static_cast<ETraceTypeQuery>(ECollisionChannel::ECC_Pawn),
-			false,
-			ActorsToIgnore,
-			EDrawDebugTrace::Persistent,
-			HitResult,
-			true);
-	UKismetSystemLibrary::PrintString(this, bHit ? TEXT("true") : TEXT("false"));
+		static_cast<ETraceTypeQuery>(ECollisionChannel::ECC_Pawn), 
+		false,
+		IgnoreActors,
+		EDrawDebugTrace::ForDuration,
+		HitResult,
+		true);
+	if (bHit)
 	if (bHit)
 	{
 		ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(HitResult.GetActor());
-		if (PlayerCharacter)
+		if (PlayerCharacter && !Attack)
 		{
-			// FTimerHandle CanAttackTime;
-			// CanAtk = true;
-			PlayerCharacter->Health -= DamageZomb;
-			PlayerCharacter->ShowHealth.Broadcast(); // Player is Attacked
-			UKismetSystemLibrary::PrintString(this, "Check");
-			// GetWorld()->GetTimerManager().SetTimer(CanAttackTime, [this]() { CanAtk = false; }, 2.0f, false);
+			FTimerHandle CanAttackTime;
+			Attack = true;
+			PlayerCharacter->PlayerTakeDmg(DamageZomb);
+			PlayerCharacter->OnRep_ChangeHealth();
+			GetWorld()->GetTimerManager().SetTimer(CanAttackTime, [this]() { Attack = false; }, 2.0f, false);
 		}
 	}
 }

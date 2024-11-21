@@ -35,7 +35,8 @@ protected:
 	UFUNCTION(Server,Unreliable)
 	void Server_AtkCharacter();
 	UPROPERTY(BlueprintReadOnly,Replicated)
-	bool CanAtk;
+	bool CanAtk=false;
+	bool Attack=false;
 	
 	// Display HealthBar
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UI", meta = (AllowPrivateAccess = "true"))
