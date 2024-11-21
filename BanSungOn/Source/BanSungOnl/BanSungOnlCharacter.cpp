@@ -71,6 +71,24 @@ void ABanSungOnlCharacter::BeginPlay()
 	}
 }
 
+void ABanSungOnlCharacter::OnRep_ChangeHealth()
+{
+	APlayerController* PlayerController = Cast<APlayerController>(GetController());
+	if (PlayerController && PlayerController->IsLocalController())
+	{
+		ShowHealth.Broadcast();
+	}
+}
+
+void ABanSungOnlCharacter::PlayerTakeDmg(float Dmg)
+{
+	Health -= Dmg;
+	if(Health <= 0 )
+	{
+		ShowLoseGame.Broadcast();
+	}
+}
+
 void ABanSungOnlCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);

@@ -10,6 +10,7 @@
 #include "BanSungOnlCharacter.generated.h"
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FShowHealth); // show HUD attacked
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FShowWinGame); // show HUD WinGame
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FShowLoseGame); // show HUD LoseGame
 // DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FShowNameItem, int32, ItemType); // show name item
 UCLASS(Blueprintable)
 class ABanSungOnlCharacter : public ACharacter
@@ -28,10 +29,14 @@ public:
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Health", Replicated)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Health", ReplicatedUsing = OnRep_ChangeHealth)
 	float Health;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Health")
 	float MaxHealth;
+	UFUNCTION()
+	void OnRep_ChangeHealth();
+	UFUNCTION()
+	void PlayerTakeDmg(float Dmg);
 	
 	/* Server -> Client
 	 * Send to client when properties change*/
@@ -59,12 +64,12 @@ public:
 	UFUNCTION(Server,Unreliable)
 	void Server_SpawnPistol();
 	
-	// Var show HUD attacked
 	UPROPERTY(BlueprintAssignable, Category = "Show HUD Attacked")
-	FShowHealth ShowHealth;
-	// Var Show Win Game
+	FShowHealth ShowHealth; // Var show HUD attacked
 	UPROPERTY(BlueprintAssignable, Category = "Show Win Game")
-	FShowWinGame ShowWinGame;
+	FShowWinGame ShowWinGame; // Var Show Win Game
+	UPROPERTY(BlueprintAssignable, Category = "Show Lose Game")
+	FShowLoseGame ShowLoseGame; // Var Show Lose Game
 	
 private:
 	/** Top down camera */
