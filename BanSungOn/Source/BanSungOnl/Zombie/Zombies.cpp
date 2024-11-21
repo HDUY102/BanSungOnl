@@ -68,7 +68,7 @@ void AZombies::OnOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor
 	int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(OtherActor);
-	if(PlayerCharacter)
+	if(PlayerCharacter && PlayerCharacter->Health>0.f)
 	{
 		FVector DirectionToPlayer = (PlayerCharacter->GetActorLocation() - GetActorLocation()).GetSafeNormal();
 		FRotator LookAtRotation = DirectionToPlayer.Rotation();
@@ -103,7 +103,6 @@ void AZombies::Server_AtkCharacter_Implementation()
 		EDrawDebugTrace::ForDuration,
 		HitResult,
 		true);
-	if (bHit)
 	if (bHit)
 	{
 		ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(HitResult.GetActor());
