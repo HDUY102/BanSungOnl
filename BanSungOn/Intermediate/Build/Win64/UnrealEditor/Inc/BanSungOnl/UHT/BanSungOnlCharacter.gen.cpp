@@ -117,6 +117,46 @@ void FShowLoseGame_DelegateWrapper(const FMulticastScriptDelegate& ShowLoseGame)
 }
 // End Delegate FShowLoseGame
 
+// Begin Class ABanSungOnlCharacter Function Client_ShowWBLoseGame
+static FName NAME_ABanSungOnlCharacter_Client_ShowWBLoseGame = FName(TEXT("Client_ShowWBLoseGame"));
+void ABanSungOnlCharacter::Client_ShowWBLoseGame()
+{
+	ProcessEvent(FindFunctionChecked(NAME_ABanSungOnlCharacter_Client_ShowWBLoseGame),NULL);
+}
+struct Z_Construct_UFunction_ABanSungOnlCharacter_Client_ShowWBLoseGame_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// Dead\n" },
+#endif
+		{ "ModuleRelativePath", "BanSungOnlCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Dead" },
+#endif
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ABanSungOnlCharacter_Client_ShowWBLoseGame_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ABanSungOnlCharacter, nullptr, "Client_ShowWBLoseGame", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x01020C40, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ABanSungOnlCharacter_Client_ShowWBLoseGame_Statics::Function_MetaDataParams), Z_Construct_UFunction_ABanSungOnlCharacter_Client_ShowWBLoseGame_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_ABanSungOnlCharacter_Client_ShowWBLoseGame()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ABanSungOnlCharacter_Client_ShowWBLoseGame_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ABanSungOnlCharacter::execClient_ShowWBLoseGame)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->Client_ShowWBLoseGame_Implementation();
+	P_NATIVE_END;
+}
+// End Class ABanSungOnlCharacter Function Client_ShowWBLoseGame
+
 // Begin Class ABanSungOnlCharacter Function OnRep_ChangeHealth
 struct Z_Construct_UFunction_ABanSungOnlCharacter_OnRep_ChangeHealth_Statics
 {
@@ -145,6 +185,35 @@ DEFINE_FUNCTION(ABanSungOnlCharacter::execOnRep_ChangeHealth)
 	P_NATIVE_END;
 }
 // End Class ABanSungOnlCharacter Function OnRep_ChangeHealth
+
+// Begin Class ABanSungOnlCharacter Function OnRep_IsDead
+struct Z_Construct_UFunction_ABanSungOnlCharacter_OnRep_IsDead_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "BanSungOnlCharacter.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ABanSungOnlCharacter_OnRep_IsDead_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ABanSungOnlCharacter, nullptr, "OnRep_IsDead", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ABanSungOnlCharacter_OnRep_IsDead_Statics::Function_MetaDataParams), Z_Construct_UFunction_ABanSungOnlCharacter_OnRep_IsDead_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_ABanSungOnlCharacter_OnRep_IsDead()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ABanSungOnlCharacter_OnRep_IsDead_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ABanSungOnlCharacter::execOnRep_IsDead)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->OnRep_IsDead();
+	P_NATIVE_END;
+}
+// End Class ABanSungOnlCharacter Function OnRep_IsDead
 
 // Begin Class ABanSungOnlCharacter Function PlayerTakeDmg
 struct Z_Construct_UFunction_ABanSungOnlCharacter_PlayerTakeDmg_Statics
@@ -329,7 +398,9 @@ void ABanSungOnlCharacter::StaticRegisterNativesABanSungOnlCharacter()
 {
 	UClass* Class = ABanSungOnlCharacter::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
+		{ "Client_ShowWBLoseGame", &ABanSungOnlCharacter::execClient_ShowWBLoseGame },
 		{ "OnRep_ChangeHealth", &ABanSungOnlCharacter::execOnRep_ChangeHealth },
+		{ "OnRep_IsDead", &ABanSungOnlCharacter::execOnRep_IsDead },
 		{ "PlayerTakeDmg", &ABanSungOnlCharacter::execPlayerTakeDmg },
 		{ "Server_EquipPistol", &ABanSungOnlCharacter::execServer_EquipPistol },
 		{ "Server_EquipRifle", &ABanSungOnlCharacter::execServer_EquipRifle },
@@ -365,6 +436,10 @@ struct Z_Construct_UClass_ABanSungOnlCharacter_Statics
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MaxHealth_MetaData[] = {
 		{ "Category", "Health" },
+		{ "ModuleRelativePath", "BanSungOnlCharacter.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_bIsDead_MetaData[] = {
+		{ "Category", "BanSungOnlCharacter" },
 		{ "ModuleRelativePath", "BanSungOnlCharacter.h" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CurWeapon_MetaData[] = {
@@ -448,6 +523,8 @@ struct Z_Construct_UClass_ABanSungOnlCharacter_Statics
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_Health;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_MaxHealth;
+	static void NewProp_bIsDead_SetBit(void* Obj);
+	static const UECodeGen_Private::FBoolPropertyParams NewProp_bIsDead;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_CurWeapon;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_Rifle;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_Pistol;
@@ -462,7 +539,9 @@ struct Z_Construct_UClass_ABanSungOnlCharacter_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
+		{ &Z_Construct_UFunction_ABanSungOnlCharacter_Client_ShowWBLoseGame, "Client_ShowWBLoseGame" }, // 3846218981
 		{ &Z_Construct_UFunction_ABanSungOnlCharacter_OnRep_ChangeHealth, "OnRep_ChangeHealth" }, // 735446729
+		{ &Z_Construct_UFunction_ABanSungOnlCharacter_OnRep_IsDead, "OnRep_IsDead" }, // 1928504942
 		{ &Z_Construct_UFunction_ABanSungOnlCharacter_PlayerTakeDmg, "PlayerTakeDmg" }, // 2431230330
 		{ &Z_Construct_UFunction_ABanSungOnlCharacter_Server_EquipPistol, "Server_EquipPistol" }, // 1687733419
 		{ &Z_Construct_UFunction_ABanSungOnlCharacter_Server_EquipRifle, "Server_EquipRifle" }, // 456743258
@@ -475,8 +554,13 @@ struct Z_Construct_UClass_ABanSungOnlCharacter_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_Health = { "Health", "OnRep_ChangeHealth", (EPropertyFlags)0x0010000100020035, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, Health), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Health_MetaData), NewProp_Health_MetaData) };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_MaxHealth = { "MaxHealth", nullptr, (EPropertyFlags)0x0010000000020015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, MaxHealth), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MaxHealth_MetaData), NewProp_MaxHealth_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_Health = { "Health", "OnRep_ChangeHealth", (EPropertyFlags)0x0010000100020025, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, Health), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Health_MetaData), NewProp_Health_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_MaxHealth = { "MaxHealth", nullptr, (EPropertyFlags)0x0010000000020005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, MaxHealth), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MaxHealth_MetaData), NewProp_MaxHealth_MetaData) };
+void Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_bIsDead_SetBit(void* Obj)
+{
+	((ABanSungOnlCharacter*)Obj)->bIsDead = 1;
+}
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_bIsDead = { "bIsDead", "OnRep_IsDead", (EPropertyFlags)0x0010000100020025, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(ABanSungOnlCharacter), &Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_bIsDead_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_bIsDead_MetaData), NewProp_bIsDead_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_CurWeapon = { "CurWeapon", nullptr, (EPropertyFlags)0x0010000000000035, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, CurWeapon), Z_Construct_UClass_AWeapon_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CurWeapon_MetaData), NewProp_CurWeapon_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_Rifle = { "Rifle", nullptr, (EPropertyFlags)0x0010000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, Rifle), Z_Construct_UClass_ARifle_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Rifle_MetaData), NewProp_Rifle_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_Pistol = { "Pistol", nullptr, (EPropertyFlags)0x0010000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, Pistol), Z_Construct_UClass_APistol_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Pistol_MetaData), NewProp_Pistol_MetaData) };
@@ -491,6 +575,7 @@ const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABanSungOnlCha
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ABanSungOnlCharacter_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_Health,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_MaxHealth,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_bIsDead,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_CurWeapon,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_Rifle,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_Pistol,
@@ -539,9 +624,11 @@ template<> BANSUNGONL_API UClass* StaticClass<ABanSungOnlCharacter>()
 void ABanSungOnlCharacter::ValidateGeneratedRepEnums(const TArray<struct FRepRecord>& ClassReps) const
 {
 	static const FName Name_Health(TEXT("Health"));
+	static const FName Name_bIsDead(TEXT("bIsDead"));
 	static const FName Name_CurWeapon(TEXT("CurWeapon"));
 	const bool bIsValid = true
 		&& Name_Health == ClassReps[(int32)ENetFields_Private::Health].Property->GetFName()
+		&& Name_bIsDead == ClassReps[(int32)ENetFields_Private::bIsDead].Property->GetFName()
 		&& Name_CurWeapon == ClassReps[(int32)ENetFields_Private::CurWeapon].Property->GetFName();
 	checkf(bIsValid, TEXT("UHT Generated Rep Indices do not match runtime populated Rep Indices for properties in ABanSungOnlCharacter"));
 }
@@ -553,10 +640,10 @@ ABanSungOnlCharacter::~ABanSungOnlCharacter() {}
 struct Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ABanSungOnlCharacter, ABanSungOnlCharacter::StaticClass, TEXT("ABanSungOnlCharacter"), &Z_Registration_Info_UClass_ABanSungOnlCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABanSungOnlCharacter), 3602623263U) },
+		{ Z_Construct_UClass_ABanSungOnlCharacter, ABanSungOnlCharacter::StaticClass, TEXT("ABanSungOnlCharacter"), &Z_Registration_Info_UClass_ABanSungOnlCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABanSungOnlCharacter), 1708184110U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_2261331862(TEXT("/Script/BanSungOnl"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_931270921(TEXT("/Script/BanSungOnl"),
 	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
