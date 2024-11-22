@@ -29,14 +29,25 @@ public:
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Health", ReplicatedUsing = OnRep_ChangeHealth)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Health", ReplicatedUsing = OnRep_ChangeHealth)
 	float Health;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Health")
-	float MaxHealth;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Health")
+	float MaxHealth;	
 	UFUNCTION()
 	void OnRep_ChangeHealth();
 	UFUNCTION()
 	void PlayerTakeDmg(float Dmg);
+
+	// Dead
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, ReplicatedUsing = OnRep_IsDead)
+	bool bIsDead;
+	UFUNCTION()
+	void OnRep_IsDead();
+	//Game Over
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, ReplicatedUsing = OnRep_IsGameOver)
+	bool bIsGamveOver;
+	UFUNCTION()
+	void OnRep_IsGameOver();
 	
 	/* Server -> Client
 	 * Send to client when properties change*/

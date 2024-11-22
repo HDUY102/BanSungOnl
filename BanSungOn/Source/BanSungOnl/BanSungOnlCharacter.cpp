@@ -1,6 +1,9 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "BanSungOnlCharacter.h"
+
+#include "BanSungOnlGameMode.h"
+#include "Camera/CameraActor.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Camera/CameraComponent.h"
 #include "Components/DecalComponent.h"
@@ -11,6 +14,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Materials/Material.h"
 #include "Engine/World.h"
+#include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Net/UnrealNetwork.h"
 
@@ -60,7 +64,7 @@ void ABanSungOnlCharacter::Tick(float DeltaSeconds)
 void ABanSungOnlCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	Health = 50.f;
+	Health = 5.f;
 	MaxHealth = 50.f;
 
 	if(!HasAuthority())
@@ -69,12 +73,19 @@ void ABanSungOnlCharacter::BeginPlay()
 		Server_SpawnRifle();
 		Server_EquipRifle();
 	}
+
+	ABanSungOnlGameMode* PlayerGameMode = Cast<ABanSungOnlGameMode>(GetWorld()->GetAuthGameMode());
+	AController* Controllers = GetController();
+	if(PlayerGameMode)
+	{
+		PlayerGameMode->AddPlayer(this);
+	}
 }
 
 void ABanSungOnlCharacter::OnRep_ChangeHealth()
 {
 	APlayerController* PlayerController = Cast<APlayerController>(GetController());
-	if (PlayerController && PlayerController->IsLocalController())
+	if (PlayerController && PlayerController->IsLocalController() && Health > 0.f)
 	{
 		ShowHealth.Broadcast();
 	}
@@ -83,7 +94,66 @@ void ABanSungOnlCharacter::OnRep_ChangeHealth()
 void ABanSungOnlCharacter::PlayerTakeDmg(float Dmg)
 {
 	Health -= Dmg;
-	if(Health <= 0 )
+	if(Health <= 0.f)
+	{
+		bIsDead = true;
+		ABanSungOnlGameMode* PlayerGameMode = Cast<ABanSungOnlGameMode>(GetWorld()->GetAuthGameMode());
+		if(PlayerGameMode)
+		{
+			PlayerGameMode->DelPlayer(this);
+		}
+		
+		GetMesh()->SetVisibility(false, true);
+		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		GetCapsuleComponent()->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Ignore);
+		if (Pistol)
+		{
+			Pistol->Destroy();
+			Pistol = nullptr;
+		}
+		if (Rifle)
+		{
+			Rifle->Destroy();
+			Rifle = nullptr;
+		}
+		OnRep_IsDead();
+		
+		if (APlayerController* PlayerController = Cast<APlayerController>(GetController()))
+		{
+			TArray<ABanSungOnlCharacter*> AlivePlayers = PlayerGameMode->GetAlivePlayers();
+
+			if (AlivePlayers.Num() > 0)
+			{
+				ABanSungOnlCharacter* NewTarget = AlivePlayers[0];
+
+				PlayerController->SetViewTargetWithBlend(NewTarget, 2.0f, EViewTargetBlendFunction::VTBlend_Cubic, 1.0f);
+			}else
+			{
+				bIsGamveOver = true;
+				OnRep_IsGameOver();
+			}
+		}
+	}
+}
+
+void ABanSungOnlCharacter::OnRep_IsDead()
+{
+	if(bIsDead)
+	{
+		if(!HasAuthority())
+		{
+			APlayerController* PlayerController = Cast<APlayerController>(GetController());
+			if (PlayerController && PlayerController->IsLocalController())
+			{
+				PlayerController->DisableInput(PlayerController);
+			}
+		}
+	}
+}
+
+void ABanSungOnlCharacter::OnRep_IsGameOver()
+{
+	if(bIsGamveOver)
 	{
 		ShowLoseGame.Broadcast();
 	}
@@ -95,6 +165,8 @@ void ABanSungOnlCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>&
 
 	DOREPLIFETIME(ABanSungOnlCharacter, Health);
 	DOREPLIFETIME(ABanSungOnlCharacter, CurWeapon);
+	DOREPLIFETIME(ABanSungOnlCharacter, bIsDead);
+	DOREPLIFETIME(ABanSungOnlCharacter, bIsGamveOver);
 }
 
 void ABanSungOnlCharacter::EquipPistol()
