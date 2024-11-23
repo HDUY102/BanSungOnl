@@ -6,7 +6,6 @@
 #include "BanSungOnlCharacter.h"
 #include "GameFramework/GameModeBase.h"
 #include "BanSungOnlGameMode.generated.h"
-
 UCLASS(minimalapi)
 class ABanSungOnlGameMode : public AGameModeBase
 {
@@ -19,14 +18,17 @@ public:
 
 	UFUNCTION()
 	void PlayAgain();
-	
-	UPROPERTY(BlueprintReadOnly, Category="Players")
-	TArray<ABanSungOnlCharacter*> PlayerList;
 
+	UFUNCTION()
+	void GameOver();
+	
 	UPROPERTY(BlueprintReadOnly, Category="Players")
 	TArray<AController*> CPlayerAgain;
 	
 	virtual void OnPostLogin(AController* NewPlayer) override;
+	
+	UPROPERTY(BlueprintReadOnly, Category="Players")
+	TArray<ABanSungOnlCharacter*> PlayerList;
 	
 	UFUNCTION(BlueprintCallable,Category="Game Management")
 	void AddPlayer(ABanSungOnlCharacter* Player);

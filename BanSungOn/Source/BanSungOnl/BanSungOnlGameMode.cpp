@@ -3,7 +3,9 @@
 #include "BanSungOnlGameMode.h"
 #include "BanSungOnlPlayerController.h"
 #include "BanSungOnlCharacter.h"
+#include "Components/CapsuleComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "Net/UnrealNetwork.h"
 #include "UObject/ConstructorHelpers.h"
 
 ABanSungOnlGameMode::ABanSungOnlGameMode()
@@ -32,16 +34,39 @@ void ABanSungOnlGameMode::PlayAgain()
 	if (Restart == 2)
 	{
 		Restart = 0;
-		UKismetSystemLibrary::PrintString(this, "play again");
 		for (auto PC : CPlayerAgain)
 		{
 			ABanSungOnlPlayerController* OnlPlayerController = Cast<ABanSungOnlPlayerController>(PC);
 			if (IsValid(OnlPlayerController))
 			{
 				OnlPlayerController->PlayAgain++;
-				// OnPostLogin(OnlPlayerController);
+
+				ABanSungOnlCharacter* PCCharacter = Cast<ABanSungOnlCharacter>(PC->GetPawn());
+				if(PCCharacter)
+				{
+					PlayerList.Add(PCCharacter);
+					PCCharacter->Health = 6.f;
+					PCCharacter->bIsDead = false;
+					PCCharacter->bIsGameOver = false;
+					
+					PCCharacter->GetMesh()->SetVisibility(true, false);
+					PCCharacter->GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+					
+					PCCharacter->EquipRifle();
+					
+					PCCharacter->OriginalController->SetViewTargetWithBlend(PCCharacter, 0.5f, EViewTargetBlendFunction::VTBlend_Linear);
+				}
 			}
 		}
+	}
+}
+
+void ABanSungOnlGameMode::GameOver()
+{
+	for (auto PC : CPlayerAgain)
+	{
+		ABanSungOnlCharacter* PCCharacter = Cast<ABanSungOnlCharacter>(PC->GetPawn());
+		PCCharacter->bIsGameOver = true;
 	}
 }
 
