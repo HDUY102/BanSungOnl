@@ -56,9 +56,7 @@ public: \
 		bIsDead, \
 		bIsGameOver, \
 		CurWeapon, \
-		Rifle, \
-		Pistol, \
-		NETFIELD_REP_END=Pistol	}; \
+		NETFIELD_REP_END=CurWeapon	}; \
 	NO_API virtual void ValidateGeneratedRepEnums(const TArray<struct FRepRecord>& ClassReps) const override;
 
 

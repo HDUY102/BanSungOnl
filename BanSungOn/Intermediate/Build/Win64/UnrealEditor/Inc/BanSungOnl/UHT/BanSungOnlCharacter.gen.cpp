@@ -581,8 +581,8 @@ const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_ABanSungOnlChara
 const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_ShowLoseGame = { "ShowLoseGame", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, ShowLoseGame), Z_Construct_UDelegateFunction_BanSungOnl_ShowLoseGame__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ShowLoseGame_MetaData), NewProp_ShowLoseGame_MetaData) }; // 1352318164
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_OriginalController = { "OriginalController", nullptr, (EPropertyFlags)0x0010000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, OriginalController), Z_Construct_UClass_APlayerController_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OriginalController_MetaData), NewProp_OriginalController_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_CurWeapon = { "CurWeapon", nullptr, (EPropertyFlags)0x0010000000000035, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, CurWeapon), Z_Construct_UClass_AWeapon_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CurWeapon_MetaData), NewProp_CurWeapon_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_Rifle = { "Rifle", nullptr, (EPropertyFlags)0x0010000000000020, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, Rifle), Z_Construct_UClass_ARifle_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Rifle_MetaData), NewProp_Rifle_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_Pistol = { "Pistol", nullptr, (EPropertyFlags)0x0010000000000020, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, Pistol), Z_Construct_UClass_APistol_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Pistol_MetaData), NewProp_Pistol_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_Rifle = { "Rifle", nullptr, (EPropertyFlags)0x0010000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, Rifle), Z_Construct_UClass_ARifle_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Rifle_MetaData), NewProp_Rifle_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_Pistol = { "Pistol", nullptr, (EPropertyFlags)0x0010000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, Pistol), Z_Construct_UClass_APistol_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Pistol_MetaData), NewProp_Pistol_MetaData) };
 const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_RifleToSpawn = { "RifleToSpawn", nullptr, (EPropertyFlags)0x0014000000000001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, RifleToSpawn), Z_Construct_UClass_UClass, Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_RifleToSpawn_MetaData), NewProp_RifleToSpawn_MetaData) };
 const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_PistolToSpawn = { "PistolToSpawn", nullptr, (EPropertyFlags)0x0014000000000001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, PistolToSpawn), Z_Construct_UClass_UClass, Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_PistolToSpawn_MetaData), NewProp_PistolToSpawn_MetaData) };
 const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_ShowHealth = { "ShowHealth", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, ShowHealth), Z_Construct_UDelegateFunction_BanSungOnl_ShowHealth__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ShowHealth_MetaData), NewProp_ShowHealth_MetaData) }; // 2563558558
@@ -647,15 +647,11 @@ void ABanSungOnlCharacter::ValidateGeneratedRepEnums(const TArray<struct FRepRec
 	static const FName Name_bIsDead(TEXT("bIsDead"));
 	static const FName Name_bIsGameOver(TEXT("bIsGameOver"));
 	static const FName Name_CurWeapon(TEXT("CurWeapon"));
-	static const FName Name_Rifle(TEXT("Rifle"));
-	static const FName Name_Pistol(TEXT("Pistol"));
 	const bool bIsValid = true
 		&& Name_Health == ClassReps[(int32)ENetFields_Private::Health].Property->GetFName()
 		&& Name_bIsDead == ClassReps[(int32)ENetFields_Private::bIsDead].Property->GetFName()
 		&& Name_bIsGameOver == ClassReps[(int32)ENetFields_Private::bIsGameOver].Property->GetFName()
-		&& Name_CurWeapon == ClassReps[(int32)ENetFields_Private::CurWeapon].Property->GetFName()
-		&& Name_Rifle == ClassReps[(int32)ENetFields_Private::Rifle].Property->GetFName()
-		&& Name_Pistol == ClassReps[(int32)ENetFields_Private::Pistol].Property->GetFName();
+		&& Name_CurWeapon == ClassReps[(int32)ENetFields_Private::CurWeapon].Property->GetFName();
 	checkf(bIsValid, TEXT("UHT Generated Rep Indices do not match runtime populated Rep Indices for properties in ABanSungOnlCharacter"));
 }
 DEFINE_VTABLE_PTR_HELPER_CTOR(ABanSungOnlCharacter);
@@ -666,10 +662,10 @@ ABanSungOnlCharacter::~ABanSungOnlCharacter() {}
 struct Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ABanSungOnlCharacter, ABanSungOnlCharacter::StaticClass, TEXT("ABanSungOnlCharacter"), &Z_Registration_Info_UClass_ABanSungOnlCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABanSungOnlCharacter), 3174074292U) },
+		{ Z_Construct_UClass_ABanSungOnlCharacter, ABanSungOnlCharacter::StaticClass, TEXT("ABanSungOnlCharacter"), &Z_Registration_Info_UClass_ABanSungOnlCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABanSungOnlCharacter), 2011430110U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_2130950706(TEXT("/Script/BanSungOnl"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_1465261050(TEXT("/Script/BanSungOnl"),
 	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
