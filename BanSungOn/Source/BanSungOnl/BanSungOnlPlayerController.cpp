@@ -6,13 +6,17 @@
 #include "NiagaraSystem.h"
 #include "NiagaraFunctionLibrary.h"
 #include "BanSungOnlCharacter.h"
+#include "BanSungOnlGameMode.h"
 #include "Engine/World.h"
 #include "EnhancedInputComponent.h"
 #include "InputActionValue.h"
 #include "EnhancedInputSubsystems.h"
+#include "Components/CapsuleComponent.h"
 #include "Engine/LocalPlayer.h"
 #include "Engine/Engine.h"
+#include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "Net/UnrealNetwork.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -205,6 +209,26 @@ void ABanSungOnlPlayerController::OnFirePistol()
 	if(IsValid(GetPawn()))
 	{
 		Server_FirePistol();
+	}
+}
+
+void ABanSungOnlPlayerController::OnRep_IsPlayAgain()
+{
+	OnRemoveUI.Broadcast();
+}
+
+void ABanSungOnlPlayerController::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	DOREPLIFETIME(ABanSungOnlPlayerController, PlayAgain);
+}
+
+void ABanSungOnlPlayerController::ServerPlayAgain_Implementation()
+{
+	ABanSungOnlGameMode* OnlGameMode = Cast<ABanSungOnlGameMode>(UGameplayStatics::GetGameMode(GetWorld()));
+	if (IsValid(OnlGameMode))
+	{
+		OnlGameMode->PlayAgain();
 	}
 }
 

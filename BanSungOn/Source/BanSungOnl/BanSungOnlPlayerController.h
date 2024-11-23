@@ -15,6 +15,7 @@ class UInputMappingContext;
 class UInputAction;
 
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FRemoveUI);
 
 UCLASS()
 class ABanSungOnlPlayerController : public APlayerController
@@ -51,6 +52,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* ReloadAmmo;
 
+	// HUD
+	UPROPERTY(BlueprintAssignable)
+	FRemoveUI OnRemoveUI;
+	
 protected:
 	/** True if the controlled character should navigate to the mouse cursor. */
 	uint32 bMoveToMouseCursor : 1;
@@ -94,6 +99,18 @@ protected:
 	void Server_FireRifle(FVector Mouse);
 	UFUNCTION(Client,Unreliable)
 	void Client_PlayFireSound();
+
+	UFUNCTION(Server, Unreliable, BlueprintCallable)
+	void ServerPlayAgain();
+	
+public:
+	UFUNCTION()
+	void OnRep_IsPlayAgain();
+	
+	UPROPERTY(ReplicatedUsing=OnRep_IsPlayAgain)
+	int PlayAgain = 0;
+
+	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 private:
 	FVector CachedDestination;
 	UPROPERTY()
