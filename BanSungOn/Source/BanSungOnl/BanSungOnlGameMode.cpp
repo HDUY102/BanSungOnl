@@ -45,7 +45,8 @@ void ABanSungOnlGameMode::PlayAgain()
 				if(PCCharacter)
 				{
 					PlayerList.Add(PCCharacter);
-					PCCharacter->Health = 6.f;
+					
+					PCCharacter->Health = 50.f;
 					PCCharacter->bIsDead = false;
 					PCCharacter->bIsGameOver = false;
 					

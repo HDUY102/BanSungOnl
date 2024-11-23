@@ -65,7 +65,7 @@ void ABanSungOnlCharacter::Tick(float DeltaSeconds)
 void ABanSungOnlCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	Health = 5.f;
+	Health = 50.f;
 	MaxHealth = 50.f;
 
 	if(!HasAuthority())
