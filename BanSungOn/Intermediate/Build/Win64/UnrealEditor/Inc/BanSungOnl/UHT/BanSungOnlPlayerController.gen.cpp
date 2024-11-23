@@ -14,6 +14,7 @@ void EmptyLinkFunctionForGeneratedCodeBanSungOnlPlayerController() {}
 BANSUNGONL_API UClass* Z_Construct_UClass_ABanSungOnlPlayerController();
 BANSUNGONL_API UClass* Z_Construct_UClass_ABanSungOnlPlayerController_NoRegister();
 BANSUNGONL_API UClass* Z_Construct_UClass_AWeapon_NoRegister();
+BANSUNGONL_API UFunction* Z_Construct_UDelegateFunction_BanSungOnl_RemoveUI__DelegateSignature();
 COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 ENGINE_API UClass* Z_Construct_UClass_APlayerController();
 ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FHitResult();
@@ -22,6 +23,32 @@ ENHANCEDINPUT_API UClass* Z_Construct_UClass_UInputMappingContext_NoRegister();
 NIAGARA_API UClass* Z_Construct_UClass_UNiagaraSystem_NoRegister();
 UPackage* Z_Construct_UPackage__Script_BanSungOnl();
 // End Cross Module References
+
+// Begin Delegate FRemoveUI
+struct Z_Construct_UDelegateFunction_BanSungOnl_RemoveUI__DelegateSignature_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "BanSungOnlPlayerController.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_BanSungOnl_RemoveUI__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_BanSungOnl, nullptr, "RemoveUI__DelegateSignature", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_BanSungOnl_RemoveUI__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_BanSungOnl_RemoveUI__DelegateSignature_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UDelegateFunction_BanSungOnl_RemoveUI__DelegateSignature()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UDelegateFunction_BanSungOnl_RemoveUI__DelegateSignature_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+void FRemoveUI_DelegateWrapper(const FMulticastScriptDelegate& RemoveUI)
+{
+	RemoveUI.ProcessMulticastDelegate<UObject>(NULL);
+}
+// End Delegate FRemoveUI
 
 // Begin Class ABanSungOnlPlayerController Function Client_PlayFireSound
 static FName NAME_ABanSungOnlPlayerController_Client_PlayFireSound = FName(TEXT("Client_PlayFireSound"));
@@ -90,6 +117,35 @@ DEFINE_FUNCTION(ABanSungOnlPlayerController::execClient_PlayReloadSound)
 	P_NATIVE_END;
 }
 // End Class ABanSungOnlPlayerController Function Client_PlayReloadSound
+
+// Begin Class ABanSungOnlPlayerController Function OnRep_IsPlayAgain
+struct Z_Construct_UFunction_ABanSungOnlPlayerController_OnRep_IsPlayAgain_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "BanSungOnlPlayerController.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ABanSungOnlPlayerController_OnRep_IsPlayAgain_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ABanSungOnlPlayerController, nullptr, "OnRep_IsPlayAgain", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ABanSungOnlPlayerController_OnRep_IsPlayAgain_Statics::Function_MetaDataParams), Z_Construct_UFunction_ABanSungOnlPlayerController_OnRep_IsPlayAgain_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_ABanSungOnlPlayerController_OnRep_IsPlayAgain()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ABanSungOnlPlayerController_OnRep_IsPlayAgain_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ABanSungOnlPlayerController::execOnRep_IsPlayAgain)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->OnRep_IsPlayAgain();
+	P_NATIVE_END;
+}
+// End Class ABanSungOnlPlayerController Function OnRep_IsPlayAgain
 
 // Begin Class ABanSungOnlPlayerController Function Server_FirePistol
 static FName NAME_ABanSungOnlPlayerController_Server_FirePistol = FName(TEXT("Server_FirePistol"));
@@ -272,6 +328,40 @@ DEFINE_FUNCTION(ABanSungOnlPlayerController::execServer_SetRotation)
 }
 // End Class ABanSungOnlPlayerController Function Server_SetRotation
 
+// Begin Class ABanSungOnlPlayerController Function ServerPlayAgain
+static FName NAME_ABanSungOnlPlayerController_ServerPlayAgain = FName(TEXT("ServerPlayAgain"));
+void ABanSungOnlPlayerController::ServerPlayAgain()
+{
+	ProcessEvent(FindFunctionChecked(NAME_ABanSungOnlPlayerController_ServerPlayAgain),NULL);
+}
+struct Z_Construct_UFunction_ABanSungOnlPlayerController_ServerPlayAgain_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "BanSungOnlPlayerController.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ABanSungOnlPlayerController_ServerPlayAgain_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ABanSungOnlPlayerController, nullptr, "ServerPlayAgain", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04280C40, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ABanSungOnlPlayerController_ServerPlayAgain_Statics::Function_MetaDataParams), Z_Construct_UFunction_ABanSungOnlPlayerController_ServerPlayAgain_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_ABanSungOnlPlayerController_ServerPlayAgain()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ABanSungOnlPlayerController_ServerPlayAgain_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ABanSungOnlPlayerController::execServerPlayAgain)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->ServerPlayAgain_Implementation();
+	P_NATIVE_END;
+}
+// End Class ABanSungOnlPlayerController Function ServerPlayAgain
+
 // Begin Class ABanSungOnlPlayerController
 void ABanSungOnlPlayerController::StaticRegisterNativesABanSungOnlPlayerController()
 {
@@ -279,10 +369,12 @@ void ABanSungOnlPlayerController::StaticRegisterNativesABanSungOnlPlayerControll
 	static const FNameNativePtrPair Funcs[] = {
 		{ "Client_PlayFireSound", &ABanSungOnlPlayerController::execClient_PlayFireSound },
 		{ "Client_PlayReloadSound", &ABanSungOnlPlayerController::execClient_PlayReloadSound },
+		{ "OnRep_IsPlayAgain", &ABanSungOnlPlayerController::execOnRep_IsPlayAgain },
 		{ "Server_FirePistol", &ABanSungOnlPlayerController::execServer_FirePistol },
 		{ "Server_FireRifle", &ABanSungOnlPlayerController::execServer_FireRifle },
 		{ "Server_Reload", &ABanSungOnlPlayerController::execServer_Reload },
 		{ "Server_SetRotation", &ABanSungOnlPlayerController::execServer_SetRotation },
+		{ "ServerPlayAgain", &ABanSungOnlPlayerController::execServerPlayAgain },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 }
@@ -379,6 +471,15 @@ struct Z_Construct_UClass_ABanSungOnlPlayerController_Statics
 		{ "ToolTip", "Reload Ammo" },
 #endif
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OnRemoveUI_MetaData[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// HUD\n" },
+#endif
+		{ "ModuleRelativePath", "BanSungOnlPlayerController.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "HUD" },
+#endif
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ReloadingWeapon_MetaData[] = {
 #if !UE_BUILD_SHIPPING
 		{ "Comment", "// Change Rifle Input\n" },
@@ -387,6 +488,9 @@ struct Z_Construct_UClass_ABanSungOnlPlayerController_Statics
 #if !UE_BUILD_SHIPPING
 		{ "ToolTip", "Change Rifle Input" },
 #endif
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_PlayAgain_MetaData[] = {
+		{ "ModuleRelativePath", "BanSungOnlPlayerController.h" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Hit_MetaData[] = {
 		{ "ModuleRelativePath", "BanSungOnlPlayerController.h" },
@@ -400,17 +504,21 @@ struct Z_Construct_UClass_ABanSungOnlPlayerController_Statics
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_OnKeyBoardPistol;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_OnKeyBoardRifle;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_ReloadAmmo;
+	static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_OnRemoveUI;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_ReloadingWeapon;
+	static const UECodeGen_Private::FIntPropertyParams NewProp_PlayAgain;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_Hit;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_ABanSungOnlPlayerController_Client_PlayFireSound, "Client_PlayFireSound" }, // 2524822919
 		{ &Z_Construct_UFunction_ABanSungOnlPlayerController_Client_PlayReloadSound, "Client_PlayReloadSound" }, // 2461445346
+		{ &Z_Construct_UFunction_ABanSungOnlPlayerController_OnRep_IsPlayAgain, "OnRep_IsPlayAgain" }, // 4248766233
 		{ &Z_Construct_UFunction_ABanSungOnlPlayerController_Server_FirePistol, "Server_FirePistol" }, // 2947245062
 		{ &Z_Construct_UFunction_ABanSungOnlPlayerController_Server_FireRifle, "Server_FireRifle" }, // 1564274230
 		{ &Z_Construct_UFunction_ABanSungOnlPlayerController_Server_Reload, "Server_Reload" }, // 283673966
 		{ &Z_Construct_UFunction_ABanSungOnlPlayerController_Server_SetRotation, "Server_SetRotation" }, // 3440356538
+		{ &Z_Construct_UFunction_ABanSungOnlPlayerController_ServerPlayAgain, "ServerPlayAgain" }, // 1860591472
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -426,7 +534,9 @@ const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABanSungOnlPla
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABanSungOnlPlayerController_Statics::NewProp_OnKeyBoardPistol = { "OnKeyBoardPistol", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlPlayerController, OnKeyBoardPistol), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnKeyBoardPistol_MetaData), NewProp_OnKeyBoardPistol_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABanSungOnlPlayerController_Statics::NewProp_OnKeyBoardRifle = { "OnKeyBoardRifle", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlPlayerController, OnKeyBoardRifle), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnKeyBoardRifle_MetaData), NewProp_OnKeyBoardRifle_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABanSungOnlPlayerController_Statics::NewProp_ReloadAmmo = { "ReloadAmmo", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlPlayerController, ReloadAmmo), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ReloadAmmo_MetaData), NewProp_ReloadAmmo_MetaData) };
+const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_ABanSungOnlPlayerController_Statics::NewProp_OnRemoveUI = { "OnRemoveUI", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlPlayerController, OnRemoveUI), Z_Construct_UDelegateFunction_BanSungOnl_RemoveUI__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnRemoveUI_MetaData), NewProp_OnRemoveUI_MetaData) }; // 3876962347
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABanSungOnlPlayerController_Statics::NewProp_ReloadingWeapon = { "ReloadingWeapon", nullptr, (EPropertyFlags)0x0020080000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlPlayerController, ReloadingWeapon), Z_Construct_UClass_AWeapon_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ReloadingWeapon_MetaData), NewProp_ReloadingWeapon_MetaData) };
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_ABanSungOnlPlayerController_Statics::NewProp_PlayAgain = { "PlayAgain", "OnRep_IsPlayAgain", (EPropertyFlags)0x0010000100000020, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlPlayerController, PlayAgain), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_PlayAgain_MetaData), NewProp_PlayAgain_MetaData) };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_ABanSungOnlPlayerController_Statics::NewProp_Hit = { "Hit", nullptr, (EPropertyFlags)0x0040008000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlPlayerController, Hit), Z_Construct_UScriptStruct_FHitResult, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Hit_MetaData), NewProp_Hit_MetaData) }; // 4100991306
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ABanSungOnlPlayerController_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlPlayerController_Statics::NewProp_ShortPressThreshold,
@@ -437,7 +547,9 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ABanSungO
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlPlayerController_Statics::NewProp_OnKeyBoardPistol,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlPlayerController_Statics::NewProp_OnKeyBoardRifle,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlPlayerController_Statics::NewProp_ReloadAmmo,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlPlayerController_Statics::NewProp_OnRemoveUI,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlPlayerController_Statics::NewProp_ReloadingWeapon,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlPlayerController_Statics::NewProp_PlayAgain,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlPlayerController_Statics::NewProp_Hit,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ABanSungOnlPlayerController_Statics::PropPointers) < 2048);
@@ -473,6 +585,13 @@ template<> BANSUNGONL_API UClass* StaticClass<ABanSungOnlPlayerController>()
 {
 	return ABanSungOnlPlayerController::StaticClass();
 }
+void ABanSungOnlPlayerController::ValidateGeneratedRepEnums(const TArray<struct FRepRecord>& ClassReps) const
+{
+	static const FName Name_PlayAgain(TEXT("PlayAgain"));
+	const bool bIsValid = true
+		&& Name_PlayAgain == ClassReps[(int32)ENetFields_Private::PlayAgain].Property->GetFName();
+	checkf(bIsValid, TEXT("UHT Generated Rep Indices do not match runtime populated Rep Indices for properties in ABanSungOnlPlayerController"));
+}
 DEFINE_VTABLE_PTR_HELPER_CTOR(ABanSungOnlPlayerController);
 ABanSungOnlPlayerController::~ABanSungOnlPlayerController() {}
 // End Class ABanSungOnlPlayerController
@@ -481,10 +600,10 @@ ABanSungOnlPlayerController::~ABanSungOnlPlayerController() {}
 struct Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlPlayerController_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ABanSungOnlPlayerController, ABanSungOnlPlayerController::StaticClass, TEXT("ABanSungOnlPlayerController"), &Z_Registration_Info_UClass_ABanSungOnlPlayerController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABanSungOnlPlayerController), 3420636639U) },
+		{ Z_Construct_UClass_ABanSungOnlPlayerController, ABanSungOnlPlayerController::StaticClass, TEXT("ABanSungOnlPlayerController"), &Z_Registration_Info_UClass_ABanSungOnlPlayerController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABanSungOnlPlayerController), 1006413081U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlPlayerController_h_2256086907(TEXT("/Script/BanSungOnl"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlPlayerController_h_670703511(TEXT("/Script/BanSungOnl"),
 	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlPlayerController_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlPlayerController_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

@@ -9,10 +9,19 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class ABanSungOnlCharacter;
 #ifdef BANSUNGONL_BanSungOnlGameMode_generated_h
 #error "BanSungOnlGameMode.generated.h already included, missing '#pragma once' in BanSungOnlGameMode.h"
 #endif
 #define BANSUNGONL_BanSungOnlGameMode_generated_h
+
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlGameMode_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execGetAlivePlayers); \
+	DECLARE_FUNCTION(execDelPlayer); \
+	DECLARE_FUNCTION(execAddPlayer); \
+	DECLARE_FUNCTION(execGameOver); \
+	DECLARE_FUNCTION(execPlayAgain);
+
 
 #define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlGameMode_h_12_INCLASS_NO_PURE_DECLS \
 private: \
@@ -39,6 +48,7 @@ public: \
 #define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlGameMode_h_12_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
+	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlGameMode_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
 	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlGameMode_h_12_INCLASS_NO_PURE_DECLS \
 	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlGameMode_h_12_ENHANCED_CONSTRUCTORS \
 private: \

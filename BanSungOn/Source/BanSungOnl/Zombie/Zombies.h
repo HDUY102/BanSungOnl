@@ -34,6 +34,7 @@ protected:
 	// Atk
 	UFUNCTION(Server,Unreliable)
 	void Server_AtkCharacter();
+	
 	UPROPERTY(BlueprintReadOnly,Replicated)
 	bool CanAtk=false;
 	bool Attack=false;

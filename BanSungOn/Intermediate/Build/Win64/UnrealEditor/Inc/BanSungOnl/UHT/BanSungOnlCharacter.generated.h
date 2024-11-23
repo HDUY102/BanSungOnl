@@ -31,13 +31,12 @@ BANSUNGONL_API void FShowLoseGame_DelegateWrapper(const FMulticastScriptDelegate
 	virtual void Server_SpawnRifle_Implementation(); \
 	virtual void Server_EquipRifle_Implementation(); \
 	virtual void Server_EquipPistol_Implementation(); \
-	virtual void Client_ShowWBLoseGame_Implementation(); \
 	DECLARE_FUNCTION(execServer_SpawnPistol); \
 	DECLARE_FUNCTION(execServer_SpawnRifle); \
 	DECLARE_FUNCTION(execServer_EquipRifle); \
 	DECLARE_FUNCTION(execServer_EquipPistol); \
+	DECLARE_FUNCTION(execOnRep_IsGameOver); \
 	DECLARE_FUNCTION(execOnRep_IsDead); \
-	DECLARE_FUNCTION(execClient_ShowWBLoseGame); \
 	DECLARE_FUNCTION(execPlayerTakeDmg); \
 	DECLARE_FUNCTION(execOnRep_ChangeHealth);
 
@@ -55,8 +54,11 @@ public: \
 		NETFIELD_REP_START=(uint16)((int32)Super::ENetFields_Private::NETFIELD_REP_END + (int32)1), \
 		Health=NETFIELD_REP_START, \
 		bIsDead, \
+		bIsGameOver, \
 		CurWeapon, \
-		NETFIELD_REP_END=CurWeapon	}; \
+		Rifle, \
+		Pistol, \
+		NETFIELD_REP_END=Pistol	}; \
 	NO_API virtual void ValidateGeneratedRepEnums(const TArray<struct FRepRecord>& ClassReps) const override;
 
 

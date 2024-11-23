@@ -67,15 +67,18 @@ void AZombies::TakeDmg(float Dmg)
 void AZombies::OnOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
 	int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(OtherActor);
-	if(PlayerCharacter && PlayerCharacter->Health>0.f)
+	if (HasAuthority())
 	{
-		FVector DirectionToPlayer = (PlayerCharacter->GetActorLocation() - GetActorLocation()).GetSafeNormal();
-		FRotator LookAtRotation = DirectionToPlayer.Rotation();
+		ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(OtherActor);
+		if(PlayerCharacter && PlayerCharacter->Health>0.f)
+		{
+			FVector DirectionToPlayer = (PlayerCharacter->GetActorLocation() - GetActorLocation()).GetSafeNormal();
+			FRotator LookAtRotation = DirectionToPlayer.Rotation();
 
-		SetActorRotation(LookAtRotation);
-		CanAtk = true;
-		Server_AtkCharacter();
+			SetActorRotation(LookAtRotation);
+			CanAtk = true;
+			Server_AtkCharacter();
+		}
 	}
 }
 
@@ -88,6 +91,7 @@ void AZombies::OnEndOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherAc
 		CanAtk = false;
 	}
 }
+
 void AZombies::Server_AtkCharacter_Implementation()
 {
 	FVector Start = GetMesh()->GetSocketLocation(FName("A"));
@@ -111,7 +115,6 @@ void AZombies::Server_AtkCharacter_Implementation()
 			FTimerHandle CanAttackTime;
 			Attack = true;
 			PlayerCharacter->PlayerTakeDmg(DamageZomb);
-			PlayerCharacter->OnRep_ChangeHealth();
 			GetWorld()->GetTimerManager().SetTimer(CanAttackTime, [this]() { Attack = false; }, 2.0f, false);
 		}
 	}
