@@ -43,14 +43,19 @@ public:
 	bool bIsDead;
 	UFUNCTION()
 	void OnRep_IsDead();
-	//Game Over
+
+	// Game Over
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, ReplicatedUsing = OnRep_IsGameOver)
-	bool bIsGamveOver;
+	bool bIsGameOver;
 	UFUNCTION()
 	void OnRep_IsGameOver();
+	UPROPERTY(BlueprintAssignable, Category = "Show Lose Game")
+	FShowLoseGame ShowLoseGame;
+
+	// Save Camera Controller Original
+	UPROPERTY()
+	APlayerController* OriginalController;
 	
-	/* Server -> Client
-	 * Send to client when properties change*/
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
 	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category="Weapon",Replicated)
@@ -79,8 +84,6 @@ public:
 	FShowHealth ShowHealth; // Var show HUD attacked
 	UPROPERTY(BlueprintAssignable, Category = "Show Win Game")
 	FShowWinGame ShowWinGame; // Var Show Win Game
-	UPROPERTY(BlueprintAssignable, Category = "Show Lose Game")
-	FShowLoseGame ShowLoseGame; // Var Show Lose Game
 	
 private:
 	/** Top down camera */

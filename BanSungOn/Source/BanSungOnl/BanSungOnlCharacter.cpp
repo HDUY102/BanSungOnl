@@ -3,6 +3,7 @@
 #include "BanSungOnlCharacter.h"
 
 #include "BanSungOnlGameMode.h"
+#include "BanSungOnlPlayerController.h"
 #include "Camera/CameraActor.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Camera/CameraComponent.h"
@@ -105,32 +106,21 @@ void ABanSungOnlCharacter::PlayerTakeDmg(float Dmg)
 		
 		GetMesh()->SetVisibility(false, true);
 		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-		GetCapsuleComponent()->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Ignore);
-		if (Pistol)
-		{
-			Pistol->Destroy();
-			Pistol = nullptr;
-		}
-		if (Rifle)
-		{
-			Rifle->Destroy();
-			Rifle = nullptr;
-		}
-		OnRep_IsDead();
+		Pistol->SetActorHiddenInGame(true);
+		Rifle->SetActorHiddenInGame(true);
 		
 		if (APlayerController* PlayerController = Cast<APlayerController>(GetController()))
 		{
+			OriginalController = PlayerController;
 			TArray<ABanSungOnlCharacter*> AlivePlayers = PlayerGameMode->GetAlivePlayers();
 
 			if (AlivePlayers.Num() > 0)
 			{
 				ABanSungOnlCharacter* NewTarget = AlivePlayers[0];
-
-				PlayerController->SetViewTargetWithBlend(NewTarget, 2.0f, EViewTargetBlendFunction::VTBlend_Cubic, 1.0f);
+				PlayerController->SetViewTargetWithBlend(NewTarget, 2.0f, EViewTargetBlendFunction::VTBlend_Cubic, 0.5f);
 			}else
 			{
-				bIsGamveOver = true;
-				OnRep_IsGameOver();
+				PlayerGameMode->GameOver();
 			}
 		}
 	}
@@ -140,22 +130,24 @@ void ABanSungOnlCharacter::OnRep_IsDead()
 {
 	if(bIsDead)
 	{
-		if(!HasAuthority())
+		APlayerController* PlayerController = Cast<APlayerController>(GetController());
+		if (PlayerController && PlayerController->IsLocalController())
 		{
-			APlayerController* PlayerController = Cast<APlayerController>(GetController());
-			if (PlayerController && PlayerController->IsLocalController())
-			{
-				PlayerController->DisableInput(PlayerController);
-			}
+			PlayerController->DisableInput(PlayerController);
 		}
 	}
 }
 
 void ABanSungOnlCharacter::OnRep_IsGameOver()
 {
-	if(bIsGamveOver)
+	if(bIsGameOver)
 	{
 		ShowLoseGame.Broadcast();
+		APlayerController* PlayerController = Cast<APlayerController>(GetController());
+		if (PlayerController && PlayerController->IsLocalController())
+		{
+			PlayerController->EnableInput(PlayerController);
+		}
 	}
 }
 
@@ -166,7 +158,7 @@ void ABanSungOnlCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>&
 	DOREPLIFETIME(ABanSungOnlCharacter, Health);
 	DOREPLIFETIME(ABanSungOnlCharacter, CurWeapon);
 	DOREPLIFETIME(ABanSungOnlCharacter, bIsDead);
-	DOREPLIFETIME(ABanSungOnlCharacter, bIsGamveOver);
+	DOREPLIFETIME(ABanSungOnlCharacter, bIsGameOver);
 }
 
 void ABanSungOnlCharacter::EquipPistol()
