@@ -17,6 +17,7 @@ BANSUNGONL_API UClass* Z_Construct_UClass_ARifle_NoRegister();
 BANSUNGONL_API UClass* Z_Construct_UClass_AWeapon_NoRegister();
 BANSUNGONL_API UFunction* Z_Construct_UDelegateFunction_BanSungOnl_ShowHealth__DelegateSignature();
 BANSUNGONL_API UFunction* Z_Construct_UDelegateFunction_BanSungOnl_ShowLoseGame__DelegateSignature();
+BANSUNGONL_API UFunction* Z_Construct_UDelegateFunction_BanSungOnl_ShowNameItem__DelegateSignature();
 BANSUNGONL_API UFunction* Z_Construct_UDelegateFunction_BanSungOnl_ShowWinGame__DelegateSignature();
 COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
 ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
@@ -117,6 +118,56 @@ void FShowLoseGame_DelegateWrapper(const FMulticastScriptDelegate& ShowLoseGame)
 	ShowLoseGame.ProcessMulticastDelegate<UObject>(NULL);
 }
 // End Delegate FShowLoseGame
+
+// Begin Delegate FShowNameItem
+struct Z_Construct_UDelegateFunction_BanSungOnl_ShowNameItem__DelegateSignature_Statics
+{
+	struct _Script_BanSungOnl_eventShowNameItem_Parms
+	{
+		int32 ItemType;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// show HUD LoseGame\n" },
+#endif
+		{ "ModuleRelativePath", "BanSungOnlCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "show HUD LoseGame" },
+#endif
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FIntPropertyParams NewProp_ItemType;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UDelegateFunction_BanSungOnl_ShowNameItem__DelegateSignature_Statics::NewProp_ItemType = { "ItemType", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(_Script_BanSungOnl_eventShowNameItem_Parms, ItemType), METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UDelegateFunction_BanSungOnl_ShowNameItem__DelegateSignature_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_BanSungOnl_ShowNameItem__DelegateSignature_Statics::NewProp_ItemType,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_BanSungOnl_ShowNameItem__DelegateSignature_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_BanSungOnl_ShowNameItem__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_BanSungOnl, nullptr, "ShowNameItem__DelegateSignature", nullptr, nullptr, Z_Construct_UDelegateFunction_BanSungOnl_ShowNameItem__DelegateSignature_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_BanSungOnl_ShowNameItem__DelegateSignature_Statics::PropPointers), sizeof(Z_Construct_UDelegateFunction_BanSungOnl_ShowNameItem__DelegateSignature_Statics::_Script_BanSungOnl_eventShowNameItem_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_BanSungOnl_ShowNameItem__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_BanSungOnl_ShowNameItem__DelegateSignature_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UDelegateFunction_BanSungOnl_ShowNameItem__DelegateSignature_Statics::_Script_BanSungOnl_eventShowNameItem_Parms) < MAX_uint16);
+UFunction* Z_Construct_UDelegateFunction_BanSungOnl_ShowNameItem__DelegateSignature()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UDelegateFunction_BanSungOnl_ShowNameItem__DelegateSignature_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+void FShowNameItem_DelegateWrapper(const FMulticastScriptDelegate& ShowNameItem, int32 ItemType)
+{
+	struct _Script_BanSungOnl_eventShowNameItem_Parms
+	{
+		int32 ItemType;
+	};
+	_Script_BanSungOnl_eventShowNameItem_Parms Parms;
+	Parms.ItemType=ItemType;
+	ShowNameItem.ProcessMulticastDelegate<UObject>(&Parms);
+}
+// End Delegate FShowNameItem
 
 // Begin Class ABanSungOnlCharacter Function OnRep_ChangeHealth
 struct Z_Construct_UFunction_ABanSungOnlCharacter_OnRep_ChangeHealth_Statics
@@ -410,14 +461,14 @@ struct Z_Construct_UClass_ABanSungOnlCharacter_Statics
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
 		{ "BlueprintType", "true" },
 #if !UE_BUILD_SHIPPING
-		{ "Comment", "// show HUD LoseGame\n// DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FShowNameItem, int32, ItemType); // show name item\n" },
+		{ "Comment", "// show name item\n" },
 #endif
 		{ "HideCategories", "Navigation" },
 		{ "IncludePath", "BanSungOnlCharacter.h" },
 		{ "IsBlueprintBase", "true" },
 		{ "ModuleRelativePath", "BanSungOnlCharacter.h" },
 #if !UE_BUILD_SHIPPING
-		{ "ToolTip", "show HUD LoseGame\nDECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FShowNameItem, int32, ItemType);  show name item" },
+		{ "ToolTip", "show name item" },
 #endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Health_MetaData[] = {
@@ -493,6 +544,16 @@ struct Z_Construct_UClass_ABanSungOnlCharacter_Statics
 		{ "ToolTip", "Var show HUD attacked" },
 #endif
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ShowNameItem_MetaData[] = {
+		{ "Category", "Show Name Item" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// Var Show Win Game\n" },
+#endif
+		{ "ModuleRelativePath", "BanSungOnlCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Var Show Win Game" },
+#endif
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_TopDownCameraComponent_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
 		{ "Category", "Camera" },
@@ -545,6 +606,7 @@ struct Z_Construct_UClass_ABanSungOnlCharacter_Statics
 	static const UECodeGen_Private::FClassPropertyParams NewProp_PistolToSpawn;
 	static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_ShowHealth;
 	static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_ShowWinGame;
+	static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_ShowNameItem;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_TopDownCameraComponent;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_CameraBoom;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_WidgetComponent;
@@ -587,6 +649,7 @@ const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ABanSungOnlChar
 const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_PistolToSpawn = { "PistolToSpawn", nullptr, (EPropertyFlags)0x0014000000000001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, PistolToSpawn), Z_Construct_UClass_UClass, Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_PistolToSpawn_MetaData), NewProp_PistolToSpawn_MetaData) };
 const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_ShowHealth = { "ShowHealth", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, ShowHealth), Z_Construct_UDelegateFunction_BanSungOnl_ShowHealth__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ShowHealth_MetaData), NewProp_ShowHealth_MetaData) }; // 2563558558
 const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_ShowWinGame = { "ShowWinGame", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, ShowWinGame), Z_Construct_UDelegateFunction_BanSungOnl_ShowWinGame__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ShowWinGame_MetaData), NewProp_ShowWinGame_MetaData) }; // 370598886
+const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_ShowNameItem = { "ShowNameItem", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, ShowNameItem), Z_Construct_UDelegateFunction_BanSungOnl_ShowNameItem__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ShowNameItem_MetaData), NewProp_ShowNameItem_MetaData) }; // 8527833
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_TopDownCameraComponent = { "TopDownCameraComponent", nullptr, (EPropertyFlags)0x00400000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, TopDownCameraComponent), Z_Construct_UClass_UCameraComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TopDownCameraComponent_MetaData), NewProp_TopDownCameraComponent_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_CameraBoom = { "CameraBoom", nullptr, (EPropertyFlags)0x00400000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, CameraBoom), Z_Construct_UClass_USpringArmComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CameraBoom_MetaData), NewProp_CameraBoom_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_WidgetComponent = { "WidgetComponent", nullptr, (EPropertyFlags)0x00400000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, WidgetComponent), Z_Construct_UClass_UWidgetComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_WidgetComponent_MetaData), NewProp_WidgetComponent_MetaData) };
@@ -604,6 +667,7 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ABanSungO
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_PistolToSpawn,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_ShowHealth,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_ShowWinGame,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_ShowNameItem,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_TopDownCameraComponent,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_CameraBoom,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_WidgetComponent,
@@ -662,10 +726,10 @@ ABanSungOnlCharacter::~ABanSungOnlCharacter() {}
 struct Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ABanSungOnlCharacter, ABanSungOnlCharacter::StaticClass, TEXT("ABanSungOnlCharacter"), &Z_Registration_Info_UClass_ABanSungOnlCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABanSungOnlCharacter), 2011430110U) },
+		{ Z_Construct_UClass_ABanSungOnlCharacter, ABanSungOnlCharacter::StaticClass, TEXT("ABanSungOnlCharacter"), &Z_Registration_Info_UClass_ABanSungOnlCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABanSungOnlCharacter), 2393643958U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_1465261050(TEXT("/Script/BanSungOnl"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_3163553999(TEXT("/Script/BanSungOnl"),
 	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

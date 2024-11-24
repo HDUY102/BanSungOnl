@@ -1,0 +1,25 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\code_c++_training\\bansungonl\\bansungon\\source\\bansungonl\\items\\itemhealth.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\code_c++_training\\bansungonl\\bansungon\\intermediate\\build\\win64\\x64\\bansungonleditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "d:\\code_c++_training\\bansungonl\\bansungon\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\bansungonl\\definitions.bansungonl.h",
+            "d:\\code_c++_training\\bansungonl\\bansungon\\source\\bansungonl\\items\\itemhealth.h",
+            "d:\\code_c++_training\\bansungonl\\bansungon\\source\\bansungonl\\items\\items.h",
+            "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\source\\runtime\\engine\\classes\\components\\spherecomponent.h",
+            "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\source\\runtime\\engine\\classes\\components\\shapecomponent.h",
+            "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\shapecomponent.generated.h",
+            "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\spherecomponent.generated.h",
+            "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\source\\runtime\\engine\\classes\\gameframework\\rotatingmovementcomponent.h",
+            "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\source\\runtime\\engine\\classes\\gameframework\\movementcomponent.h",
+            "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\movementcomponent.generated.h",
+            "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\rotatingmovementcomponent.generated.h",
+            "d:\\code_c++_training\\bansungonl\\bansungon\\intermediate\\build\\win64\\unrealeditor\\inc\\bansungonl\\uht\\items.generated.h",
+            "d:\\code_c++_training\\bansungonl\\bansungon\\intermediate\\build\\win64\\unrealeditor\\inc\\bansungonl\\uht\\itemhealth.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

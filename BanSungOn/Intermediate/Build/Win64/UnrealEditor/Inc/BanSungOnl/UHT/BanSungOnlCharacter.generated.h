@@ -26,6 +26,10 @@ BANSUNGONL_API void FShowWinGame_DelegateWrapper(const FMulticastScriptDelegate&
 BANSUNGONL_API void FShowLoseGame_DelegateWrapper(const FMulticastScriptDelegate& ShowLoseGame);
 
 
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_14_DELEGATE \
+BANSUNGONL_API void FShowNameItem_DelegateWrapper(const FMulticastScriptDelegate& ShowNameItem, int32 ItemType);
+
+
 #define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_18_RPC_WRAPPERS_NO_PURE_DECLS \
 	virtual void Server_SpawnPistol_Implementation(); \
 	virtual void Server_SpawnRifle_Implementation(); \

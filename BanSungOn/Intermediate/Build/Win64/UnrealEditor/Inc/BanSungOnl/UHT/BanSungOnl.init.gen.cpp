@@ -10,6 +10,7 @@ void EmptyLinkFunctionForGeneratedCodeBanSungOnl_init() {}
 	BANSUNGONL_API UFunction* Z_Construct_UDelegateFunction_BanSungOnl_RemoveUI__DelegateSignature();
 	BANSUNGONL_API UFunction* Z_Construct_UDelegateFunction_BanSungOnl_ShowHealth__DelegateSignature();
 	BANSUNGONL_API UFunction* Z_Construct_UDelegateFunction_BanSungOnl_ShowLoseGame__DelegateSignature();
+	BANSUNGONL_API UFunction* Z_Construct_UDelegateFunction_BanSungOnl_ShowNameItem__DelegateSignature();
 	BANSUNGONL_API UFunction* Z_Construct_UDelegateFunction_BanSungOnl_ShowWinGame__DelegateSignature();
 	static FPackageRegistrationInfo Z_Registration_Info_UPackage__Script_BanSungOnl;
 	FORCENOINLINE UPackage* Z_Construct_UPackage__Script_BanSungOnl()
@@ -20,6 +21,7 @@ void EmptyLinkFunctionForGeneratedCodeBanSungOnl_init() {}
 				(UObject* (*)())Z_Construct_UDelegateFunction_BanSungOnl_RemoveUI__DelegateSignature,
 				(UObject* (*)())Z_Construct_UDelegateFunction_BanSungOnl_ShowHealth__DelegateSignature,
 				(UObject* (*)())Z_Construct_UDelegateFunction_BanSungOnl_ShowLoseGame__DelegateSignature,
+				(UObject* (*)())Z_Construct_UDelegateFunction_BanSungOnl_ShowNameItem__DelegateSignature,
 				(UObject* (*)())Z_Construct_UDelegateFunction_BanSungOnl_ShowWinGame__DelegateSignature,
 			};
 			static const UECodeGen_Private::FPackageParams PackageParams = {
@@ -27,13 +29,13 @@ void EmptyLinkFunctionForGeneratedCodeBanSungOnl_init() {}
 				SingletonFuncArray,
 				UE_ARRAY_COUNT(SingletonFuncArray),
 				PKG_CompiledIn | 0x00000000,
-				0x052713D1,
-				0x248F2E80,
+				0x4857C2C1,
+				0x2A2354AB,
 				METADATA_PARAMS(0, nullptr)
 			};
 			UECodeGen_Private::ConstructUPackage(Z_Registration_Info_UPackage__Script_BanSungOnl.OuterSingleton, PackageParams);
 		}
 		return Z_Registration_Info_UPackage__Script_BanSungOnl.OuterSingleton;
 	}
-	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_BanSungOnl(Z_Construct_UPackage__Script_BanSungOnl, TEXT("/Script/BanSungOnl"), Z_Registration_Info_UPackage__Script_BanSungOnl, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x052713D1, 0x248F2E80));
+	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_BanSungOnl(Z_Construct_UPackage__Script_BanSungOnl, TEXT("/Script/BanSungOnl"), Z_Registration_Info_UPackage__Script_BanSungOnl, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x4857C2C1, 0x2A2354AB));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
