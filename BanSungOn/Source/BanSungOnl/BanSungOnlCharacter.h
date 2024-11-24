@@ -11,7 +11,7 @@
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FShowHealth); // show HUD attacked
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FShowWinGame); // show HUD WinGame
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FShowLoseGame); // show HUD LoseGame
-// DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FShowNameItem, int32, ItemType); // show name item
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FShowNameItem, int32, ItemType); // show name item
 UCLASS(Blueprintable)
 class ABanSungOnlCharacter : public ACharacter
 {
@@ -84,7 +84,9 @@ public:
 	FShowHealth ShowHealth; // Var show HUD attacked
 	UPROPERTY(BlueprintAssignable, Category = "Show Win Game")
 	FShowWinGame ShowWinGame; // Var Show Win Game
-	
+	UPROPERTY(BlueprintAssignable, Category = "Show Name Item")
+	FShowNameItem ShowNameItem;	// Var Show Name Item
+
 private:
 	/** Top down camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
