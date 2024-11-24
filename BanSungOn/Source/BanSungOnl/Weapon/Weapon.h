@@ -20,7 +20,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	
-	int MaxAmmo, LastAmmo;
+	int LastAmmo;
 	float Speed, Damage;
 
 	// Sound Shoot
@@ -37,7 +37,7 @@ public:
 	int Ammo;
 	UPROPERTY(BlueprintReadOnly, Replicated)
 	int CurAmmo;
-	int Magazine;
+	int Magazine,MaxAmmo;
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 	
 	void ReloadAmmo();
