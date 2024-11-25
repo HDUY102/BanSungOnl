@@ -3,7 +3,11 @@
 
 #include "Items.h"
 
+#include "ItemAmmoPis.h"
+#include "ItemAmmoRif.h"
+#include "ItemHealth.h"
 #include "BanSungOnl/BanSungOnlCharacter.h"
+#include "BanSungOnl/BanSungOnlPlayerController.h"
 #include "GameFramework/RotatingMovementComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Net/UnrealNetwork.h"
@@ -26,41 +30,44 @@ AItems::AItems()
 void AItems::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 void AItems::OnOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
 	int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	if(HasAuthority())
+	ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(OtherActor);
+	if (PlayerCharacter)
 	{
-		ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(OtherActor);
-		if (PlayerCharacter)
+		if(Type == 0) // Item type for Health Ammo
+			PlayerCharacter->Health = FMath::Min(PlayerCharacter->Health + HealthItems, PlayerCharacter->MaxHealth);
+		else if(Type == 1) // Item type for Rifle Ammo
 		{
-			if(Type == 0) // Item type for Rifle Ammo
-			{
-				if(PlayerCharacter->Health < PlayerCharacter->MaxHealth) PlayerCharacter->Health += HealthItems;
-				else PlayerCharacter->Health = PlayerCharacter->MaxHealth;
-				// PlayerCharacter->ShowNameItem.Broadcast(0);
-			}else if(Type == 1)
-			{
-				if((PlayerCharacter->Rifle->Ammo + AmmoItem) <= PlayerCharacter->Rifle->MaxAmmo) PlayerCharacter->Rifle->Ammo += AmmoItem;
-				else PlayerCharacter->Rifle->Ammo = PlayerCharacter->Rifle->MaxAmmo;
-				// PlayerCharacter->ShowNameItem.Broadcast(1);
-			}else if(Type == 2) // Item type for Pistol Ammo
-			{
-				if((PlayerCharacter->Pistol->Ammo + AmmoItem) <= PlayerCharacter->Pistol->MaxAmmo) PlayerCharacter->Pistol->Ammo += AmmoItem;
-				else PlayerCharacter->Pistol->Ammo = PlayerCharacter->Pistol->MaxAmmo;
-				// PlayerCharacter->ShowNameItem.Broadcast(2);
-			}
-			Destroy();
+			if(PlayerCharacter->Rifle)
+				PlayerCharacter->Rifle->Ammo = FMath::Min(PlayerCharacter->Rifle->Ammo + AmmoItem, PlayerCharacter->Rifle->MaxAmmo);
+		}else if(Type == 2) // Item type for Pistol Ammo
+		{
+			if(PlayerCharacter->Pistol)
+				PlayerCharacter->Pistol->Ammo = FMath::Min(PlayerCharacter->Pistol->Ammo + AmmoItem, PlayerCharacter->Pistol->MaxAmmo);
 		}
+		if (PlayerCharacter->IsLocallyControlled())
+		{
+			NotifyItemsPickup(PlayerCharacter, static_cast<int32>(Type));
+		}
+		Destroy();
 	}
 }
 
 void AItems::SpawnItems()
 {
 	GetWorld()->SpawnActor<AItems>(ItemsToSpawn,FVector::ZeroVector,FRotator::ZeroRotator);
+}
+
+void AItems::NotifyItemsPickup_Implementation(ABanSungOnlCharacter* Player, int32 ItemType)
+{
+	if(!HasAuthority())
+	{
+		Player->ShowNameItem.Broadcast(ItemType);
+	}
 }
 
 // Called every frame
@@ -72,6 +79,5 @@ void AItems::Tick(float DeltaTime)
 void AItems::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
-	// DOREPLIFETIME(AItems, Type);
+	DOREPLIFETIME(AItems, Type);
 }
-

@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "BanSungOnl/BanSungOnlCharacter.h"
 #include "Components/SphereComponent.h"
 #include "GameFramework/Actor.h"
 #include "GameFramework/RotatingMovementComponent.h"
@@ -20,7 +21,7 @@ protected:
 	virtual void BeginPlay() override;
 
 	// Items's Var basic
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ItemsProperties")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ItemsProperties", Replicated)
 	float Type;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ItemsProperties")
 	float HealthItems;
@@ -39,8 +40,11 @@ protected:
 
 	UFUNCTION()
 	void SpawnItems();
-	UPROPERTY()
+	UPROPERTY(EditAnywhere, Category="ItemsSpawn")
 	TSubclassOf<AItems> ItemsToSpawn;
+
+	UFUNCTION(Client, Unreliable)
+	void NotifyItemsPickup(ABanSungOnlCharacter* Player, int32 ItemType);
 	
 public:
 	virtual void Tick(float DeltaTime) override;
