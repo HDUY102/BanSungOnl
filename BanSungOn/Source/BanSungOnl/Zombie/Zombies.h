@@ -4,11 +4,23 @@
 
 #include "CoreMinimal.h"
 #include "BanSungOnl/BanSungOnlCharacter.h"
+#include "BanSungOnl/Items/ItemAmmoPis.h"
+#include "BanSungOnl/Items/ItemAmmoRif.h"
+#include "BanSungOnl/Items/ItemHealth.h"
+#include "BanSungOnl/Items/Items.h"
 #include "Components/SphereComponent.h"
 #include "Components/WidgetComponent.h"
 #include "GameFramework/Character.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Zombies.generated.h"
+
+UENUM(BlueprintType)
+enum class EnumItems : uint8
+{
+	Health UMETA(DisplayName = "Item Health"),
+	AmmoRif UMETA(DisplayName = "Item Rif"),
+	AmmoPis UMETA(DisplayName = "Item Pis"),
+};
 
 UCLASS()
 class BANSUNGONL_API AZombies : public ACharacter
@@ -55,6 +67,19 @@ public:
 	UFUNCTION()
 	void TakeDmg(float Dmg);
 
+	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="ItemsSpawn")
+	TSubclassOf<AItemHealth> HealthToSpawn;
+	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="ItemsSpawn")
+	TSubclassOf<AItemAmmoPis> PisToSpawn;
+	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="ItemsSpawn")
+	TSubclassOf<AItemAmmoRif> RifToSpawn;
+	
+	UPROPERTY(EditAnywhere,BlueprintReadOnly)
+	EnumItems TypeItem;
+	
+	UFUNCTION()
+	void RandomItems(FVector BodyZombie);
+	
 	UFUNCTION(BlueprintCallable)
 	void OnOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
 		int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);

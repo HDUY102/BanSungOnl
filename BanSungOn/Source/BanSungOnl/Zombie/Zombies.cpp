@@ -6,6 +6,11 @@
 #include <string>
 
 #include "BanSungOnl/BanSungOnlCharacter.h"
+#include "BanSungOnl/Items/ItemAmmoPis.h"
+#include "BanSungOnl/Items/ItemAmmoRif.h"
+#include "BanSungOnl/Items/ItemHealth.h"
+#include "BanSungOnl/Items/Items.h"
+#include "Components/CapsuleComponent.h"
 #include "Engine/RendererSettings.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Net/UnrealNetwork.h"
@@ -58,14 +63,38 @@ void AZombies::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetime
 void AZombies::TakeDmg(float Dmg)
 {
 	HealthZomb -= Dmg;
-	if(HealthZomb<0)
+	if(HealthZomb <= 0)
 	{
+		FVector BodyZombie = GetActorLocation() + FVector(0.f, 0.f, -10.f);
+		if (FMath::RandRange(1, 2) == 1) // 50% rate drop items
+		{
+			RandomItems(BodyZombie);
+		}
 		Destroy();
 	}
 }
 
+void AZombies::RandomItems(FVector BodyZombie)
+{
+	TypeItem =  static_cast<EnumItems>(FMath::RandRange(0,2));
+	switch (TypeItem)
+	{
+	case EnumItems::Health:
+		GetWorld()->SpawnActor<AItemHealth>(HealthToSpawn, BodyZombie,FRotator::ZeroRotator);
+		break;
+	case EnumItems::AmmoRif:
+		GetWorld()->SpawnActor<AItemAmmoRif>(RifToSpawn, BodyZombie,FRotator::ZeroRotator);
+		break;
+	case EnumItems::AmmoPis:
+		GetWorld()->SpawnActor<AItemAmmoPis>(PisToSpawn, BodyZombie,FRotator::ZeroRotator);
+		break;
+	default:
+		break;
+	}
+}
+
 void AZombies::OnOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
-	int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+                         int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	if (HasAuthority())
 	{
