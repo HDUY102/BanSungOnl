@@ -11,6 +11,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeItems() {}
 
 // Begin Cross Module References
+BANSUNGONL_API UClass* Z_Construct_UClass_ABanSungOnlCharacter_NoRegister();
 BANSUNGONL_API UClass* Z_Construct_UClass_AItems();
 BANSUNGONL_API UClass* Z_Construct_UClass_AItems_NoRegister();
 COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
@@ -22,6 +23,61 @@ ENGINE_API UClass* Z_Construct_UClass_USphereComponent_NoRegister();
 ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FHitResult();
 UPackage* Z_Construct_UPackage__Script_BanSungOnl();
 // End Cross Module References
+
+// Begin Class AItems Function NotifyItemsPickup
+struct Items_eventNotifyItemsPickup_Parms
+{
+	ABanSungOnlCharacter* Player;
+	int32 ItemType;
+};
+static FName NAME_AItems_NotifyItemsPickup = FName(TEXT("NotifyItemsPickup"));
+void AItems::NotifyItemsPickup(ABanSungOnlCharacter* Player, int32 ItemType)
+{
+	Items_eventNotifyItemsPickup_Parms Parms;
+	Parms.Player=Player;
+	Parms.ItemType=ItemType;
+	ProcessEvent(FindFunctionChecked(NAME_AItems_NotifyItemsPickup),&Parms);
+}
+struct Z_Construct_UFunction_AItems_NotifyItemsPickup_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Items/Items.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_Player;
+	static const UECodeGen_Private::FIntPropertyParams NewProp_ItemType;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AItems_NotifyItemsPickup_Statics::NewProp_Player = { "Player", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Items_eventNotifyItemsPickup_Parms, Player), Z_Construct_UClass_ABanSungOnlCharacter_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UFunction_AItems_NotifyItemsPickup_Statics::NewProp_ItemType = { "ItemType", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Items_eventNotifyItemsPickup_Parms, ItemType), METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AItems_NotifyItemsPickup_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AItems_NotifyItemsPickup_Statics::NewProp_Player,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AItems_NotifyItemsPickup_Statics::NewProp_ItemType,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AItems_NotifyItemsPickup_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AItems_NotifyItemsPickup_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AItems, nullptr, "NotifyItemsPickup", nullptr, nullptr, Z_Construct_UFunction_AItems_NotifyItemsPickup_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AItems_NotifyItemsPickup_Statics::PropPointers), sizeof(Items_eventNotifyItemsPickup_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x01080C40, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AItems_NotifyItemsPickup_Statics::Function_MetaDataParams), Z_Construct_UFunction_AItems_NotifyItemsPickup_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Items_eventNotifyItemsPickup_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_AItems_NotifyItemsPickup()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AItems_NotifyItemsPickup_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(AItems::execNotifyItemsPickup)
+{
+	P_GET_OBJECT(ABanSungOnlCharacter,Z_Param_Player);
+	P_GET_PROPERTY(FIntProperty,Z_Param_ItemType);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->NotifyItemsPickup_Implementation(Z_Param_Player,Z_Param_ItemType);
+	P_NATIVE_END;
+}
+// End Class AItems Function NotifyItemsPickup
 
 // Begin Class AItems Function OnOverlap
 struct Z_Construct_UFunction_AItems_OnOverlap_Statics
@@ -138,6 +194,7 @@ void AItems::StaticRegisterNativesAItems()
 {
 	UClass* Class = AItems::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
+		{ "NotifyItemsPickup", &AItems::execNotifyItemsPickup },
 		{ "OnOverlap", &AItems::execOnOverlap },
 		{ "SpawnItems", &AItems::execSpawnItems },
 	};
@@ -190,6 +247,7 @@ struct Z_Construct_UClass_AItems_Statics
 		{ "ModuleRelativePath", "Items/Items.h" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ItemsToSpawn_MetaData[] = {
+		{ "Category", "ItemsSpawn" },
 		{ "ModuleRelativePath", "Items/Items.h" },
 	};
 #endif // WITH_METADATA
@@ -202,6 +260,7 @@ struct Z_Construct_UClass_AItems_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
+		{ &Z_Construct_UFunction_AItems_NotifyItemsPickup, "NotifyItemsPickup" }, // 4244390310
 		{ &Z_Construct_UFunction_AItems_OnOverlap, "OnOverlap" }, // 3447372540
 		{ &Z_Construct_UFunction_AItems_SpawnItems, "SpawnItems" }, // 1131018570
 	};
@@ -211,12 +270,12 @@ struct Z_Construct_UClass_AItems_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AItems_Statics::NewProp_Type = { "Type", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AItems, Type), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Type_MetaData), NewProp_Type_MetaData) };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AItems_Statics::NewProp_HealthItems = { "HealthItems", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AItems, HealthItems), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_HealthItems_MetaData), NewProp_HealthItems_MetaData) };
-const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_AItems_Statics::NewProp_AmmoItem = { "AmmoItem", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AItems, AmmoItem), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_AmmoItem_MetaData), NewProp_AmmoItem_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AItems_Statics::NewProp_Type = { "Type", nullptr, (EPropertyFlags)0x0020080000000025, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AItems, Type), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Type_MetaData), NewProp_Type_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AItems_Statics::NewProp_HealthItems = { "HealthItems", nullptr, (EPropertyFlags)0x0020080000000025, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AItems, HealthItems), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_HealthItems_MetaData), NewProp_HealthItems_MetaData) };
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_AItems_Statics::NewProp_AmmoItem = { "AmmoItem", nullptr, (EPropertyFlags)0x0020080000000025, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AItems, AmmoItem), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_AmmoItem_MetaData), NewProp_AmmoItem_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AItems_Statics::NewProp_RotatingMovement = { "RotatingMovement", nullptr, (EPropertyFlags)0x00200800000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AItems, RotatingMovement), Z_Construct_UClass_URotatingMovementComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_RotatingMovement_MetaData), NewProp_RotatingMovement_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AItems_Statics::NewProp_SphereComponent = { "SphereComponent", nullptr, (EPropertyFlags)0x00200800000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AItems, SphereComponent), Z_Construct_UClass_USphereComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SphereComponent_MetaData), NewProp_SphereComponent_MetaData) };
-const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_AItems_Statics::NewProp_ItemsToSpawn = { "ItemsToSpawn", nullptr, (EPropertyFlags)0x0024080000000000, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AItems, ItemsToSpawn), Z_Construct_UClass_UClass, Z_Construct_UClass_AItems_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ItemsToSpawn_MetaData), NewProp_ItemsToSpawn_MetaData) };
+const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_AItems_Statics::NewProp_ItemsToSpawn = { "ItemsToSpawn", nullptr, (EPropertyFlags)0x0024080000000001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AItems, ItemsToSpawn), Z_Construct_UClass_UClass, Z_Construct_UClass_AItems_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ItemsToSpawn_MetaData), NewProp_ItemsToSpawn_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AItems_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AItems_Statics::NewProp_Type,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AItems_Statics::NewProp_HealthItems,
@@ -258,6 +317,17 @@ template<> BANSUNGONL_API UClass* StaticClass<AItems>()
 {
 	return AItems::StaticClass();
 }
+void AItems::ValidateGeneratedRepEnums(const TArray<struct FRepRecord>& ClassReps) const
+{
+	static const FName Name_Type(TEXT("Type"));
+	static const FName Name_HealthItems(TEXT("HealthItems"));
+	static const FName Name_AmmoItem(TEXT("AmmoItem"));
+	const bool bIsValid = true
+		&& Name_Type == ClassReps[(int32)ENetFields_Private::Type].Property->GetFName()
+		&& Name_HealthItems == ClassReps[(int32)ENetFields_Private::HealthItems].Property->GetFName()
+		&& Name_AmmoItem == ClassReps[(int32)ENetFields_Private::AmmoItem].Property->GetFName();
+	checkf(bIsValid, TEXT("UHT Generated Rep Indices do not match runtime populated Rep Indices for properties in AItems"));
+}
 DEFINE_VTABLE_PTR_HELPER_CTOR(AItems);
 AItems::~AItems() {}
 // End Class AItems
@@ -266,10 +336,10 @@ AItems::~AItems() {}
 struct Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AItems, AItems::StaticClass, TEXT("AItems"), &Z_Registration_Info_UClass_AItems, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AItems), 1496049246U) },
+		{ Z_Construct_UClass_AItems, AItems::StaticClass, TEXT("AItems"), &Z_Registration_Info_UClass_AItems, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AItems), 3663231839U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_166353196(TEXT("/Script/BanSungOnl"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_1433422817(TEXT("/Script/BanSungOnl"),
 	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

@@ -11,8 +11,14 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeZombies() {}
 
 // Begin Cross Module References
+BANSUNGONL_API UClass* Z_Construct_UClass_AItemAmmoPis_NoRegister();
+BANSUNGONL_API UClass* Z_Construct_UClass_AItemAmmoRif_NoRegister();
+BANSUNGONL_API UClass* Z_Construct_UClass_AItemHealth_NoRegister();
 BANSUNGONL_API UClass* Z_Construct_UClass_AZombies();
 BANSUNGONL_API UClass* Z_Construct_UClass_AZombies_NoRegister();
+BANSUNGONL_API UEnum* Z_Construct_UEnum_BanSungOnl_EnumItems();
+COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
+COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_ACharacter();
 ENGINE_API UClass* Z_Construct_UClass_UPrimitiveComponent_NoRegister();
@@ -21,6 +27,63 @@ ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FHitResult();
 UMG_API UClass* Z_Construct_UClass_UWidgetComponent_NoRegister();
 UPackage* Z_Construct_UPackage__Script_BanSungOnl();
 // End Cross Module References
+
+// Begin Enum EnumItems
+static FEnumRegistrationInfo Z_Registration_Info_UEnum_EnumItems;
+static UEnum* EnumItems_StaticEnum()
+{
+	if (!Z_Registration_Info_UEnum_EnumItems.OuterSingleton)
+	{
+		Z_Registration_Info_UEnum_EnumItems.OuterSingleton = GetStaticEnum(Z_Construct_UEnum_BanSungOnl_EnumItems, (UObject*)Z_Construct_UPackage__Script_BanSungOnl(), TEXT("EnumItems"));
+	}
+	return Z_Registration_Info_UEnum_EnumItems.OuterSingleton;
+}
+template<> BANSUNGONL_API UEnum* StaticEnum<EnumItems>()
+{
+	return EnumItems_StaticEnum();
+}
+struct Z_Construct_UEnum_BanSungOnl_EnumItems_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[] = {
+		{ "AmmoPis.DisplayName", "Item Pis" },
+		{ "AmmoPis.Name", "EnumItems::AmmoPis" },
+		{ "AmmoRif.DisplayName", "Item Rif" },
+		{ "AmmoRif.Name", "EnumItems::AmmoRif" },
+		{ "BlueprintType", "true" },
+		{ "Health.DisplayName", "Item Health" },
+		{ "Health.Name", "EnumItems::Health" },
+		{ "ModuleRelativePath", "Zombie/Zombies.h" },
+	};
+#endif // WITH_METADATA
+	static constexpr UECodeGen_Private::FEnumeratorParam Enumerators[] = {
+		{ "EnumItems::Health", (int64)EnumItems::Health },
+		{ "EnumItems::AmmoRif", (int64)EnumItems::AmmoRif },
+		{ "EnumItems::AmmoPis", (int64)EnumItems::AmmoPis },
+	};
+	static const UECodeGen_Private::FEnumParams EnumParams;
+};
+const UECodeGen_Private::FEnumParams Z_Construct_UEnum_BanSungOnl_EnumItems_Statics::EnumParams = {
+	(UObject*(*)())Z_Construct_UPackage__Script_BanSungOnl,
+	nullptr,
+	"EnumItems",
+	"EnumItems",
+	Z_Construct_UEnum_BanSungOnl_EnumItems_Statics::Enumerators,
+	RF_Public|RF_Transient|RF_MarkAsNative,
+	UE_ARRAY_COUNT(Z_Construct_UEnum_BanSungOnl_EnumItems_Statics::Enumerators),
+	EEnumFlags::None,
+	(uint8)UEnum::ECppForm::EnumClass,
+	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UEnum_BanSungOnl_EnumItems_Statics::Enum_MetaDataParams), Z_Construct_UEnum_BanSungOnl_EnumItems_Statics::Enum_MetaDataParams)
+};
+UEnum* Z_Construct_UEnum_BanSungOnl_EnumItems()
+{
+	if (!Z_Registration_Info_UEnum_EnumItems.InnerSingleton)
+	{
+		UECodeGen_Private::ConstructUEnum(Z_Registration_Info_UEnum_EnumItems.InnerSingleton, Z_Construct_UEnum_BanSungOnl_EnumItems_Statics::EnumParams);
+	}
+	return Z_Registration_Info_UEnum_EnumItems.InnerSingleton;
+}
+// End Enum EnumItems
 
 // Begin Class AZombies Function OnEndOverlap
 struct Z_Construct_UFunction_AZombies_OnEndOverlap_Statics
@@ -166,6 +229,48 @@ DEFINE_FUNCTION(AZombies::execOnOverlap)
 }
 // End Class AZombies Function OnOverlap
 
+// Begin Class AZombies Function RandomItems
+struct Z_Construct_UFunction_AZombies_RandomItems_Statics
+{
+	struct Zombies_eventRandomItems_Parms
+	{
+		FVector BodyZombie;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Zombie/Zombies.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FStructPropertyParams NewProp_BodyZombie;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AZombies_RandomItems_Statics::NewProp_BodyZombie = { "BodyZombie", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Zombies_eventRandomItems_Parms, BodyZombie), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AZombies_RandomItems_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AZombies_RandomItems_Statics::NewProp_BodyZombie,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AZombies_RandomItems_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AZombies_RandomItems_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AZombies, nullptr, "RandomItems", nullptr, nullptr, Z_Construct_UFunction_AZombies_RandomItems_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AZombies_RandomItems_Statics::PropPointers), sizeof(Z_Construct_UFunction_AZombies_RandomItems_Statics::Zombies_eventRandomItems_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00820401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AZombies_RandomItems_Statics::Function_MetaDataParams), Z_Construct_UFunction_AZombies_RandomItems_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_AZombies_RandomItems_Statics::Zombies_eventRandomItems_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_AZombies_RandomItems()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AZombies_RandomItems_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(AZombies::execRandomItems)
+{
+	P_GET_STRUCT(FVector,Z_Param_BodyZombie);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->RandomItems(Z_Param_BodyZombie);
+	P_NATIVE_END;
+}
+// End Class AZombies Function RandomItems
+
 // Begin Class AZombies Function Server_AtkCharacter
 static FName NAME_AZombies_Server_AtkCharacter = FName(TEXT("Server_AtkCharacter"));
 void AZombies::Server_AtkCharacter()
@@ -255,6 +360,7 @@ void AZombies::StaticRegisterNativesAZombies()
 	static const FNameNativePtrPair Funcs[] = {
 		{ "OnEndOverlap", &AZombies::execOnEndOverlap },
 		{ "OnOverlap", &AZombies::execOnOverlap },
+		{ "RandomItems", &AZombies::execRandomItems },
 		{ "Server_AtkCharacter", &AZombies::execServer_AtkCharacter },
 		{ "TakeDmg", &AZombies::execTakeDmg },
 	};
@@ -305,6 +411,22 @@ struct Z_Construct_UClass_AZombies_Statics
 		{ "ToolTip", "Display HealthBar" },
 #endif
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_HealthToSpawn_MetaData[] = {
+		{ "Category", "ItemsSpawn" },
+		{ "ModuleRelativePath", "Zombie/Zombies.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_PisToSpawn_MetaData[] = {
+		{ "Category", "ItemsSpawn" },
+		{ "ModuleRelativePath", "Zombie/Zombies.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_RifToSpawn_MetaData[] = {
+		{ "Category", "ItemsSpawn" },
+		{ "ModuleRelativePath", "Zombie/Zombies.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_TypeItem_MetaData[] = {
+		{ "Category", "Zombies" },
+		{ "ModuleRelativePath", "Zombie/Zombies.h" },
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_HealthZomb;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_DamageZomb;
@@ -313,11 +435,17 @@ struct Z_Construct_UClass_AZombies_Statics
 	static void NewProp_CanAtk_SetBit(void* Obj);
 	static const UECodeGen_Private::FBoolPropertyParams NewProp_CanAtk;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_WidgetComponent;
+	static const UECodeGen_Private::FClassPropertyParams NewProp_HealthToSpawn;
+	static const UECodeGen_Private::FClassPropertyParams NewProp_PisToSpawn;
+	static const UECodeGen_Private::FClassPropertyParams NewProp_RifToSpawn;
+	static const UECodeGen_Private::FBytePropertyParams NewProp_TypeItem_Underlying;
+	static const UECodeGen_Private::FEnumPropertyParams NewProp_TypeItem;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_AZombies_OnEndOverlap, "OnEndOverlap" }, // 4242726135
 		{ &Z_Construct_UFunction_AZombies_OnOverlap, "OnOverlap" }, // 2672535909
+		{ &Z_Construct_UFunction_AZombies_RandomItems, "RandomItems" }, // 1344175222
 		{ &Z_Construct_UFunction_AZombies_Server_AtkCharacter, "Server_AtkCharacter" }, // 2253604985
 		{ &Z_Construct_UFunction_AZombies_TakeDmg, "TakeDmg" }, // 1335226916
 	};
@@ -337,6 +465,11 @@ void Z_Construct_UClass_AZombies_Statics::NewProp_CanAtk_SetBit(void* Obj)
 }
 const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AZombies_Statics::NewProp_CanAtk = { "CanAtk", nullptr, (EPropertyFlags)0x0020080000000034, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(AZombies), &Z_Construct_UClass_AZombies_Statics::NewProp_CanAtk_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CanAtk_MetaData), NewProp_CanAtk_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AZombies_Statics::NewProp_WidgetComponent = { "WidgetComponent", nullptr, (EPropertyFlags)0x00200800000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AZombies, WidgetComponent), Z_Construct_UClass_UWidgetComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_WidgetComponent_MetaData), NewProp_WidgetComponent_MetaData) };
+const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_AZombies_Statics::NewProp_HealthToSpawn = { "HealthToSpawn", nullptr, (EPropertyFlags)0x0014000000000015, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AZombies, HealthToSpawn), Z_Construct_UClass_UClass, Z_Construct_UClass_AItemHealth_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_HealthToSpawn_MetaData), NewProp_HealthToSpawn_MetaData) };
+const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_AZombies_Statics::NewProp_PisToSpawn = { "PisToSpawn", nullptr, (EPropertyFlags)0x0014000000000015, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AZombies, PisToSpawn), Z_Construct_UClass_UClass, Z_Construct_UClass_AItemAmmoPis_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_PisToSpawn_MetaData), NewProp_PisToSpawn_MetaData) };
+const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_AZombies_Statics::NewProp_RifToSpawn = { "RifToSpawn", nullptr, (EPropertyFlags)0x0014000000000015, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AZombies, RifToSpawn), Z_Construct_UClass_UClass, Z_Construct_UClass_AItemAmmoRif_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_RifToSpawn_MetaData), NewProp_RifToSpawn_MetaData) };
+const UECodeGen_Private::FBytePropertyParams Z_Construct_UClass_AZombies_Statics::NewProp_TypeItem_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_AZombies_Statics::NewProp_TypeItem = { "TypeItem", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AZombies, TypeItem), Z_Construct_UEnum_BanSungOnl_EnumItems, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TypeItem_MetaData), NewProp_TypeItem_MetaData) }; // 1198418091
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AZombies_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AZombies_Statics::NewProp_HealthZomb,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AZombies_Statics::NewProp_DamageZomb,
@@ -344,6 +477,11 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AZombies_
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AZombies_Statics::NewProp_SphereComponent,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AZombies_Statics::NewProp_CanAtk,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AZombies_Statics::NewProp_WidgetComponent,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AZombies_Statics::NewProp_HealthToSpawn,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AZombies_Statics::NewProp_PisToSpawn,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AZombies_Statics::NewProp_RifToSpawn,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AZombies_Statics::NewProp_TypeItem_Underlying,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AZombies_Statics::NewProp_TypeItem,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AZombies_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_AZombies_Statics::DependentSingletons[])() = {
@@ -396,13 +534,16 @@ AZombies::~AZombies() {}
 // Begin Registration
 struct Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_Statics
 {
+	static constexpr FEnumRegisterCompiledInInfo EnumInfo[] = {
+		{ EnumItems_StaticEnum, TEXT("EnumItems"), &Z_Registration_Info_UEnum_EnumItems, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 1198418091U) },
+	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AZombies, AZombies::StaticClass, TEXT("AZombies"), &Z_Registration_Info_UClass_AZombies, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AZombies), 2794468449U) },
+		{ Z_Construct_UClass_AZombies, AZombies::StaticClass, TEXT("AZombies"), &Z_Registration_Info_UClass_AZombies, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AZombies), 893063512U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_4078223274(TEXT("/Script/BanSungOnl"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_341544095(TEXT("/Script/BanSungOnl"),
 	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_Statics::ClassInfo),
 	nullptr, 0,
-	nullptr, 0);
+	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_Statics::EnumInfo));
 // End Registration
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
