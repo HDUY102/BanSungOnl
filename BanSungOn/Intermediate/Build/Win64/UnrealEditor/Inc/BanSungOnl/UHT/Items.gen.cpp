@@ -271,8 +271,8 @@ struct Z_Construct_UClass_AItems_Statics
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AItems_Statics::NewProp_Type = { "Type", nullptr, (EPropertyFlags)0x0020080000000025, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AItems, Type), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Type_MetaData), NewProp_Type_MetaData) };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AItems_Statics::NewProp_HealthItems = { "HealthItems", nullptr, (EPropertyFlags)0x0020080000000025, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AItems, HealthItems), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_HealthItems_MetaData), NewProp_HealthItems_MetaData) };
-const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_AItems_Statics::NewProp_AmmoItem = { "AmmoItem", nullptr, (EPropertyFlags)0x0020080000000025, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AItems, AmmoItem), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_AmmoItem_MetaData), NewProp_AmmoItem_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AItems_Statics::NewProp_HealthItems = { "HealthItems", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AItems, HealthItems), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_HealthItems_MetaData), NewProp_HealthItems_MetaData) };
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_AItems_Statics::NewProp_AmmoItem = { "AmmoItem", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AItems, AmmoItem), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_AmmoItem_MetaData), NewProp_AmmoItem_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AItems_Statics::NewProp_RotatingMovement = { "RotatingMovement", nullptr, (EPropertyFlags)0x00200800000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AItems, RotatingMovement), Z_Construct_UClass_URotatingMovementComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_RotatingMovement_MetaData), NewProp_RotatingMovement_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AItems_Statics::NewProp_SphereComponent = { "SphereComponent", nullptr, (EPropertyFlags)0x00200800000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AItems, SphereComponent), Z_Construct_UClass_USphereComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SphereComponent_MetaData), NewProp_SphereComponent_MetaData) };
 const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_AItems_Statics::NewProp_ItemsToSpawn = { "ItemsToSpawn", nullptr, (EPropertyFlags)0x0024080000000001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AItems, ItemsToSpawn), Z_Construct_UClass_UClass, Z_Construct_UClass_AItems_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ItemsToSpawn_MetaData), NewProp_ItemsToSpawn_MetaData) };
@@ -320,12 +320,8 @@ template<> BANSUNGONL_API UClass* StaticClass<AItems>()
 void AItems::ValidateGeneratedRepEnums(const TArray<struct FRepRecord>& ClassReps) const
 {
 	static const FName Name_Type(TEXT("Type"));
-	static const FName Name_HealthItems(TEXT("HealthItems"));
-	static const FName Name_AmmoItem(TEXT("AmmoItem"));
 	const bool bIsValid = true
-		&& Name_Type == ClassReps[(int32)ENetFields_Private::Type].Property->GetFName()
-		&& Name_HealthItems == ClassReps[(int32)ENetFields_Private::HealthItems].Property->GetFName()
-		&& Name_AmmoItem == ClassReps[(int32)ENetFields_Private::AmmoItem].Property->GetFName();
+		&& Name_Type == ClassReps[(int32)ENetFields_Private::Type].Property->GetFName();
 	checkf(bIsValid, TEXT("UHT Generated Rep Indices do not match runtime populated Rep Indices for properties in AItems"));
 }
 DEFINE_VTABLE_PTR_HELPER_CTOR(AItems);
@@ -336,10 +332,10 @@ AItems::~AItems() {}
 struct Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AItems, AItems::StaticClass, TEXT("AItems"), &Z_Registration_Info_UClass_AItems, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AItems), 3663231839U) },
+		{ Z_Construct_UClass_AItems, AItems::StaticClass, TEXT("AItems"), &Z_Registration_Info_UClass_AItems, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AItems), 416138138U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_1433422817(TEXT("/Script/BanSungOnl"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_3147916097(TEXT("/Script/BanSungOnl"),
 	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

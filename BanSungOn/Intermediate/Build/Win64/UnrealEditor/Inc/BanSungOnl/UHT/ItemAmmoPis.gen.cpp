@@ -79,10 +79,10 @@ AItemAmmoPis::~AItemAmmoPis() {}
 struct Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_ItemAmmoPis_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AItemAmmoPis, AItemAmmoPis::StaticClass, TEXT("AItemAmmoPis"), &Z_Registration_Info_UClass_AItemAmmoPis, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AItemAmmoPis), 2265369942U) },
+		{ Z_Construct_UClass_AItemAmmoPis, AItemAmmoPis::StaticClass, TEXT("AItemAmmoPis"), &Z_Registration_Info_UClass_AItemAmmoPis, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AItemAmmoPis), 1348114333U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_ItemAmmoPis_h_3326493513(TEXT("/Script/BanSungOnl"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_ItemAmmoPis_h_3443272330(TEXT("/Script/BanSungOnl"),
 	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_ItemAmmoPis_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_ItemAmmoPis_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
