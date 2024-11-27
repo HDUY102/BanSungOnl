@@ -65,7 +65,7 @@ public:
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
 	UFUNCTION()
-	void TakeDmg(float Dmg);
+	void TakeDmg(float Dmg, ABanSungOnlCharacter* Shooter);
 
 	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="ItemsSpawn")
 	TSubclassOf<AItemHealth> HealthToSpawn;

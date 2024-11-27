@@ -6,12 +6,15 @@
 #include <string>
 
 #include "BanSungOnl/BanSungOnlCharacter.h"
+#include "BanSungOnl/BanSungOnlPlayerController.h"
 #include "BanSungOnl/Items/ItemAmmoPis.h"
 #include "BanSungOnl/Items/ItemAmmoRif.h"
 #include "BanSungOnl/Items/ItemHealth.h"
 #include "BanSungOnl/Items/Items.h"
+#include "BanSungOnl/WaveSystem/WaveSystem.h"
 #include "Components/CapsuleComponent.h"
 #include "Engine/RendererSettings.h"
+#include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Net/UnrealNetwork.h"
 
@@ -60,15 +63,23 @@ void AZombies::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetime
 	DOREPLIFETIME(AZombies, CanAtk);
 }
 
-void AZombies::TakeDmg(float Dmg)
+void AZombies::TakeDmg(float Dmg, ABanSungOnlCharacter* Shooter)
 {
 	HealthZomb -= Dmg;
 	if(HealthZomb <= 0)
 	{
+		Shooter->Score++;
+		AWaveSystem* WaveSystem = Cast<AWaveSystem>(UGameplayStatics::GetActorOfClass(GetWorld(), AWaveSystem::StaticClass()));
+		
 		FVector BodyZombie = GetActorLocation() + FVector(0.f, 0.f, -10.f);
-		if (FMath::RandRange(1, 2) == 1) // 50% rate drop items
+		if (FMath::RandRange(1, 2) == 1)
 		{
 			RandomItems(BodyZombie);
+		}
+		if(WaveSystem)
+		{
+			WaveSystem->ZombRemaining--;
+			WaveSystem->CheckEndWave();
 		}
 		Destroy();
 	}
