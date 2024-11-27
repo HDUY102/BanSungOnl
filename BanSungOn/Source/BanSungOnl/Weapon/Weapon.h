@@ -46,6 +46,9 @@ public:
 	UFUNCTION()
 	virtual void ReloadSound();
 
+	UFUNCTION()
+	void ResetAmmo();
+	
 	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="BulletToSocket")
 	USkeletalMeshComponent* GunMesh;
 	UPROPERTY(EditAnywhere,BlueprintReadOnly)

@@ -40,6 +40,12 @@ void AWeapon::ReloadSound()
 	}
 }
 
+void AWeapon::ResetAmmo()
+{
+	CurAmmo = Magazine;
+	Ammo = MaxAmmo;
+}
+
 void AWeapon::ShootBullet(FVector &Location)
 {
 	if(CurAmmo>0)
@@ -47,9 +53,9 @@ void AWeapon::ShootBullet(FVector &Location)
 		FTransform	BulletTransform = GunMesh->GetSocketTransform("BulletToSocket");
 	
 		FActorSpawnParameters spawnParams;
-		spawnParams.Owner = this;
+		spawnParams.Owner = GetOwner();
 	
-		ABullet* SpawnedBullet = GetWorld()->SpawnActor<ABullet>(BulletSpawned,BulletTransform);
+		ABullet* SpawnedBullet = GetWorld()->SpawnActor<ABullet>(BulletSpawned,BulletTransform, spawnParams);
 		SpawnedBullet->SetBulletProperties(Damage, Speed);
 		SpawnedBullet->SetDirectionBullet(Location);
 		CurAmmo--;
