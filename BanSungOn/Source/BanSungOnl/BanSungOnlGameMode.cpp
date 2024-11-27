@@ -4,9 +4,11 @@
 #include "BanSungOnlPlayerController.h"
 #include "BanSungOnlCharacter.h"
 #include "Components/CapsuleComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Net/UnrealNetwork.h"
 #include "UObject/ConstructorHelpers.h"
+#include "WaveSystem/WaveSystem.h"
 
 ABanSungOnlGameMode::ABanSungOnlGameMode()
 {
@@ -34,30 +36,56 @@ void ABanSungOnlGameMode::PlayAgain()
 	if (Restart == 2)
 	{
 		Restart = 0;
+		AWaveSystem* WaveAgain = Cast<AWaveSystem>(UGameplayStatics::GetActorOfClass(GetWorld(), AWaveSystem::StaticClass()));
+		TArray<AActor*> Zombies;
+		UGameplayStatics::GetAllActorsOfClass(GetWorld(), AZombies::StaticClass(), Zombies);
+		for (auto Zombie : Zombies)
+		{
+			if (IsValid(Zombie))
+			{
+				Zombie->Destroy();
+			}
+		}
 		for (auto PC : CPlayerAgain)
 		{
 			ABanSungOnlPlayerController* OnlPlayerController = Cast<ABanSungOnlPlayerController>(PC);
 			if (IsValid(OnlPlayerController))
 			{
-				OnlPlayerController->PlayAgain++;
-
 				ABanSungOnlCharacter* PCCharacter = Cast<ABanSungOnlCharacter>(PC->GetPawn());
+
+				if(PCCharacter->bIsGameWin)
+				{
+					OnlPlayerController->WinPlayAgain++;
+				}
+				if(PCCharacter->bIsGameOver)
+				{
+					OnlPlayerController->PlayAgain++;
+				}
+				
 				if(PCCharacter)
 				{
 					PlayerList.Add(PCCharacter);
 					
+					if(PCCharacter->bIsGameOver)
+					{
+						PCCharacter->bIsDead = false;
+						PCCharacter->bIsGameOver = false;
+						PCCharacter->OriginalController->SetViewTargetWithBlend(PCCharacter, 0.5f, EViewTargetBlendFunction::VTBlend_Linear);
+						PCCharacter->GetMesh()->SetVisibility(true, false);
+						PCCharacter->GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+					}
+					if(PCCharacter->bIsGameWin)
+					{
+						PCCharacter->bIsGameWin = false;
+					}
+					
 					PCCharacter->Health = 50.f;
-					PCCharacter->bIsDead = false;
-					PCCharacter->bIsGameOver = false;
-					
-					PCCharacter->GetMesh()->SetVisibility(true, false);
-					PCCharacter->GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
-					
 					PCCharacter->EquipRifle();
-					
-					PCCharacter->OriginalController->SetViewTargetWithBlend(PCCharacter, 0.5f, EViewTargetBlendFunction::VTBlend_Linear);
 				}
 			}
+			WaveAgain->ZombRemaining = 0;
+			WaveAgain->WaveNumber = 0;
+			WaveAgain->SetupWave();
 		}
 	}
 }
@@ -68,6 +96,15 @@ void ABanSungOnlGameMode::GameOver()
 	{
 		ABanSungOnlCharacter* PCCharacter = Cast<ABanSungOnlCharacter>(PC->GetPawn());
 		PCCharacter->bIsGameOver = true;
+	}
+}
+
+void ABanSungOnlGameMode::GameWin()
+{
+	for (auto PC : CPlayerAgain)
+	{
+		ABanSungOnlCharacter* PCCharacter = Cast<ABanSungOnlCharacter>(PC->GetPawn());
+		PCCharacter->bIsGameWin = true;
 	}
 }
 

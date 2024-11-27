@@ -217,6 +217,11 @@ void ABanSungOnlPlayerController::OnRep_IsPlayAgain()
 	OnRemoveUI.Broadcast();
 }
 
+void ABanSungOnlPlayerController::OnRep_IsWinPlayAgain()
+{
+	OnRemoveWinUI.Broadcast();
+}
+
 void ABanSungOnlPlayerController::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);

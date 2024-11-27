@@ -21,6 +21,9 @@ public:
 
 	UFUNCTION()
 	void GameOver();
+
+	UFUNCTION()
+	void GameWin();
 	
 	UPROPERTY(BlueprintReadOnly, Category="Players")
 	TArray<AController*> CPlayerAgain;

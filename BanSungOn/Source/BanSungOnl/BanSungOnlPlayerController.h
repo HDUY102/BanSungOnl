@@ -16,6 +16,7 @@ class UInputAction;
 
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FRemoveUI);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FRemoveWinUI);
 
 UCLASS()
 class ABanSungOnlPlayerController : public APlayerController
@@ -55,6 +56,10 @@ public:
 	// HUD
 	UPROPERTY(BlueprintAssignable)
 	FRemoveUI OnRemoveUI;
+
+	// HUD win
+	UPROPERTY(BlueprintAssignable)
+	FRemoveWinUI OnRemoveWinUI;
 	
 protected:
 	/** True if the controlled character should navigate to the mouse cursor. */
@@ -109,6 +114,12 @@ public:
 	
 	UPROPERTY(ReplicatedUsing=OnRep_IsPlayAgain)
 	int PlayAgain = 0;
+
+	UFUNCTION()
+	void OnRep_IsWinPlayAgain();
+	
+	UPROPERTY(ReplicatedUsing=OnRep_IsWinPlayAgain)
+	int WinPlayAgain = 0;
 
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 private:

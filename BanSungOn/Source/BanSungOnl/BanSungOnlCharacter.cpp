@@ -151,6 +151,14 @@ void ABanSungOnlCharacter::OnRep_IsGameOver()
 	}
 }
 
+void ABanSungOnlCharacter::OnRep_IsGameWin()
+{
+	if(bIsGameWin)
+	{
+		ShowWinGame.Broadcast();
+	}
+}
+
 void ABanSungOnlCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
@@ -159,6 +167,7 @@ void ABanSungOnlCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>&
 	DOREPLIFETIME(ABanSungOnlCharacter, CurWeapon);
 	DOREPLIFETIME(ABanSungOnlCharacter, bIsDead);
 	DOREPLIFETIME(ABanSungOnlCharacter, bIsGameOver);
+	DOREPLIFETIME(ABanSungOnlCharacter, bIsGameWin);
 }
 
 void ABanSungOnlCharacter::EquipPistol()

@@ -52,6 +52,12 @@ public:
 	UPROPERTY(BlueprintAssignable, Category = "Show Lose Game")
 	FShowLoseGame ShowLoseGame;
 
+	// Win Game
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, ReplicatedUsing = OnRep_IsGameWin)
+	bool bIsGameWin;
+	UFUNCTION()
+	void OnRep_IsGameWin();
+
 	// Save Camera Controller Original
 	UPROPERTY()
 	APlayerController* OriginalController;
