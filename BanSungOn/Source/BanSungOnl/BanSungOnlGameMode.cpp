@@ -62,31 +62,27 @@ void ABanSungOnlGameMode::PlayAgain()
 					OnlPlayerController->PlayAgain++;
 				}
 				
-				if(PCCharacter)
+				PlayerList.Add(PCCharacter);
+				PCCharacter->ResetPlayer();
+					
+				if(PCCharacter->bIsGameOver)
 				{
-					PlayerList.Add(PCCharacter);
-					
-					if(PCCharacter->bIsGameOver)
-					{
-						PCCharacter->bIsDead = false;
-						PCCharacter->bIsGameOver = false;
-						PCCharacter->OriginalController->SetViewTargetWithBlend(PCCharacter, 0.5f, EViewTargetBlendFunction::VTBlend_Linear);
-						PCCharacter->GetMesh()->SetVisibility(true, false);
-						PCCharacter->GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
-					}
-					if(PCCharacter->bIsGameWin)
-					{
-						PCCharacter->bIsGameWin = false;
-					}
-					
-					PCCharacter->Health = 50.f;
-					PCCharacter->EquipRifle();
+					PCCharacter->bIsDead = false;
+					PCCharacter->bIsGameOver = false;
+					PCCharacter->OriginalController->SetViewTargetWithBlend(PCCharacter, 0.5f, EViewTargetBlendFunction::VTBlend_Linear);
+					PCCharacter->GetMesh()->SetVisibility(true, false);
+					PCCharacter->GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 				}
+				if(PCCharacter->bIsGameWin)
+				{
+					PCCharacter->bIsGameWin = false;
+				}
+				PCCharacter->SetActorLocation(PCCharacter->StartLocation);
 			}
-			WaveAgain->ZombRemaining = 0;
-			WaveAgain->WaveNumber = 0;
-			WaveAgain->SetupWave();
 		}
+		WaveAgain->ZombRemaining = 0;
+		WaveAgain->WaveNumber = 0;
+		WaveAgain->SetupWave();
 	}
 }
 
