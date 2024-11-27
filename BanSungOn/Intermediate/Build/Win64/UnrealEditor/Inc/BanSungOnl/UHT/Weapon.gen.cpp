@@ -49,6 +49,35 @@ DEFINE_FUNCTION(AWeapon::execReloadSound)
 }
 // End Class AWeapon Function ReloadSound
 
+// Begin Class AWeapon Function ResetAmmo
+struct Z_Construct_UFunction_AWeapon_ResetAmmo_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Weapon/Weapon.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AWeapon_ResetAmmo_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AWeapon, nullptr, "ResetAmmo", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AWeapon_ResetAmmo_Statics::Function_MetaDataParams), Z_Construct_UFunction_AWeapon_ResetAmmo_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_AWeapon_ResetAmmo()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AWeapon_ResetAmmo_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(AWeapon::execResetAmmo)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->ResetAmmo();
+	P_NATIVE_END;
+}
+// End Class AWeapon Function ResetAmmo
+
 // Begin Class AWeapon Function ShootSound
 struct Z_Construct_UFunction_AWeapon_ShootSound_Statics
 {
@@ -84,6 +113,7 @@ void AWeapon::StaticRegisterNativesAWeapon()
 	UClass* Class = AWeapon::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
 		{ "ReloadSound", &AWeapon::execReloadSound },
+		{ "ResetAmmo", &AWeapon::execResetAmmo },
 		{ "ShootSound", &AWeapon::execShootSound },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
@@ -146,6 +176,7 @@ struct Z_Construct_UClass_AWeapon_Statics
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_AWeapon_ReloadSound, "ReloadSound" }, // 2102349448
+		{ &Z_Construct_UFunction_AWeapon_ResetAmmo, "ResetAmmo" }, // 182816648
 		{ &Z_Construct_UFunction_AWeapon_ShootSound, "ShootSound" }, // 2321030508
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
@@ -218,10 +249,10 @@ AWeapon::~AWeapon() {}
 struct Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Weapon_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AWeapon, AWeapon::StaticClass, TEXT("AWeapon"), &Z_Registration_Info_UClass_AWeapon, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AWeapon), 1407797741U) },
+		{ Z_Construct_UClass_AWeapon, AWeapon::StaticClass, TEXT("AWeapon"), &Z_Registration_Info_UClass_AWeapon, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AWeapon), 1725638981U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Weapon_h_2614002260(TEXT("/Script/BanSungOnl"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Weapon_h_2532235375(TEXT("/Script/BanSungOnl"),
 	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Weapon_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Weapon_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

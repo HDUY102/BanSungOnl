@@ -15,6 +15,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define BANSUNGONL_Weapon_generated_h
 
 #define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Weapon_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execResetAmmo); \
 	DECLARE_FUNCTION(execReloadSound); \
 	DECLARE_FUNCTION(execShootSound);
 

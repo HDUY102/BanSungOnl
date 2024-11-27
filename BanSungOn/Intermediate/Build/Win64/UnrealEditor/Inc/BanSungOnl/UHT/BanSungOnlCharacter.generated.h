@@ -27,18 +27,24 @@ BANSUNGONL_API void FShowLoseGame_DelegateWrapper(const FMulticastScriptDelegate
 
 
 #define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_14_DELEGATE \
+BANSUNGONL_API void FScore_DelegateWrapper(const FMulticastScriptDelegate& Score);
+
+
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_15_DELEGATE \
 BANSUNGONL_API void FShowNameItem_DelegateWrapper(const FMulticastScriptDelegate& ShowNameItem, int32 ItemType);
 
 
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_18_RPC_WRAPPERS_NO_PURE_DECLS \
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_19_RPC_WRAPPERS_NO_PURE_DECLS \
 	virtual void Server_SpawnPistol_Implementation(); \
 	virtual void Server_SpawnRifle_Implementation(); \
 	virtual void Server_EquipRifle_Implementation(); \
 	virtual void Server_EquipPistol_Implementation(); \
+	DECLARE_FUNCTION(execResetPlayer); \
 	DECLARE_FUNCTION(execServer_SpawnPistol); \
 	DECLARE_FUNCTION(execServer_SpawnRifle); \
 	DECLARE_FUNCTION(execServer_EquipRifle); \
 	DECLARE_FUNCTION(execServer_EquipPistol); \
+	DECLARE_FUNCTION(execOnRep_Score); \
 	DECLARE_FUNCTION(execOnRep_IsGameWin); \
 	DECLARE_FUNCTION(execOnRep_IsGameOver); \
 	DECLARE_FUNCTION(execOnRep_IsDead); \
@@ -46,8 +52,8 @@ BANSUNGONL_API void FShowNameItem_DelegateWrapper(const FMulticastScriptDelegate
 	DECLARE_FUNCTION(execOnRep_ChangeHealth);
 
 
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_18_CALLBACK_WRAPPERS
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_18_INCLASS_NO_PURE_DECLS \
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_19_CALLBACK_WRAPPERS
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_19_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesABanSungOnlCharacter(); \
 	friend struct Z_Construct_UClass_ABanSungOnlCharacter_Statics; \
@@ -61,12 +67,13 @@ public: \
 		bIsDead, \
 		bIsGameOver, \
 		bIsGameWin, \
+		Score, \
 		CurWeapon, \
 		NETFIELD_REP_END=CurWeapon	}; \
 	NO_API virtual void ValidateGeneratedRepEnums(const TArray<struct FRepRecord>& ClassReps) const override;
 
 
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_18_ENHANCED_CONSTRUCTORS \
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_19_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	ABanSungOnlCharacter(ABanSungOnlCharacter&&); \
@@ -78,14 +85,14 @@ public: \
 	NO_API virtual ~ABanSungOnlCharacter();
 
 
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_15_PROLOG
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_18_GENERATED_BODY \
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_16_PROLOG
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_19_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_18_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_18_CALLBACK_WRAPPERS \
-	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_18_INCLASS_NO_PURE_DECLS \
-	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_18_ENHANCED_CONSTRUCTORS \
+	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_19_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_19_CALLBACK_WRAPPERS \
+	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_19_INCLASS_NO_PURE_DECLS \
+	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_19_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

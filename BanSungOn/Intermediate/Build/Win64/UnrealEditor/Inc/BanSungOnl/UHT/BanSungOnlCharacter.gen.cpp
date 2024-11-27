@@ -15,6 +15,7 @@ BANSUNGONL_API UClass* Z_Construct_UClass_ABanSungOnlCharacter_NoRegister();
 BANSUNGONL_API UClass* Z_Construct_UClass_APistol_NoRegister();
 BANSUNGONL_API UClass* Z_Construct_UClass_ARifle_NoRegister();
 BANSUNGONL_API UClass* Z_Construct_UClass_AWeapon_NoRegister();
+BANSUNGONL_API UFunction* Z_Construct_UDelegateFunction_BanSungOnl_Score__DelegateSignature();
 BANSUNGONL_API UFunction* Z_Construct_UDelegateFunction_BanSungOnl_ShowHealth__DelegateSignature();
 BANSUNGONL_API UFunction* Z_Construct_UDelegateFunction_BanSungOnl_ShowLoseGame__DelegateSignature();
 BANSUNGONL_API UFunction* Z_Construct_UDelegateFunction_BanSungOnl_ShowNameItem__DelegateSignature();
@@ -119,13 +120,9 @@ void FShowLoseGame_DelegateWrapper(const FMulticastScriptDelegate& ShowLoseGame)
 }
 // End Delegate FShowLoseGame
 
-// Begin Delegate FShowNameItem
-struct Z_Construct_UDelegateFunction_BanSungOnl_ShowNameItem__DelegateSignature_Statics
+// Begin Delegate FScore
+struct Z_Construct_UDelegateFunction_BanSungOnl_Score__DelegateSignature_Statics
 {
-	struct _Script_BanSungOnl_eventShowNameItem_Parms
-	{
-		int32 ItemType;
-	};
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
 #if !UE_BUILD_SHIPPING
@@ -135,6 +132,36 @@ struct Z_Construct_UDelegateFunction_BanSungOnl_ShowNameItem__DelegateSignature_
 #if !UE_BUILD_SHIPPING
 		{ "ToolTip", "show HUD LoseGame" },
 #endif
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_BanSungOnl_Score__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_BanSungOnl, nullptr, "Score__DelegateSignature", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_BanSungOnl_Score__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_BanSungOnl_Score__DelegateSignature_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UDelegateFunction_BanSungOnl_Score__DelegateSignature()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UDelegateFunction_BanSungOnl_Score__DelegateSignature_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+void FScore_DelegateWrapper(const FMulticastScriptDelegate& Score)
+{
+	Score.ProcessMulticastDelegate<UObject>(NULL);
+}
+// End Delegate FScore
+
+// Begin Delegate FShowNameItem
+struct Z_Construct_UDelegateFunction_BanSungOnl_ShowNameItem__DelegateSignature_Statics
+{
+	struct _Script_BanSungOnl_eventShowNameItem_Parms
+	{
+		int32 ItemType;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "BanSungOnlCharacter.h" },
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FIntPropertyParams NewProp_ItemType;
@@ -285,6 +312,35 @@ DEFINE_FUNCTION(ABanSungOnlCharacter::execOnRep_IsGameWin)
 }
 // End Class ABanSungOnlCharacter Function OnRep_IsGameWin
 
+// Begin Class ABanSungOnlCharacter Function OnRep_Score
+struct Z_Construct_UFunction_ABanSungOnlCharacter_OnRep_Score_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "BanSungOnlCharacter.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ABanSungOnlCharacter_OnRep_Score_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ABanSungOnlCharacter, nullptr, "OnRep_Score", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ABanSungOnlCharacter_OnRep_Score_Statics::Function_MetaDataParams), Z_Construct_UFunction_ABanSungOnlCharacter_OnRep_Score_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_ABanSungOnlCharacter_OnRep_Score()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ABanSungOnlCharacter_OnRep_Score_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ABanSungOnlCharacter::execOnRep_Score)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->OnRep_Score();
+	P_NATIVE_END;
+}
+// End Class ABanSungOnlCharacter Function OnRep_Score
+
 // Begin Class ABanSungOnlCharacter Function PlayerTakeDmg
 struct Z_Construct_UFunction_ABanSungOnlCharacter_PlayerTakeDmg_Statics
 {
@@ -326,6 +382,35 @@ DEFINE_FUNCTION(ABanSungOnlCharacter::execPlayerTakeDmg)
 	P_NATIVE_END;
 }
 // End Class ABanSungOnlCharacter Function PlayerTakeDmg
+
+// Begin Class ABanSungOnlCharacter Function ResetPlayer
+struct Z_Construct_UFunction_ABanSungOnlCharacter_ResetPlayer_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "BanSungOnlCharacter.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ABanSungOnlCharacter_ResetPlayer_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ABanSungOnlCharacter, nullptr, "ResetPlayer", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ABanSungOnlCharacter_ResetPlayer_Statics::Function_MetaDataParams), Z_Construct_UFunction_ABanSungOnlCharacter_ResetPlayer_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_ABanSungOnlCharacter_ResetPlayer()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ABanSungOnlCharacter_ResetPlayer_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ABanSungOnlCharacter::execResetPlayer)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->ResetPlayer();
+	P_NATIVE_END;
+}
+// End Class ABanSungOnlCharacter Function ResetPlayer
 
 // Begin Class ABanSungOnlCharacter Function Server_EquipPistol
 static FName NAME_ABanSungOnlCharacter_Server_EquipPistol = FName(TEXT("Server_EquipPistol"));
@@ -472,7 +557,9 @@ void ABanSungOnlCharacter::StaticRegisterNativesABanSungOnlCharacter()
 		{ "OnRep_IsDead", &ABanSungOnlCharacter::execOnRep_IsDead },
 		{ "OnRep_IsGameOver", &ABanSungOnlCharacter::execOnRep_IsGameOver },
 		{ "OnRep_IsGameWin", &ABanSungOnlCharacter::execOnRep_IsGameWin },
+		{ "OnRep_Score", &ABanSungOnlCharacter::execOnRep_Score },
 		{ "PlayerTakeDmg", &ABanSungOnlCharacter::execPlayerTakeDmg },
+		{ "ResetPlayer", &ABanSungOnlCharacter::execResetPlayer },
 		{ "Server_EquipPistol", &ABanSungOnlCharacter::execServer_EquipPistol },
 		{ "Server_EquipRifle", &ABanSungOnlCharacter::execServer_EquipRifle },
 		{ "Server_SpawnPistol", &ABanSungOnlCharacter::execServer_SpawnPistol },
@@ -543,6 +630,10 @@ struct Z_Construct_UClass_ABanSungOnlCharacter_Statics
 		{ "ToolTip", "Win Game" },
 #endif
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Score_MetaData[] = {
+		{ "Category", "Score" },
+		{ "ModuleRelativePath", "BanSungOnlCharacter.h" },
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OriginalController_MetaData[] = {
 #if !UE_BUILD_SHIPPING
 		{ "Comment", "// Save Camera Controller Original\n" },
@@ -594,6 +685,10 @@ struct Z_Construct_UClass_ABanSungOnlCharacter_Statics
 		{ "ToolTip", "Var Show Win Game" },
 #endif
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ShowScore_MetaData[] = {
+		{ "Category", "Show Score" },
+		{ "ModuleRelativePath", "BanSungOnlCharacter.h" },
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_TopDownCameraComponent_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
 		{ "Category", "Camera" },
@@ -640,6 +735,7 @@ struct Z_Construct_UClass_ABanSungOnlCharacter_Statics
 	static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_ShowLoseGame;
 	static void NewProp_bIsGameWin_SetBit(void* Obj);
 	static const UECodeGen_Private::FBoolPropertyParams NewProp_bIsGameWin;
+	static const UECodeGen_Private::FIntPropertyParams NewProp_Score;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_OriginalController;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_CurWeapon;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_Rifle;
@@ -649,6 +745,7 @@ struct Z_Construct_UClass_ABanSungOnlCharacter_Statics
 	static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_ShowHealth;
 	static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_ShowWinGame;
 	static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_ShowNameItem;
+	static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_ShowScore;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_TopDownCameraComponent;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_CameraBoom;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_WidgetComponent;
@@ -659,7 +756,9 @@ struct Z_Construct_UClass_ABanSungOnlCharacter_Statics
 		{ &Z_Construct_UFunction_ABanSungOnlCharacter_OnRep_IsDead, "OnRep_IsDead" }, // 1928504942
 		{ &Z_Construct_UFunction_ABanSungOnlCharacter_OnRep_IsGameOver, "OnRep_IsGameOver" }, // 2087988672
 		{ &Z_Construct_UFunction_ABanSungOnlCharacter_OnRep_IsGameWin, "OnRep_IsGameWin" }, // 2503400899
+		{ &Z_Construct_UFunction_ABanSungOnlCharacter_OnRep_Score, "OnRep_Score" }, // 3810513410
 		{ &Z_Construct_UFunction_ABanSungOnlCharacter_PlayerTakeDmg, "PlayerTakeDmg" }, // 2431230330
+		{ &Z_Construct_UFunction_ABanSungOnlCharacter_ResetPlayer, "ResetPlayer" }, // 2193391467
 		{ &Z_Construct_UFunction_ABanSungOnlCharacter_Server_EquipPistol, "Server_EquipPistol" }, // 1687733419
 		{ &Z_Construct_UFunction_ABanSungOnlCharacter_Server_EquipRifle, "Server_EquipRifle" }, // 456743258
 		{ &Z_Construct_UFunction_ABanSungOnlCharacter_Server_SpawnPistol, "Server_SpawnPistol" }, // 1523122481
@@ -689,6 +788,7 @@ void Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_bIsGameWin_SetBit(
 	((ABanSungOnlCharacter*)Obj)->bIsGameWin = 1;
 }
 const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_bIsGameWin = { "bIsGameWin", "OnRep_IsGameWin", (EPropertyFlags)0x0010000100020025, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(ABanSungOnlCharacter), &Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_bIsGameWin_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_bIsGameWin_MetaData), NewProp_bIsGameWin_MetaData) };
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_Score = { "Score", "OnRep_Score", (EPropertyFlags)0x0010000100000025, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, Score), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Score_MetaData), NewProp_Score_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_OriginalController = { "OriginalController", nullptr, (EPropertyFlags)0x0010000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, OriginalController), Z_Construct_UClass_APlayerController_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OriginalController_MetaData), NewProp_OriginalController_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_CurWeapon = { "CurWeapon", nullptr, (EPropertyFlags)0x0010000000000035, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, CurWeapon), Z_Construct_UClass_AWeapon_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CurWeapon_MetaData), NewProp_CurWeapon_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_Rifle = { "Rifle", nullptr, (EPropertyFlags)0x0010000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, Rifle), Z_Construct_UClass_ARifle_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Rifle_MetaData), NewProp_Rifle_MetaData) };
@@ -697,7 +797,8 @@ const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ABanSungOnlChar
 const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_PistolToSpawn = { "PistolToSpawn", nullptr, (EPropertyFlags)0x0014000000000001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, PistolToSpawn), Z_Construct_UClass_UClass, Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_PistolToSpawn_MetaData), NewProp_PistolToSpawn_MetaData) };
 const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_ShowHealth = { "ShowHealth", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, ShowHealth), Z_Construct_UDelegateFunction_BanSungOnl_ShowHealth__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ShowHealth_MetaData), NewProp_ShowHealth_MetaData) }; // 2563558558
 const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_ShowWinGame = { "ShowWinGame", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, ShowWinGame), Z_Construct_UDelegateFunction_BanSungOnl_ShowWinGame__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ShowWinGame_MetaData), NewProp_ShowWinGame_MetaData) }; // 370598886
-const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_ShowNameItem = { "ShowNameItem", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, ShowNameItem), Z_Construct_UDelegateFunction_BanSungOnl_ShowNameItem__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ShowNameItem_MetaData), NewProp_ShowNameItem_MetaData) }; // 8527833
+const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_ShowNameItem = { "ShowNameItem", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, ShowNameItem), Z_Construct_UDelegateFunction_BanSungOnl_ShowNameItem__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ShowNameItem_MetaData), NewProp_ShowNameItem_MetaData) }; // 1664120216
+const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_ShowScore = { "ShowScore", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, ShowScore), Z_Construct_UDelegateFunction_BanSungOnl_Score__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ShowScore_MetaData), NewProp_ShowScore_MetaData) }; // 1293031371
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_TopDownCameraComponent = { "TopDownCameraComponent", nullptr, (EPropertyFlags)0x00400000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, TopDownCameraComponent), Z_Construct_UClass_UCameraComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TopDownCameraComponent_MetaData), NewProp_TopDownCameraComponent_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_CameraBoom = { "CameraBoom", nullptr, (EPropertyFlags)0x00400000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, CameraBoom), Z_Construct_UClass_USpringArmComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CameraBoom_MetaData), NewProp_CameraBoom_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_WidgetComponent = { "WidgetComponent", nullptr, (EPropertyFlags)0x00400000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABanSungOnlCharacter, WidgetComponent), Z_Construct_UClass_UWidgetComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_WidgetComponent_MetaData), NewProp_WidgetComponent_MetaData) };
@@ -708,6 +809,7 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ABanSungO
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_bIsGameOver,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_ShowLoseGame,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_bIsGameWin,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_Score,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_OriginalController,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_CurWeapon,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_Rifle,
@@ -717,6 +819,7 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ABanSungO
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_ShowHealth,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_ShowWinGame,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_ShowNameItem,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_ShowScore,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_TopDownCameraComponent,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_CameraBoom,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABanSungOnlCharacter_Statics::NewProp_WidgetComponent,
@@ -760,12 +863,14 @@ void ABanSungOnlCharacter::ValidateGeneratedRepEnums(const TArray<struct FRepRec
 	static const FName Name_bIsDead(TEXT("bIsDead"));
 	static const FName Name_bIsGameOver(TEXT("bIsGameOver"));
 	static const FName Name_bIsGameWin(TEXT("bIsGameWin"));
+	static const FName Name_Score(TEXT("Score"));
 	static const FName Name_CurWeapon(TEXT("CurWeapon"));
 	const bool bIsValid = true
 		&& Name_Health == ClassReps[(int32)ENetFields_Private::Health].Property->GetFName()
 		&& Name_bIsDead == ClassReps[(int32)ENetFields_Private::bIsDead].Property->GetFName()
 		&& Name_bIsGameOver == ClassReps[(int32)ENetFields_Private::bIsGameOver].Property->GetFName()
 		&& Name_bIsGameWin == ClassReps[(int32)ENetFields_Private::bIsGameWin].Property->GetFName()
+		&& Name_Score == ClassReps[(int32)ENetFields_Private::Score].Property->GetFName()
 		&& Name_CurWeapon == ClassReps[(int32)ENetFields_Private::CurWeapon].Property->GetFName();
 	checkf(bIsValid, TEXT("UHT Generated Rep Indices do not match runtime populated Rep Indices for properties in ABanSungOnlCharacter"));
 }
@@ -777,10 +882,10 @@ ABanSungOnlCharacter::~ABanSungOnlCharacter() {}
 struct Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ABanSungOnlCharacter, ABanSungOnlCharacter::StaticClass, TEXT("ABanSungOnlCharacter"), &Z_Registration_Info_UClass_ABanSungOnlCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABanSungOnlCharacter), 2337777367U) },
+		{ Z_Construct_UClass_ABanSungOnlCharacter, ABanSungOnlCharacter::StaticClass, TEXT("ABanSungOnlCharacter"), &Z_Registration_Info_UClass_ABanSungOnlCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABanSungOnlCharacter), 3029482212U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_2571120660(TEXT("/Script/BanSungOnl"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_2231247558(TEXT("/Script/BanSungOnl"),
 	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlCharacter_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

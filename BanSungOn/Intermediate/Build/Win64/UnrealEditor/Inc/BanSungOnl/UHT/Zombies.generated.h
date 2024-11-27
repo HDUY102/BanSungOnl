@@ -10,6 +10,7 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 class AActor;
+class ABanSungOnlCharacter;
 class UPrimitiveComponent;
 struct FHitResult;
 #ifdef BANSUNGONL_Zombies_generated_h

@@ -11,6 +11,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeZombies() {}
 
 // Begin Cross Module References
+BANSUNGONL_API UClass* Z_Construct_UClass_ABanSungOnlCharacter_NoRegister();
 BANSUNGONL_API UClass* Z_Construct_UClass_AItemAmmoPis_NoRegister();
 BANSUNGONL_API UClass* Z_Construct_UClass_AItemAmmoRif_NoRegister();
 BANSUNGONL_API UClass* Z_Construct_UClass_AItemHealth_NoRegister();
@@ -317,6 +318,7 @@ struct Z_Construct_UFunction_AZombies_TakeDmg_Statics
 	struct Zombies_eventTakeDmg_Parms
 	{
 		float Dmg;
+		ABanSungOnlCharacter* Shooter;
 	};
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
@@ -324,12 +326,15 @@ struct Z_Construct_UFunction_AZombies_TakeDmg_Statics
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_Dmg;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_Shooter;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_AZombies_TakeDmg_Statics::NewProp_Dmg = { "Dmg", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Zombies_eventTakeDmg_Parms, Dmg), METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AZombies_TakeDmg_Statics::NewProp_Shooter = { "Shooter", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Zombies_eventTakeDmg_Parms, Shooter), Z_Construct_UClass_ABanSungOnlCharacter_NoRegister, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AZombies_TakeDmg_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AZombies_TakeDmg_Statics::NewProp_Dmg,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AZombies_TakeDmg_Statics::NewProp_Shooter,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AZombies_TakeDmg_Statics::PropPointers) < 2048);
 const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AZombies_TakeDmg_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AZombies, nullptr, "TakeDmg", nullptr, nullptr, Z_Construct_UFunction_AZombies_TakeDmg_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AZombies_TakeDmg_Statics::PropPointers), sizeof(Z_Construct_UFunction_AZombies_TakeDmg_Statics::Zombies_eventTakeDmg_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AZombies_TakeDmg_Statics::Function_MetaDataParams), Z_Construct_UFunction_AZombies_TakeDmg_Statics::Function_MetaDataParams) };
@@ -346,9 +351,10 @@ UFunction* Z_Construct_UFunction_AZombies_TakeDmg()
 DEFINE_FUNCTION(AZombies::execTakeDmg)
 {
 	P_GET_PROPERTY(FFloatProperty,Z_Param_Dmg);
+	P_GET_OBJECT(ABanSungOnlCharacter,Z_Param_Shooter);
 	P_FINISH;
 	P_NATIVE_BEGIN;
-	P_THIS->TakeDmg(Z_Param_Dmg);
+	P_THIS->TakeDmg(Z_Param_Dmg,Z_Param_Shooter);
 	P_NATIVE_END;
 }
 // End Class AZombies Function TakeDmg
@@ -447,7 +453,7 @@ struct Z_Construct_UClass_AZombies_Statics
 		{ &Z_Construct_UFunction_AZombies_OnOverlap, "OnOverlap" }, // 2672535909
 		{ &Z_Construct_UFunction_AZombies_RandomItems, "RandomItems" }, // 1344175222
 		{ &Z_Construct_UFunction_AZombies_Server_AtkCharacter, "Server_AtkCharacter" }, // 2253604985
-		{ &Z_Construct_UFunction_AZombies_TakeDmg, "TakeDmg" }, // 1335226916
+		{ &Z_Construct_UFunction_AZombies_TakeDmg, "TakeDmg" }, // 4069674465
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -538,10 +544,10 @@ struct Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_B
 		{ EnumItems_StaticEnum, TEXT("EnumItems"), &Z_Registration_Info_UEnum_EnumItems, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 1198418091U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AZombies, AZombies::StaticClass, TEXT("AZombies"), &Z_Registration_Info_UClass_AZombies, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AZombies), 893063512U) },
+		{ Z_Construct_UClass_AZombies, AZombies::StaticClass, TEXT("AZombies"), &Z_Registration_Info_UClass_AZombies, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AZombies), 3572138735U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_341544095(TEXT("/Script/BanSungOnl"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_941194495(TEXT("/Script/BanSungOnl"),
 	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_Statics::ClassInfo),
 	nullptr, 0,
 	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_Statics::EnumInfo));
