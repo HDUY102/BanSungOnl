@@ -17,7 +17,7 @@ void AZombiesBoss::BeginPlay()
 	Super::BeginPlay();
 	HealthZomb = 250.f;
 	MaxHealthZomb = 250.f;
-	DamageZomb = 5.f;
+	DamageZomb = 10.f;
 }
 
 // Called every frame

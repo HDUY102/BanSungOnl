@@ -15,8 +15,8 @@ AZombiesNor::AZombiesNor()
 void AZombiesNor::BeginPlay()
 {
 	Super::BeginPlay();
-	HealthZomb = 250.f;
-	MaxHealthZomb = 250.f;
+	HealthZomb = 200.f;
+	MaxHealthZomb = 200.f;
 	DamageZomb = 5.f;
 }
 
