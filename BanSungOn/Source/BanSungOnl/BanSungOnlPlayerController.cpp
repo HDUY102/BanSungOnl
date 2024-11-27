@@ -226,6 +226,7 @@ void ABanSungOnlPlayerController::GetLifetimeReplicatedProps(TArray<class FLifet
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 	DOREPLIFETIME(ABanSungOnlPlayerController, PlayAgain);
+	DOREPLIFETIME(ABanSungOnlPlayerController, WinPlayAgain);
 }
 
 void ABanSungOnlPlayerController::ServerPlayAgain_Implementation()
