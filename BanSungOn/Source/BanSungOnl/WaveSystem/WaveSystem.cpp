@@ -20,13 +20,9 @@ void AWaveSystem::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// SpawnLocations.Add(FVector(-5700.547414, 4292.01781, 7318.399024)); // Location for wave 1
-	// SpawnLocations.Add(FVector(-3773.596643, 187.071928, 8071.220918)); // Location for wave 2
-	// SpawnLocations.Add(FVector(796.403357, 267.071928, 8301.220918)); // Location for wave 3
-
-	SpawnLocations.Add(FVector(1120.0, 1330.0, 90.0)); // Location for wave 1
-	SpawnLocations.Add(FVector(1120.0, 1330.0, 90.0)); // Location for wave 2
-	SpawnLocations.Add(FVector(1120.0, 1330.0, 90.0)); // Location for wave 3
+	SpawnLocations.Add(FVector(-5700.547414, 4292.01781, 7318.399024)); // Location for wave 1
+	SpawnLocations.Add(FVector(-3773.596643, 187.071928, 8071.220918)); // Location for wave 2
+	SpawnLocations.Add(FVector(796.403357, 267.071928, 8301.220918)); // Location for wave 3
 	
 	SetupWave();
 }
