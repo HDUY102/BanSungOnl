@@ -39,6 +39,7 @@ BANSUNGONL_API void FShowNameItem_DelegateWrapper(const FMulticastScriptDelegate
 	DECLARE_FUNCTION(execServer_SpawnRifle); \
 	DECLARE_FUNCTION(execServer_EquipRifle); \
 	DECLARE_FUNCTION(execServer_EquipPistol); \
+	DECLARE_FUNCTION(execOnRep_IsGameWin); \
 	DECLARE_FUNCTION(execOnRep_IsGameOver); \
 	DECLARE_FUNCTION(execOnRep_IsDead); \
 	DECLARE_FUNCTION(execPlayerTakeDmg); \
@@ -59,6 +60,7 @@ public: \
 		Health=NETFIELD_REP_START, \
 		bIsDead, \
 		bIsGameOver, \
+		bIsGameWin, \
 		CurWeapon, \
 		NETFIELD_REP_END=CurWeapon	}; \
 	NO_API virtual void ValidateGeneratedRepEnums(const TArray<struct FRepRecord>& ClassReps) const override;

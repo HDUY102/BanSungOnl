@@ -133,6 +133,35 @@ DEFINE_FUNCTION(ABanSungOnlGameMode::execGameOver)
 }
 // End Class ABanSungOnlGameMode Function GameOver
 
+// Begin Class ABanSungOnlGameMode Function GameWin
+struct Z_Construct_UFunction_ABanSungOnlGameMode_GameWin_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "BanSungOnlGameMode.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ABanSungOnlGameMode_GameWin_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ABanSungOnlGameMode, nullptr, "GameWin", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ABanSungOnlGameMode_GameWin_Statics::Function_MetaDataParams), Z_Construct_UFunction_ABanSungOnlGameMode_GameWin_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_ABanSungOnlGameMode_GameWin()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ABanSungOnlGameMode_GameWin_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ABanSungOnlGameMode::execGameWin)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->GameWin();
+	P_NATIVE_END;
+}
+// End Class ABanSungOnlGameMode Function GameWin
+
 // Begin Class ABanSungOnlGameMode Function GetAlivePlayers
 struct Z_Construct_UFunction_ABanSungOnlGameMode_GetAlivePlayers_Statics
 {
@@ -215,6 +244,7 @@ void ABanSungOnlGameMode::StaticRegisterNativesABanSungOnlGameMode()
 		{ "AddPlayer", &ABanSungOnlGameMode::execAddPlayer },
 		{ "DelPlayer", &ABanSungOnlGameMode::execDelPlayer },
 		{ "GameOver", &ABanSungOnlGameMode::execGameOver },
+		{ "GameWin", &ABanSungOnlGameMode::execGameWin },
 		{ "GetAlivePlayers", &ABanSungOnlGameMode::execGetAlivePlayers },
 		{ "PlayAgain", &ABanSungOnlGameMode::execPlayAgain },
 	};
@@ -253,6 +283,7 @@ struct Z_Construct_UClass_ABanSungOnlGameMode_Statics
 		{ &Z_Construct_UFunction_ABanSungOnlGameMode_AddPlayer, "AddPlayer" }, // 1140685977
 		{ &Z_Construct_UFunction_ABanSungOnlGameMode_DelPlayer, "DelPlayer" }, // 409800230
 		{ &Z_Construct_UFunction_ABanSungOnlGameMode_GameOver, "GameOver" }, // 2171201370
+		{ &Z_Construct_UFunction_ABanSungOnlGameMode_GameWin, "GameWin" }, // 3288798807
 		{ &Z_Construct_UFunction_ABanSungOnlGameMode_GetAlivePlayers, "GetAlivePlayers" }, // 4124155433
 		{ &Z_Construct_UFunction_ABanSungOnlGameMode_PlayAgain, "PlayAgain" }, // 2191800421
 	};
@@ -313,10 +344,10 @@ ABanSungOnlGameMode::~ABanSungOnlGameMode() {}
 struct Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlGameMode_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ABanSungOnlGameMode, ABanSungOnlGameMode::StaticClass, TEXT("ABanSungOnlGameMode"), &Z_Registration_Info_UClass_ABanSungOnlGameMode, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABanSungOnlGameMode), 1373838176U) },
+		{ Z_Construct_UClass_ABanSungOnlGameMode, ABanSungOnlGameMode::StaticClass, TEXT("ABanSungOnlGameMode"), &Z_Registration_Info_UClass_ABanSungOnlGameMode, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABanSungOnlGameMode), 3736279621U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlGameMode_h_1424687854(TEXT("/Script/BanSungOnl"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlGameMode_h_999314270(TEXT("/Script/BanSungOnl"),
 	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlGameMode_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlGameMode_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

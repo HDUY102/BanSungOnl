@@ -8,6 +8,7 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeBanSungOnl_init() {}
 	BANSUNGONL_API UFunction* Z_Construct_UDelegateFunction_BanSungOnl_RemoveUI__DelegateSignature();
+	BANSUNGONL_API UFunction* Z_Construct_UDelegateFunction_BanSungOnl_RemoveWinUI__DelegateSignature();
 	BANSUNGONL_API UFunction* Z_Construct_UDelegateFunction_BanSungOnl_ShowHealth__DelegateSignature();
 	BANSUNGONL_API UFunction* Z_Construct_UDelegateFunction_BanSungOnl_ShowLoseGame__DelegateSignature();
 	BANSUNGONL_API UFunction* Z_Construct_UDelegateFunction_BanSungOnl_ShowNameItem__DelegateSignature();
@@ -19,6 +20,7 @@ void EmptyLinkFunctionForGeneratedCodeBanSungOnl_init() {}
 		{
 			static UObject* (*const SingletonFuncArray[])() = {
 				(UObject* (*)())Z_Construct_UDelegateFunction_BanSungOnl_RemoveUI__DelegateSignature,
+				(UObject* (*)())Z_Construct_UDelegateFunction_BanSungOnl_RemoveWinUI__DelegateSignature,
 				(UObject* (*)())Z_Construct_UDelegateFunction_BanSungOnl_ShowHealth__DelegateSignature,
 				(UObject* (*)())Z_Construct_UDelegateFunction_BanSungOnl_ShowLoseGame__DelegateSignature,
 				(UObject* (*)())Z_Construct_UDelegateFunction_BanSungOnl_ShowNameItem__DelegateSignature,
@@ -29,13 +31,13 @@ void EmptyLinkFunctionForGeneratedCodeBanSungOnl_init() {}
 				SingletonFuncArray,
 				UE_ARRAY_COUNT(SingletonFuncArray),
 				PKG_CompiledIn | 0x00000000,
-				0x6BBBA49C,
-				0x36893965,
+				0x7DDCB870,
+				0xB0E65820,
 				METADATA_PARAMS(0, nullptr)
 			};
 			UECodeGen_Private::ConstructUPackage(Z_Registration_Info_UPackage__Script_BanSungOnl.OuterSingleton, PackageParams);
 		}
 		return Z_Registration_Info_UPackage__Script_BanSungOnl.OuterSingleton;
 	}
-	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_BanSungOnl(Z_Construct_UPackage__Script_BanSungOnl, TEXT("/Script/BanSungOnl"), Z_Registration_Info_UPackage__Script_BanSungOnl, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x6BBBA49C, 0x36893965));
+	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_BanSungOnl(Z_Construct_UPackage__Script_BanSungOnl, TEXT("/Script/BanSungOnl"), Z_Registration_Info_UPackage__Script_BanSungOnl, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x7DDCB870, 0xB0E65820));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

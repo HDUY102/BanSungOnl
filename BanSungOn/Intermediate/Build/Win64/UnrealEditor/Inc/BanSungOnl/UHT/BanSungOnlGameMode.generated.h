@@ -19,6 +19,7 @@ class ABanSungOnlCharacter;
 	DECLARE_FUNCTION(execGetAlivePlayers); \
 	DECLARE_FUNCTION(execDelPlayer); \
 	DECLARE_FUNCTION(execAddPlayer); \
+	DECLARE_FUNCTION(execGameWin); \
 	DECLARE_FUNCTION(execGameOver); \
 	DECLARE_FUNCTION(execPlayAgain);
 

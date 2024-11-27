@@ -254,6 +254,7 @@
     <ClCompile Include="..\..\Source\BanSungOnl\Items\ItemHealth.cpp" />
     <ClCompile Include="..\..\Source\BanSungOnl\Items\Items.cpp" />
     <ClCompile Include="..\..\Source\BanSungOnl\Projectitle\Bullet.cpp" />
+    <ClCompile Include="..\..\Source\BanSungOnl\WaveSystem\WaveSystem.cpp" />
     <ClCompile Include="..\..\Source\BanSungOnl\Weapon\Pistol.cpp" />
     <ClCompile Include="..\..\Source\BanSungOnl\Weapon\Rifle.cpp" />
     <ClCompile Include="..\..\Source\BanSungOnl\Weapon\Weapon.cpp" />
@@ -265,6 +266,7 @@
     <ClInclude Include="..\..\Source\BanSungOnl\Items\ItemHealth.h" />
     <ClInclude Include="..\..\Source\BanSungOnl\Items\Items.h" />
     <ClInclude Include="..\..\Source\BanSungOnl\Projectitle\Bullet.h" />
+    <ClInclude Include="..\..\Source\BanSungOnl\WaveSystem\WaveSystem.h" />
     <ClInclude Include="..\..\Source\BanSungOnl\Weapon\Pistol.h" />
     <ClInclude Include="..\..\Source\BanSungOnl\Weapon\Rifle.h" />
     <ClInclude Include="..\..\Source\BanSungOnl\Weapon\Weapon.h" />
