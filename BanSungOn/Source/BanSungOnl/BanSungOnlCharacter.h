@@ -11,6 +11,7 @@
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FShowHealth); // show HUD attacked
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FShowWinGame); // show HUD WinGame
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FShowLoseGame); // show HUD LoseGame
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FScore);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FShowNameItem, int32, ItemType); // show name item
 UCLASS(Blueprintable)
 class ABanSungOnlCharacter : public ACharacter
@@ -58,6 +59,11 @@ public:
 	UFUNCTION()
 	void OnRep_IsGameWin();
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Score", ReplicatedUsing = OnRep_Score)
+	int32 Score;
+	UFUNCTION()
+	void OnRep_Score();
+
 	// Save Camera Controller Original
 	UPROPERTY()
 	APlayerController* OriginalController;
@@ -76,6 +82,8 @@ public:
 	UFUNCTION(Server, Unreliable)
 	void Server_EquipRifle();
 	void EquipRifle();
+
+	FVector StartLocation;
 	
 	UPROPERTY(EditAnywhere, Category="input")
 	TSubclassOf<AActor> RifleToSpawn;
@@ -85,13 +93,18 @@ public:
 	void Server_SpawnRifle();
 	UFUNCTION(Server,Unreliable)
 	void Server_SpawnPistol();
+
+	UFUNCTION()
+	void ResetPlayer();
 	
 	UPROPERTY(BlueprintAssignable, Category = "Show HUD Attacked")
 	FShowHealth ShowHealth; // Var show HUD attacked
 	UPROPERTY(BlueprintAssignable, Category = "Show Win Game")
 	FShowWinGame ShowWinGame; // Var Show Win Game
 	UPROPERTY(BlueprintAssignable, Category = "Show Name Item")
-	FShowNameItem ShowNameItem;	// Var Show Name Item
+	FShowNameItem ShowNameItem;
+	UPROPERTY(BlueprintAssignable, Category = "Show Score")
+	FScore ShowScore;	// Var Show Score
 
 private:
 	/** Top down camera */

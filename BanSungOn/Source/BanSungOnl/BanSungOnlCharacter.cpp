@@ -81,6 +81,8 @@ void ABanSungOnlCharacter::BeginPlay()
 	{
 		PlayerGameMode->AddPlayer(this);
 	}
+
+	StartLocation = GetActorLocation();
 }
 
 void ABanSungOnlCharacter::OnRep_ChangeHealth()
@@ -159,6 +161,11 @@ void ABanSungOnlCharacter::OnRep_IsGameWin()
 	}
 }
 
+void ABanSungOnlCharacter::OnRep_Score()
+{
+	ShowScore.Broadcast();
+}
+
 void ABanSungOnlCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
@@ -168,6 +175,7 @@ void ABanSungOnlCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>&
 	DOREPLIFETIME(ABanSungOnlCharacter, bIsDead);
 	DOREPLIFETIME(ABanSungOnlCharacter, bIsGameOver);
 	DOREPLIFETIME(ABanSungOnlCharacter, bIsGameWin);
+	DOREPLIFETIME(ABanSungOnlCharacter, Score);
 }
 
 void ABanSungOnlCharacter::EquipPistol()
@@ -180,15 +188,27 @@ void ABanSungOnlCharacter::EquipRifle()
 	Server_EquipRifle();
 }
 
+void ABanSungOnlCharacter::ResetPlayer()
+{
+	Health = MaxHealth;
+	Pistol->ResetAmmo();
+	Rifle->ResetAmmo();
+	EquipRifle();
+}
+
 void ABanSungOnlCharacter::Server_SpawnPistol_Implementation()
 {
-	Pistol = GetWorld()->SpawnActor<APistol>(PistolToSpawn, GetActorLocation(),FRotator::ZeroRotator);
+	FActorSpawnParameters spawnParams;
+	spawnParams.Owner = this;
+	Pistol = GetWorld()->SpawnActor<APistol>(PistolToSpawn, GetActorLocation(),FRotator::ZeroRotator,spawnParams);
 	Pistol->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale, TEXT("PistolSocket"));
 }
 
 void ABanSungOnlCharacter::Server_SpawnRifle_Implementation()
 {
-	Rifle = GetWorld()->SpawnActor<ARifle>(RifleToSpawn, GetActorLocation(),FRotator::ZeroRotator);
+	FActorSpawnParameters spawnParams;
+	spawnParams.Owner = this;
+	Rifle = GetWorld()->SpawnActor<ARifle>(RifleToSpawn, GetActorLocation(),FRotator::ZeroRotator,spawnParams);
 	Rifle->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale, TEXT("RifleSocket"));
 }
 
