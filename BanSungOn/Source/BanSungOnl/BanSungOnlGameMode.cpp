@@ -56,27 +56,22 @@ void ABanSungOnlGameMode::PlayAgain()
 				if(PCCharacter->bIsGameWin)
 				{
 					OnlPlayerController->WinPlayAgain++;
+					PCCharacter->bIsGameWin = false;
 				}
 				if(PCCharacter->bIsGameOver)
 				{
 					OnlPlayerController->PlayAgain++;
+					PCCharacter->bIsGameOver = false;
 				}
-				
-				PlayerList.Add(PCCharacter);
-				PCCharacter->ResetPlayer();
-					
-				if(PCCharacter->bIsGameOver)
+				if(PCCharacter->bIsDead)
 				{
 					PCCharacter->bIsDead = false;
-					PCCharacter->bIsGameOver = false;
 					PCCharacter->OriginalController->SetViewTargetWithBlend(PCCharacter, 0.5f, EViewTargetBlendFunction::VTBlend_Linear);
-					PCCharacter->GetMesh()->SetVisibility(true, false);
-					PCCharacter->GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+                    PCCharacter->GetMesh()->SetVisibility(true, false);
+                    PCCharacter->GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 				}
-				if(PCCharacter->bIsGameWin)
-				{
-					PCCharacter->bIsGameWin = false;
-				}
+				PlayerList.Add(PCCharacter);
+				PCCharacter->ResetPlayer();
 				PCCharacter->SetActorLocation(PCCharacter->StartLocation);
 			}
 		}

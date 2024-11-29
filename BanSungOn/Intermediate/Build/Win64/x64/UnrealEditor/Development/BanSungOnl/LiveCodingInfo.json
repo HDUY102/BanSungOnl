@@ -2,6 +2,8 @@
 	"RemapUnityFiles": 
 	{
 		"Module.BanSungOnl.cpp.obj": [
+			"BanSungOnl.init.gen.cpp.obj",
+			"BanSungOnlCharacter.gen.cpp.obj",
 			"BanSungOnlGameMode.gen.cpp.obj",
 			"BanSungOnlPlayerController.gen.cpp.obj",
 			"Bullet.gen.cpp.obj",
@@ -9,31 +11,29 @@
 			"ItemAmmoRif.gen.cpp.obj",
 			"ItemHealth.gen.cpp.obj",
 			"Items.gen.cpp.obj",
-			"WaveSystem.gen.cpp.obj",
-			"BanSungOnl.cpp.obj",
-			"ItemAmmoPis.cpp.obj",
-			"ItemAmmoRif.cpp.obj",
-			"ItemHealth.cpp.obj",
-			"Items.cpp.obj",
-			"Pistol.cpp.obj",
-			"Rifle.cpp.obj",
-			"BanSungOnl.init.gen.cpp.obj",
-			"BanSungOnlCharacter.gen.cpp.obj",
 			"Pistol.gen.cpp.obj",
 			"Rifle.gen.cpp.obj",
+			"WaveSystem.gen.cpp.obj",
 			"Weapon.gen.cpp.obj",
 			"Zombies.gen.cpp.obj",
 			"ZombiesBoss.gen.cpp.obj",
 			"ZombiesNor.gen.cpp.obj",
-			"BanSungOnlCharacter.cpp.obj",
-			"BanSungOnlGameMode.cpp.obj",
+			"BanSungOnl.cpp.obj",
 			"BanSungOnlPlayerController.cpp.obj",
+			"ItemAmmoPis.cpp.obj",
+			"ItemAmmoRif.cpp.obj",
+			"ItemHealth.cpp.obj",
 			"Bullet.cpp.obj",
 			"WaveSystem.cpp.obj",
+			"Pistol.cpp.obj",
+			"Rifle.cpp.obj",
 			"Weapon.cpp.obj",
 			"Zombies.cpp.obj",
 			"ZombiesBoss.cpp.obj",
-			"ZombiesNor.cpp.obj"
+			"ZombiesNor.cpp.obj",
+			"BanSungOnlCharacter.cpp.obj",
+			"BanSungOnlGameMode.cpp.obj",
+			"Items.cpp.obj"
 		]
 	}
 }

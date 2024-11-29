@@ -35,25 +35,34 @@ void AItems::BeginPlay()
 void AItems::OnOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
 	int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(OtherActor);
-	if (PlayerCharacter)
+	if(HasAuthority())
 	{
-		if(Type == 0) // Item type for Health Ammo
-			PlayerCharacter->Health = FMath::Min(PlayerCharacter->Health + HealthItems, PlayerCharacter->MaxHealth);
-		else if(Type == 1) // Item type for Rifle Ammo
+		ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(OtherActor);
+		if (PlayerCharacter)
 		{
-			if(PlayerCharacter->Rifle)
-				PlayerCharacter->Rifle->Ammo = FMath::Min(PlayerCharacter->Rifle->Ammo + AmmoItem, PlayerCharacter->Rifle->MaxAmmo);
-		}else if(Type == 2) // Item type for Pistol Ammo
-		{
-			if(PlayerCharacter->Pistol)
-				PlayerCharacter->Pistol->Ammo = FMath::Min(PlayerCharacter->Pistol->Ammo + AmmoItem, PlayerCharacter->Pistol->MaxAmmo);
+			if(Type == 0) // Item type for Health Ammo
+			{
+				UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("Health: %f"), PlayerCharacter->Health));
+				UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("Items pick: %f"), HealthItems));
+				UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("After pick: %f"), PlayerCharacter->Health+HealthItems));
+				PlayerCharacter->Health = FMath::Min(PlayerCharacter->Health + HealthItems, PlayerCharacter->MaxHealth);
+				UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("Health: %f"), PlayerCharacter->Health));
+			}
+			else if(Type == 1) // Item type for Rifle Ammo
+			{
+				if(PlayerCharacter->Rifle)
+					PlayerCharacter->Rifle->Ammo = FMath::Min(PlayerCharacter->Rifle->Ammo + AmmoItem, PlayerCharacter->Rifle->MaxAmmo);
+			}else if(Type == 2) // Item type for Pistol Ammo
+			{
+				if(PlayerCharacter->Pistol)
+					PlayerCharacter->Pistol->Ammo = FMath::Min(PlayerCharacter->Pistol->Ammo + AmmoItem, PlayerCharacter->Pistol->MaxAmmo);
+			}
+			if (PlayerCharacter->IsLocallyControlled())
+			{
+				NotifyItemsPickup(PlayerCharacter, static_cast<int32>(Type));
+			}
+			Destroy();
 		}
-		if (PlayerCharacter->IsLocallyControlled())
-		{
-			NotifyItemsPickup(PlayerCharacter, static_cast<int32>(Type));
-		}
-		Destroy();
 	}
 }
 

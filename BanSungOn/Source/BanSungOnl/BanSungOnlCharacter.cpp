@@ -158,6 +158,11 @@ void ABanSungOnlCharacter::OnRep_IsGameWin()
 	if(bIsGameWin)
 	{
 		ShowWinGame.Broadcast();
+		APlayerController* PlayerController = Cast<APlayerController>(GetController());
+		if (PlayerController && PlayerController->IsLocalController())
+		{
+			PlayerController->EnableInput(PlayerController);
+		}
 	}
 }
 
@@ -191,6 +196,7 @@ void ABanSungOnlCharacter::EquipRifle()
 void ABanSungOnlCharacter::ResetPlayer()
 {
 	Health = MaxHealth;
+	Score = 0;
 	Pistol->ResetAmmo();
 	Rifle->ResetAmmo();
 	EquipRifle();

@@ -144,7 +144,7 @@ void AZombies::Server_AtkCharacter_Implementation()
 		static_cast<ETraceTypeQuery>(ECollisionChannel::ECC_Pawn), 
 		false,
 		IgnoreActors,
-		EDrawDebugTrace::ForDuration,
+		EDrawDebugTrace::None,
 		HitResult,
 		true);
 	if (bHit)
