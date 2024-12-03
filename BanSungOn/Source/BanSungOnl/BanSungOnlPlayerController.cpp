@@ -238,36 +238,20 @@ void ABanSungOnlPlayerController::ServerPlayAgain_Implementation()
 	}
 }
 
-void ABanSungOnlPlayerController::Client_PlayFireSound_Implementation()
-{
-	if (IsValid(GetPawn()))
-	{
-		ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(GetPawn());
-		if (IsValid(PlayerCharacter) && IsValid(PlayerCharacter->CurWeapon))
-		{
-			PlayerCharacter->CurWeapon->ShootSound();
-		}
-	}
-}
-
 void ABanSungOnlPlayerController::Server_FireRifle_Implementation(FVector Mouse)
 {
 	if (ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(GetPawn()))
 	{
 		if(PlayerCharacter->CurWeapon->CurAmmo > 0 && !isReloading)
 		{
-			if (PlayerCharacter->CurWeapon == PlayerCharacter->Rifle && !bIsShootRifle)
+			if (PlayerCharacter->CurWeapon == PlayerCharacter->Rifle)
 			{
-				bIsShootRifle = true;
 				PlayerCharacter->CurWeapon->ShootBullet(Mouse);
-				Client_PlayFireSound();
-				GetWorld()->GetTimerManager().SetTimer(FireRifleTime, [this](){bIsShootRifle = false;}, 0.3f, false);
 			}
 			else if(PlayerCharacter->CurWeapon == PlayerCharacter->Pistol && !StepByOne)
 			{
 				StepByOne = true;
 				PlayerCharacter->CurWeapon->ShootBullet(Mouse);
-				Client_PlayFireSound();
 			}
 		}
 	}
@@ -281,15 +265,6 @@ void ABanSungOnlPlayerController::Server_FirePistol_Implementation()
 	}
 }
 
-void ABanSungOnlPlayerController::Client_PlayReloadSound_Implementation()
-{
-	ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(GetPawn());
-	if (IsValid(PlayerCharacter) && IsValid(PlayerCharacter->CurWeapon))
-	{
-		PlayerCharacter->CurWeapon->ReloadSound();
-	}
-}
-
 void ABanSungOnlPlayerController::Server_Reload_Implementation()
 {
 	ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(GetPawn());
@@ -297,7 +272,6 @@ void ABanSungOnlPlayerController::Server_Reload_Implementation()
 	{
 		FTimerHandle ReloadTime;
 		isReloading = true;
-		Client_PlayReloadSound();
 		GetWorld()->GetTimerManager().SetTimer(ReloadTime, FTimerDelegate::CreateUObject(this, &ABanSungOnlPlayerController::Reload, PlayerCharacter), 0.8f, false);
 	}
 }

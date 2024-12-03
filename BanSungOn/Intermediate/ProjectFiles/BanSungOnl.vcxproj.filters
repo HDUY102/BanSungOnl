@@ -11,6 +11,8 @@
     <None Include="..\..\Source\BanSungOnlEditor.Target.cs">
       <Filter>Source</Filter>
     </None>
+    <None Include="..\..\.vsconfig" />
+    <None Include="..\..\BanSungOnl.sln.DotSettings.user" />
     <Filter Include="Config">
       <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
     </Filter>
@@ -58,6 +60,99 @@
     </ClCompile>
     <ClInclude Include="..\..\Source\BanSungOnl\BanSungOnlPlayerController.h">
       <Filter>Source\BanSungOnl</Filter>
+    </ClInclude>
+    <Filter Include="Source\BanSungOnl\Items">
+      <UniqueIdentifier>{D14F83AB-B06D-3D1C-87D3-F7F7520DB91E}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BanSungOnl\Items\ItemAmmoPis.cpp">
+      <Filter>Source\BanSungOnl\Items</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BanSungOnl\Items\ItemAmmoPis.h">
+      <Filter>Source\BanSungOnl\Items</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BanSungOnl\Items\ItemAmmoRif.cpp">
+      <Filter>Source\BanSungOnl\Items</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BanSungOnl\Items\ItemAmmoRif.h">
+      <Filter>Source\BanSungOnl\Items</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BanSungOnl\Items\ItemHealth.cpp">
+      <Filter>Source\BanSungOnl\Items</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BanSungOnl\Items\ItemHealth.h">
+      <Filter>Source\BanSungOnl\Items</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BanSungOnl\Items\Items.cpp">
+      <Filter>Source\BanSungOnl\Items</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BanSungOnl\Items\Items.h">
+      <Filter>Source\BanSungOnl\Items</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BanSungOnl\Items\ItemsNew.cpp">
+      <Filter>Source\BanSungOnl\Items</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BanSungOnl\Items\ItemsNew.h">
+      <Filter>Source\BanSungOnl\Items</Filter>
+    </ClInclude>
+    <Filter Include="Source\BanSungOnl\Projectitle">
+      <UniqueIdentifier>{3FE89D41-F08F-37DD-A814-02AC41601AA1}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BanSungOnl\Projectitle\Bullet.cpp">
+      <Filter>Source\BanSungOnl\Projectitle</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BanSungOnl\Projectitle\Bullet.h">
+      <Filter>Source\BanSungOnl\Projectitle</Filter>
+    </ClInclude>
+    <Filter Include="Source\BanSungOnl\WaveSystem">
+      <UniqueIdentifier>{E4B74066-5569-3F82-A189-93BE5601EEB2}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BanSungOnl\WaveSystem\WaveSystem.cpp">
+      <Filter>Source\BanSungOnl\WaveSystem</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BanSungOnl\WaveSystem\WaveSystem.h">
+      <Filter>Source\BanSungOnl\WaveSystem</Filter>
+    </ClInclude>
+    <Filter Include="Source\BanSungOnl\Weapon">
+      <UniqueIdentifier>{61AE02DD-20E8-3F64-90D2-AEF86E40A0D2}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BanSungOnl\Weapon\Pistol.cpp">
+      <Filter>Source\BanSungOnl\Weapon</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BanSungOnl\Weapon\Pistol.h">
+      <Filter>Source\BanSungOnl\Weapon</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BanSungOnl\Weapon\Rifle.cpp">
+      <Filter>Source\BanSungOnl\Weapon</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BanSungOnl\Weapon\Rifle.h">
+      <Filter>Source\BanSungOnl\Weapon</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BanSungOnl\Weapon\Weapon.cpp">
+      <Filter>Source\BanSungOnl\Weapon</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BanSungOnl\Weapon\Weapon.h">
+      <Filter>Source\BanSungOnl\Weapon</Filter>
+    </ClInclude>
+    <Filter Include="Source\BanSungOnl\Zombie">
+      <UniqueIdentifier>{C08E4B70-899C-36FF-B041-86BBF0355B07}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BanSungOnl\Zombie\Zombies.cpp">
+      <Filter>Source\BanSungOnl\Zombie</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BanSungOnl\Zombie\Zombies.h">
+      <Filter>Source\BanSungOnl\Zombie</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BanSungOnl\Zombie\ZombiesBoss.cpp">
+      <Filter>Source\BanSungOnl\Zombie</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BanSungOnl\Zombie\ZombiesBoss.h">
+      <Filter>Source\BanSungOnl\Zombie</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BanSungOnl\Zombie\ZombiesNor.cpp">
+      <Filter>Source\BanSungOnl\Zombie</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BanSungOnl\Zombie\ZombiesNor.h">
+      <Filter>Source\BanSungOnl\Zombie</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

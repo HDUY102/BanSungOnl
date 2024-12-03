@@ -30,13 +30,13 @@ public:
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Health", ReplicatedUsing = OnRep_ChangeHealth)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Health", ReplicatedUsing=OnRep_ChangeHealth)
 	float Health;
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Health")
 	float MaxHealth;	
 	UFUNCTION()
 	void OnRep_ChangeHealth();
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void PlayerTakeDmg(float Dmg);
 
 	// Dead
@@ -44,6 +44,9 @@ public:
 	bool bIsDead;
 	UFUNCTION()
 	void OnRep_IsDead();
+
+	UPROPERTY(Replicated)
+	bool bPlusHealth = false;
 
 	// Game Over
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, ReplicatedUsing = OnRep_IsGameOver)
@@ -98,7 +101,7 @@ public:
 	void ResetPlayer();
 	
 	UPROPERTY(BlueprintAssignable, Category = "Show HUD Attacked")
-	FShowHealth ShowHealth; // Var show HUD attacked
+	FShowHealth ShowWBIsAtked; // Var show HUD attacked
 	UPROPERTY(BlueprintAssignable, Category = "Show Win Game")
 	FShowWinGame ShowWinGame; // Var Show Win Game
 	UPROPERTY(BlueprintAssignable, Category = "Show Name Item")

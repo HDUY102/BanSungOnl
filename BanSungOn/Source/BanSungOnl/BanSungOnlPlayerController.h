@@ -92,18 +92,14 @@ protected:
 	void Reload(ABanSungOnlCharacter* PlayerCharacter);
 	UFUNCTION(Server, Unreliable)
 	void Server_Reload();
-	UFUNCTION(Client,Unreliable)
-	void Client_PlayReloadSound();
 
 	FTimerHandle FireRifleTime,FirePistolTime;
-	bool bIsShootRifle, StepByOne, isReloading;
+	bool StepByOne, isReloading;
 	void OnFirePistol(); // Fire Input
 	UFUNCTION(Server, Unreliable)
 	void Server_FirePistol();
 	UFUNCTION(Server, Unreliable)
 	void Server_FireRifle(FVector Mouse);
-	UFUNCTION(Client,Unreliable)
-	void Client_PlayFireSound();
 
 	UFUNCTION(Server, Unreliable, BlueprintCallable)
 	void ServerPlayAgain();

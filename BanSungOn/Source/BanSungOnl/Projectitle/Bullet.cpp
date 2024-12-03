@@ -14,7 +14,7 @@ ABullet::ABullet()
 	bReplicates = true;
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
+	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("RootComponent"));
 	SphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComponent"));
 	SphereComponent->SetupAttachment(RootComponent);
 	SphereComponent->OnComponentBeginOverlap.AddDynamic(this, &ABullet::OnOverlap);
@@ -24,10 +24,6 @@ ABullet::ABullet()
 void ABullet::BeginPlay()
 {
 	Super::BeginPlay();
-	if (HasAuthority())
-	{
-		SetLifeSpan(3.f);
-	}
 }
 
 // Called every frame
@@ -47,7 +43,6 @@ void ABullet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeP
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(ABullet, Direction);
-	DOREPLIFETIME(ABullet, BulletDmg);
 	DOREPLIFETIME(ABullet, BulletSpeed);
 }
 
@@ -59,12 +54,9 @@ void ABullet::OnOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor,
 		AZombies* Zombies = Cast<AZombies>(OtherActor);
 		if(IsValid(Zombies))
 		{
-			if (BulletSpeed > 0.1f) // Check speed Bullet
-			{
-				ABanSungOnlCharacter* Shooter = Cast<ABanSungOnlCharacter>(GetOwner());
-				Zombies->TakeDmg(BulletDmg, Shooter);
-				Destroy();
-			}
+			ABanSungOnlCharacter* Shooter = Cast<ABanSungOnlCharacter>(GetOwner());
+			Zombies->TakeDmg(BulletDmg, Shooter);
+			Destroy();
 		}
 	}
 }

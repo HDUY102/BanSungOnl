@@ -15,11 +15,14 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define BANSUNGONL_Weapon_generated_h
 
 #define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Weapon_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
+	virtual void Client_ReloadSound_Implementation(); \
+	virtual void Client_ShootSound_Implementation(); \
 	DECLARE_FUNCTION(execResetAmmo); \
-	DECLARE_FUNCTION(execReloadSound); \
-	DECLARE_FUNCTION(execShootSound);
+	DECLARE_FUNCTION(execClient_ReloadSound); \
+	DECLARE_FUNCTION(execClient_ShootSound);
 
 
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Weapon_h_13_CALLBACK_WRAPPERS
 #define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Weapon_h_13_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAWeapon(); \
@@ -53,6 +56,7 @@ public: \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
 	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Weapon_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Weapon_h_13_CALLBACK_WRAPPERS \
 	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Weapon_h_13_INCLASS_NO_PURE_DECLS \
 	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Weapon_h_13_ENHANCED_CONSTRUCTORS \
 private: \

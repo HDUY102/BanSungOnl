@@ -62,10 +62,18 @@ void AWaveSystem::SpawnZombies()
 		{
 			SpawnLocationOffset = SpawnLocation + i * FVector(100,0,2);
 			AZombies* NewZombie = GetWorld()->SpawnActor<AZombiesNor>(ZombNorSpawn, SpawnLocation,FRotator(0,0,110.0f), SpawnInfo);
+			if (NewZombie)
+			{
+				NewZombie->OnZombieDeath.BindUObject(this, &AWaveSystem::HandleZombieDeath);
+			}
 		}
 		for (int32 i = 0; i < ZombBoss; i++)
 		{
 			AZombies* NewZombie = GetWorld()->SpawnActor<AZombiesBoss>(ZombBossSpawn, SpawnLocationOffset, FRotator::ZeroRotator, SpawnInfo);
+			if (NewZombie)
+			{
+				NewZombie->OnZombieDeath.BindUObject(this, &AWaveSystem::HandleZombieDeath);
+			}
 		}
 	}
 }
@@ -92,16 +100,15 @@ void AWaveSystem::CheckEndWave()
 	}  
 }
 
+void AWaveSystem::HandleZombieDeath()
+{
+	ZombRemaining--;
+	CheckEndWave();
+}
+
 // Called every frame
 void AWaveSystem::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
-
-// void AWaveSystem::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
-// {
-// 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
-// 	DOREPLIFETIME(AWaveSystem, WaveNumber);
-// 	DOREPLIFETIME(AWaveSystem, ZombRemaining);
-// }
 

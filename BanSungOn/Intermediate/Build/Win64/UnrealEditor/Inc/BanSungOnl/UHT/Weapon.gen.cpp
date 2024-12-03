@@ -20,8 +20,13 @@ ENGINE_API UClass* Z_Construct_UClass_USoundBase_NoRegister();
 UPackage* Z_Construct_UPackage__Script_BanSungOnl();
 // End Cross Module References
 
-// Begin Class AWeapon Function ReloadSound
-struct Z_Construct_UFunction_AWeapon_ReloadSound_Statics
+// Begin Class AWeapon Function Client_ReloadSound
+static FName NAME_AWeapon_Client_ReloadSound = FName(TEXT("Client_ReloadSound"));
+void AWeapon::Client_ReloadSound()
+{
+	ProcessEvent(FindFunctionChecked(NAME_AWeapon_Client_ReloadSound),NULL);
+}
+struct Z_Construct_UFunction_AWeapon_Client_ReloadSound_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
@@ -30,24 +35,58 @@ struct Z_Construct_UFunction_AWeapon_ReloadSound_Statics
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AWeapon_ReloadSound_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AWeapon, nullptr, "ReloadSound", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020400, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AWeapon_ReloadSound_Statics::Function_MetaDataParams), Z_Construct_UFunction_AWeapon_ReloadSound_Statics::Function_MetaDataParams) };
-UFunction* Z_Construct_UFunction_AWeapon_ReloadSound()
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AWeapon_Client_ReloadSound_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AWeapon, nullptr, "Client_ReloadSound", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x01020C40, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AWeapon_Client_ReloadSound_Statics::Function_MetaDataParams), Z_Construct_UFunction_AWeapon_Client_ReloadSound_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_AWeapon_Client_ReloadSound()
 {
 	static UFunction* ReturnFunction = nullptr;
 	if (!ReturnFunction)
 	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AWeapon_ReloadSound_Statics::FuncParams);
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AWeapon_Client_ReloadSound_Statics::FuncParams);
 	}
 	return ReturnFunction;
 }
-DEFINE_FUNCTION(AWeapon::execReloadSound)
+DEFINE_FUNCTION(AWeapon::execClient_ReloadSound)
 {
 	P_FINISH;
 	P_NATIVE_BEGIN;
-	P_THIS->ReloadSound();
+	P_THIS->Client_ReloadSound_Implementation();
 	P_NATIVE_END;
 }
-// End Class AWeapon Function ReloadSound
+// End Class AWeapon Function Client_ReloadSound
+
+// Begin Class AWeapon Function Client_ShootSound
+static FName NAME_AWeapon_Client_ShootSound = FName(TEXT("Client_ShootSound"));
+void AWeapon::Client_ShootSound()
+{
+	ProcessEvent(FindFunctionChecked(NAME_AWeapon_Client_ShootSound),NULL);
+}
+struct Z_Construct_UFunction_AWeapon_Client_ShootSound_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Weapon/Weapon.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AWeapon_Client_ShootSound_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AWeapon, nullptr, "Client_ShootSound", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x01020C40, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AWeapon_Client_ShootSound_Statics::Function_MetaDataParams), Z_Construct_UFunction_AWeapon_Client_ShootSound_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_AWeapon_Client_ShootSound()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AWeapon_Client_ShootSound_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(AWeapon::execClient_ShootSound)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->Client_ShootSound_Implementation();
+	P_NATIVE_END;
+}
+// End Class AWeapon Function Client_ShootSound
 
 // Begin Class AWeapon Function ResetAmmo
 struct Z_Construct_UFunction_AWeapon_ResetAmmo_Statics
@@ -78,43 +117,14 @@ DEFINE_FUNCTION(AWeapon::execResetAmmo)
 }
 // End Class AWeapon Function ResetAmmo
 
-// Begin Class AWeapon Function ShootSound
-struct Z_Construct_UFunction_AWeapon_ShootSound_Statics
-{
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "ModuleRelativePath", "Weapon/Weapon.h" },
-	};
-#endif // WITH_METADATA
-	static const UECodeGen_Private::FFunctionParams FuncParams;
-};
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AWeapon_ShootSound_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AWeapon, nullptr, "ShootSound", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020400, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AWeapon_ShootSound_Statics::Function_MetaDataParams), Z_Construct_UFunction_AWeapon_ShootSound_Statics::Function_MetaDataParams) };
-UFunction* Z_Construct_UFunction_AWeapon_ShootSound()
-{
-	static UFunction* ReturnFunction = nullptr;
-	if (!ReturnFunction)
-	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AWeapon_ShootSound_Statics::FuncParams);
-	}
-	return ReturnFunction;
-}
-DEFINE_FUNCTION(AWeapon::execShootSound)
-{
-	P_FINISH;
-	P_NATIVE_BEGIN;
-	P_THIS->ShootSound();
-	P_NATIVE_END;
-}
-// End Class AWeapon Function ShootSound
-
 // Begin Class AWeapon
 void AWeapon::StaticRegisterNativesAWeapon()
 {
 	UClass* Class = AWeapon::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
-		{ "ReloadSound", &AWeapon::execReloadSound },
+		{ "Client_ReloadSound", &AWeapon::execClient_ReloadSound },
+		{ "Client_ShootSound", &AWeapon::execClient_ShootSound },
 		{ "ResetAmmo", &AWeapon::execResetAmmo },
-		{ "ShootSound", &AWeapon::execShootSound },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 }
@@ -175,9 +185,9 @@ struct Z_Construct_UClass_AWeapon_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_AWeapon_ReloadSound, "ReloadSound" }, // 2102349448
+		{ &Z_Construct_UFunction_AWeapon_Client_ReloadSound, "Client_ReloadSound" }, // 2871036800
+		{ &Z_Construct_UFunction_AWeapon_Client_ShootSound, "Client_ShootSound" }, // 3950433594
 		{ &Z_Construct_UFunction_AWeapon_ResetAmmo, "ResetAmmo" }, // 182816648
-		{ &Z_Construct_UFunction_AWeapon_ShootSound, "ShootSound" }, // 2321030508
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -249,10 +259,10 @@ AWeapon::~AWeapon() {}
 struct Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Weapon_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AWeapon, AWeapon::StaticClass, TEXT("AWeapon"), &Z_Registration_Info_UClass_AWeapon, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AWeapon), 1725638981U) },
+		{ Z_Construct_UClass_AWeapon, AWeapon::StaticClass, TEXT("AWeapon"), &Z_Registration_Info_UClass_AWeapon, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AWeapon), 88520747U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Weapon_h_2532235375(TEXT("/Script/BanSungOnl"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Weapon_h_2941956633(TEXT("/Script/BanSungOnl"),
 	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Weapon_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Weapon_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

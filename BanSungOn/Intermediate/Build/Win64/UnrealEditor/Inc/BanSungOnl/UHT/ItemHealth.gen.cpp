@@ -79,10 +79,10 @@ AItemHealth::~AItemHealth() {}
 struct Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_ItemHealth_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AItemHealth, AItemHealth::StaticClass, TEXT("AItemHealth"), &Z_Registration_Info_UClass_AItemHealth, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AItemHealth), 836909780U) },
+		{ Z_Construct_UClass_AItemHealth, AItemHealth::StaticClass, TEXT("AItemHealth"), &Z_Registration_Info_UClass_AItemHealth, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AItemHealth), 1136431801U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_ItemHealth_h_545478073(TEXT("/Script/BanSungOnl"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_ItemHealth_h_203909527(TEXT("/Script/BanSungOnl"),
 	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_ItemHealth_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_ItemHealth_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

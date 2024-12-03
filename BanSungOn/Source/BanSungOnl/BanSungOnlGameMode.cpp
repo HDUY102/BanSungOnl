@@ -103,32 +103,18 @@ void ABanSungOnlGameMode::OnPostLogin(AController* NewPlayer)
 {
 	Super::OnPostLogin(NewPlayer);
 	CPlayerAgain.Add(NewPlayer);
-}
-
-void ABanSungOnlGameMode::AddPlayer(ABanSungOnlCharacter* Player)
-{
-	if(!PlayerList.Contains(Player))
-	{
-		PlayerList.Add(Player);
-	}
-}
-
-void ABanSungOnlGameMode::DelPlayer(ABanSungOnlCharacter* Player)
-{
-	if(Player)
-	{
-		PlayerList.Remove(Player);
-	}
+	OnPlayerDead.BindUObject(this, &ABanSungOnlGameMode::GetAlivePlayers);
 }
 
 TArray<ABanSungOnlCharacter*> ABanSungOnlGameMode::GetAlivePlayers()
 {
 	TArray<ABanSungOnlCharacter*> AlivePlayers;
-	for (ABanSungOnlCharacter* Player : PlayerList)
+	for (auto Player : CPlayerAgain)
 	{
-		if (Player && !Player->bIsDead)
+		ABanSungOnlCharacter* OnlPlayerCharacter = Cast<ABanSungOnlCharacter>(Player);
+		if (OnlPlayerCharacter && !OnlPlayerCharacter->bIsDead)
 		{
-			AlivePlayers.Add(Player);
+			AlivePlayers.Add(OnlPlayerCharacter);
 		}
 	}
 	return AlivePlayers;

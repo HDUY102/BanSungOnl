@@ -17,7 +17,7 @@ struct FHitResult;
 #endif
 #define BANSUNGONL_Bullet_generated_h
 
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Projectitle_Bullet_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Projectitle_Bullet_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
 	virtual void SetDirectionBullet_Implementation(const FVector NewDirection); \
 	virtual void SetBulletProperties_Implementation(float Damage, float Speed); \
 	DECLARE_FUNCTION(execOnOverlap); \
@@ -25,8 +25,8 @@ struct FHitResult;
 	DECLARE_FUNCTION(execSetBulletProperties);
 
 
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Projectitle_Bullet_h_13_CALLBACK_WRAPPERS
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Projectitle_Bullet_h_13_INCLASS_NO_PURE_DECLS \
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Projectitle_Bullet_h_14_CALLBACK_WRAPPERS
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Projectitle_Bullet_h_14_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesABullet(); \
 	friend struct Z_Construct_UClass_ABullet_Statics; \
@@ -37,13 +37,12 @@ public: \
 	{ \
 		NETFIELD_REP_START=(uint16)((int32)Super::ENetFields_Private::NETFIELD_REP_END + (int32)1), \
 		BulletSpeed=NETFIELD_REP_START, \
-		BulletDmg, \
 		Direction, \
 		NETFIELD_REP_END=Direction	}; \
 	NO_API virtual void ValidateGeneratedRepEnums(const TArray<struct FRepRecord>& ClassReps) const override;
 
 
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Projectitle_Bullet_h_13_ENHANCED_CONSTRUCTORS \
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Projectitle_Bullet_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	ABullet(ABullet&&); \
@@ -55,14 +54,14 @@ public: \
 	NO_API virtual ~ABullet();
 
 
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Projectitle_Bullet_h_10_PROLOG
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Projectitle_Bullet_h_13_GENERATED_BODY \
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Projectitle_Bullet_h_11_PROLOG
+#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Projectitle_Bullet_h_14_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Projectitle_Bullet_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Projectitle_Bullet_h_13_CALLBACK_WRAPPERS \
-	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Projectitle_Bullet_h_13_INCLASS_NO_PURE_DECLS \
-	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Projectitle_Bullet_h_13_ENHANCED_CONSTRUCTORS \
+	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Projectitle_Bullet_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Projectitle_Bullet_h_14_CALLBACK_WRAPPERS \
+	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Projectitle_Bullet_h_14_INCLASS_NO_PURE_DECLS \
+	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Projectitle_Bullet_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

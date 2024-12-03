@@ -12,6 +12,10 @@
             "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\source\\runtime\\engine\\classes\\components\\shapecomponent.h",
             "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\shapecomponent.generated.h",
             "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\spherecomponent.generated.h",
+            "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\source\\runtime\\engine\\classes\\gameframework\\projectilemovementcomponent.h",
+            "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\source\\runtime\\engine\\classes\\gameframework\\movementcomponent.h",
+            "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\movementcomponent.generated.h",
+            "d:\\unreal_engine_c++_game\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\projectilemovementcomponent.generated.h",
             "d:\\code_c++_training\\bansungonl\\bansungon\\intermediate\\build\\win64\\unrealeditor\\inc\\bansungonl\\uht\\bullet.generated.h",
             "d:\\code_c++_training\\bansungonl\\bansungon\\intermediate\\build\\win64\\unrealeditor\\inc\\bansungonl\\uht\\weapon.generated.h"
         ],

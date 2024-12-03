@@ -49,4 +49,7 @@ public:
 	
 	UFUNCTION()
 	void CheckEndWave();
+
+	UFUNCTION()
+	void HandleZombieDeath();
 };

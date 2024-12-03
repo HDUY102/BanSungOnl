@@ -15,6 +15,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define BANSUNGONL_WaveSystem_generated_h
 
 #define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_WaveSystem_WaveSystem_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execHandleZombieDeath); \
 	DECLARE_FUNCTION(execCheckEndWave); \
 	DECLARE_FUNCTION(execSetupWave); \
 	DECLARE_FUNCTION(execSpawnZombies);

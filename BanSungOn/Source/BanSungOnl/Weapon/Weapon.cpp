@@ -3,6 +3,7 @@
 
 #include "Weapon.h"
 
+#include "BanSungOnl/BanSungOnlCharacter.h"
 #include "BanSungOnl/Projectitle/Bullet.h"
 #include "Kismet/GameplayStatics.h"
 #include "Net/UnrealNetwork.h"
@@ -24,12 +25,22 @@ void AWeapon::BeginPlay()
 	Super::BeginPlay();
 }
 
+void AWeapon::Client_ShootSound_Implementation()
+{
+	ShootSound();
+}
+
 void AWeapon::ShootSound()
 {
 	if (SB_ShootSound)
 	{
 		UGameplayStatics::PlaySound2D(this, SB_ShootSound);
 	}
+}
+
+void AWeapon::Client_ReloadSound_Implementation()
+{
+	ReloadSound();
 }
 
 void AWeapon::ReloadSound()
@@ -48,17 +59,22 @@ void AWeapon::ResetAmmo()
 
 void AWeapon::ShootBullet(FVector &Location)
 {
-	if(CurAmmo>0)
+	if(CurAmmo>0 && !bIsShoot)
 	{
+		bIsShoot = true;
 		FTransform	BulletTransform = GunMesh->GetSocketTransform("BulletToSocket");
-	
 		FActorSpawnParameters spawnParams;
 		spawnParams.Owner = GetOwner();
-	
+		Client_ShootSound();
 		ABullet* SpawnedBullet = GetWorld()->SpawnActor<ABullet>(BulletSpawned,BulletTransform, spawnParams);
-		SpawnedBullet->SetBulletProperties(Damage, Speed);
-		SpawnedBullet->SetDirectionBullet(Location);
+		if(IsValid(SpawnedBullet))
+		{
+			SpawnedBullet->SetBulletProperties(Damage, Speed);
+			SpawnedBullet->SetDirectionBullet(Location);
+		}
 		CurAmmo--;
+		FTimerHandle FireTime;
+		GetWorld()->GetTimerManager().SetTimer(FireTime, [this](){bIsShoot = false;}, SpeedFire, false);
 	}
 }
 
@@ -71,7 +87,6 @@ void AWeapon::Tick(float DeltaTime)
 void AWeapon::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
-
 	DOREPLIFETIME(AWeapon, Ammo);
 	DOREPLIFETIME(AWeapon, CurAmmo);
 }
@@ -81,4 +96,5 @@ void AWeapon::ReloadAmmo()
 	LastAmmo = CurAmmo;
 	CurAmmo += FMath::Min(Ammo,(Magazine-LastAmmo));
 	Ammo -= FMath::Min(Ammo,(Magazine-LastAmmo));
+	Client_ReloadSound();
 }

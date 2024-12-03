@@ -3,11 +3,7 @@
 
 #include "Items.h"
 
-#include "ItemAmmoPis.h"
-#include "ItemAmmoRif.h"
-#include "ItemHealth.h"
 #include "BanSungOnl/BanSungOnlCharacter.h"
-#include "BanSungOnl/BanSungOnlPlayerController.h"
 #include "GameFramework/RotatingMovementComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Net/UnrealNetwork.h"
@@ -40,13 +36,10 @@ void AItems::OnOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, 
 		ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(OtherActor);
 		if (PlayerCharacter)
 		{
-			if(Type == 0) // Item type for Health Ammo
+			if(Type == 0) // Item type for Health
 			{
-				UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("Health: %f"), PlayerCharacter->Health));
-				UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("Items pick: %f"), HealthItems));
-				UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("After pick: %f"), PlayerCharacter->Health+HealthItems));
+				PlayerCharacter->bPlusHealth=true;
 				PlayerCharacter->Health = FMath::Min(PlayerCharacter->Health + HealthItems, PlayerCharacter->MaxHealth);
-				UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("Health: %f"), PlayerCharacter->Health));
 			}
 			else if(Type == 1) // Item type for Rifle Ammo
 			{

@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Components/SphereComponent.h"
 #include "GameFramework/Actor.h"
+#include "GameFramework/ProjectileMovementComponent.h"
 #include "Bullet.generated.h"
 
 UCLASS()
@@ -28,7 +29,7 @@ public:
 	
 	UPROPERTY(Replicated)
 	float BulletSpeed;
-	UPROPERTY(Replicated)
+	UPROPERTY()
 	float BulletDmg;
 	UPROPERTY(Replicated)
 	FVector Direction;

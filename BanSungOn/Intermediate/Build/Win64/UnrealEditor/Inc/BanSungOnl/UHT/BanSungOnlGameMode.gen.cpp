@@ -18,92 +18,6 @@ ENGINE_API UClass* Z_Construct_UClass_AGameModeBase();
 UPackage* Z_Construct_UPackage__Script_BanSungOnl();
 // End Cross Module References
 
-// Begin Class ABanSungOnlGameMode Function AddPlayer
-struct Z_Construct_UFunction_ABanSungOnlGameMode_AddPlayer_Statics
-{
-	struct BanSungOnlGameMode_eventAddPlayer_Parms
-	{
-		ABanSungOnlCharacter* Player;
-	};
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "Category", "Game Management" },
-		{ "ModuleRelativePath", "BanSungOnlGameMode.h" },
-	};
-#endif // WITH_METADATA
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_Player;
-	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
-	static const UECodeGen_Private::FFunctionParams FuncParams;
-};
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_ABanSungOnlGameMode_AddPlayer_Statics::NewProp_Player = { "Player", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BanSungOnlGameMode_eventAddPlayer_Parms, Player), Z_Construct_UClass_ABanSungOnlCharacter_NoRegister, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ABanSungOnlGameMode_AddPlayer_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ABanSungOnlGameMode_AddPlayer_Statics::NewProp_Player,
-};
-static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ABanSungOnlGameMode_AddPlayer_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ABanSungOnlGameMode_AddPlayer_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ABanSungOnlGameMode, nullptr, "AddPlayer", nullptr, nullptr, Z_Construct_UFunction_ABanSungOnlGameMode_AddPlayer_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ABanSungOnlGameMode_AddPlayer_Statics::PropPointers), sizeof(Z_Construct_UFunction_ABanSungOnlGameMode_AddPlayer_Statics::BanSungOnlGameMode_eventAddPlayer_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ABanSungOnlGameMode_AddPlayer_Statics::Function_MetaDataParams), Z_Construct_UFunction_ABanSungOnlGameMode_AddPlayer_Statics::Function_MetaDataParams) };
-static_assert(sizeof(Z_Construct_UFunction_ABanSungOnlGameMode_AddPlayer_Statics::BanSungOnlGameMode_eventAddPlayer_Parms) < MAX_uint16);
-UFunction* Z_Construct_UFunction_ABanSungOnlGameMode_AddPlayer()
-{
-	static UFunction* ReturnFunction = nullptr;
-	if (!ReturnFunction)
-	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ABanSungOnlGameMode_AddPlayer_Statics::FuncParams);
-	}
-	return ReturnFunction;
-}
-DEFINE_FUNCTION(ABanSungOnlGameMode::execAddPlayer)
-{
-	P_GET_OBJECT(ABanSungOnlCharacter,Z_Param_Player);
-	P_FINISH;
-	P_NATIVE_BEGIN;
-	P_THIS->AddPlayer(Z_Param_Player);
-	P_NATIVE_END;
-}
-// End Class ABanSungOnlGameMode Function AddPlayer
-
-// Begin Class ABanSungOnlGameMode Function DelPlayer
-struct Z_Construct_UFunction_ABanSungOnlGameMode_DelPlayer_Statics
-{
-	struct BanSungOnlGameMode_eventDelPlayer_Parms
-	{
-		ABanSungOnlCharacter* Player;
-	};
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "Category", "Game Management" },
-		{ "ModuleRelativePath", "BanSungOnlGameMode.h" },
-	};
-#endif // WITH_METADATA
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_Player;
-	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
-	static const UECodeGen_Private::FFunctionParams FuncParams;
-};
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_ABanSungOnlGameMode_DelPlayer_Statics::NewProp_Player = { "Player", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BanSungOnlGameMode_eventDelPlayer_Parms, Player), Z_Construct_UClass_ABanSungOnlCharacter_NoRegister, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ABanSungOnlGameMode_DelPlayer_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ABanSungOnlGameMode_DelPlayer_Statics::NewProp_Player,
-};
-static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ABanSungOnlGameMode_DelPlayer_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ABanSungOnlGameMode_DelPlayer_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ABanSungOnlGameMode, nullptr, "DelPlayer", nullptr, nullptr, Z_Construct_UFunction_ABanSungOnlGameMode_DelPlayer_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ABanSungOnlGameMode_DelPlayer_Statics::PropPointers), sizeof(Z_Construct_UFunction_ABanSungOnlGameMode_DelPlayer_Statics::BanSungOnlGameMode_eventDelPlayer_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ABanSungOnlGameMode_DelPlayer_Statics::Function_MetaDataParams), Z_Construct_UFunction_ABanSungOnlGameMode_DelPlayer_Statics::Function_MetaDataParams) };
-static_assert(sizeof(Z_Construct_UFunction_ABanSungOnlGameMode_DelPlayer_Statics::BanSungOnlGameMode_eventDelPlayer_Parms) < MAX_uint16);
-UFunction* Z_Construct_UFunction_ABanSungOnlGameMode_DelPlayer()
-{
-	static UFunction* ReturnFunction = nullptr;
-	if (!ReturnFunction)
-	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ABanSungOnlGameMode_DelPlayer_Statics::FuncParams);
-	}
-	return ReturnFunction;
-}
-DEFINE_FUNCTION(ABanSungOnlGameMode::execDelPlayer)
-{
-	P_GET_OBJECT(ABanSungOnlCharacter,Z_Param_Player);
-	P_FINISH;
-	P_NATIVE_BEGIN;
-	P_THIS->DelPlayer(Z_Param_Player);
-	P_NATIVE_END;
-}
-// End Class ABanSungOnlGameMode Function DelPlayer
-
 // Begin Class ABanSungOnlGameMode Function GameOver
 struct Z_Construct_UFunction_ABanSungOnlGameMode_GameOver_Statics
 {
@@ -241,8 +155,6 @@ void ABanSungOnlGameMode::StaticRegisterNativesABanSungOnlGameMode()
 {
 	UClass* Class = ABanSungOnlGameMode::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
-		{ "AddPlayer", &ABanSungOnlGameMode::execAddPlayer },
-		{ "DelPlayer", &ABanSungOnlGameMode::execDelPlayer },
 		{ "GameOver", &ABanSungOnlGameMode::execGameOver },
 		{ "GameWin", &ABanSungOnlGameMode::execGameWin },
 		{ "GetAlivePlayers", &ABanSungOnlGameMode::execGetAlivePlayers },
@@ -259,8 +171,10 @@ struct Z_Construct_UClass_ABanSungOnlGameMode_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
+		{ "BlueprintType", "true" },
 		{ "HideCategories", "Info Rendering MovementReplication Replication Actor Input Movement Collision Rendering HLOD WorldPartition DataLayers Transformation" },
 		{ "IncludePath", "BanSungOnlGameMode.h" },
+		{ "IsBlueprintBase", "true" },
 		{ "ModuleRelativePath", "BanSungOnlGameMode.h" },
 		{ "ShowCategories", "Input|MouseInput Input|TouchInput" },
 	};
@@ -280,8 +194,6 @@ struct Z_Construct_UClass_ABanSungOnlGameMode_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_ABanSungOnlGameMode_AddPlayer, "AddPlayer" }, // 1140685977
-		{ &Z_Construct_UFunction_ABanSungOnlGameMode_DelPlayer, "DelPlayer" }, // 409800230
 		{ &Z_Construct_UFunction_ABanSungOnlGameMode_GameOver, "GameOver" }, // 2171201370
 		{ &Z_Construct_UFunction_ABanSungOnlGameMode_GameWin, "GameWin" }, // 3288798807
 		{ &Z_Construct_UFunction_ABanSungOnlGameMode_GetAlivePlayers, "GetAlivePlayers" }, // 4124155433
@@ -344,10 +256,10 @@ ABanSungOnlGameMode::~ABanSungOnlGameMode() {}
 struct Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlGameMode_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ABanSungOnlGameMode, ABanSungOnlGameMode::StaticClass, TEXT("ABanSungOnlGameMode"), &Z_Registration_Info_UClass_ABanSungOnlGameMode, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABanSungOnlGameMode), 3736279621U) },
+		{ Z_Construct_UClass_ABanSungOnlGameMode, ABanSungOnlGameMode::StaticClass, TEXT("ABanSungOnlGameMode"), &Z_Registration_Info_UClass_ABanSungOnlGameMode, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABanSungOnlGameMode), 1103095818U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlGameMode_h_999314270(TEXT("/Script/BanSungOnl"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlGameMode_h_4205974003(TEXT("/Script/BanSungOnl"),
 	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlGameMode_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_BanSungOnlGameMode_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

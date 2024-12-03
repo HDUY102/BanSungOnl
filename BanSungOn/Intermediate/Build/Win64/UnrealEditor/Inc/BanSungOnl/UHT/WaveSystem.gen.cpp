@@ -48,6 +48,35 @@ DEFINE_FUNCTION(AWaveSystem::execCheckEndWave)
 }
 // End Class AWaveSystem Function CheckEndWave
 
+// Begin Class AWaveSystem Function HandleZombieDeath
+struct Z_Construct_UFunction_AWaveSystem_HandleZombieDeath_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "WaveSystem/WaveSystem.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AWaveSystem_HandleZombieDeath_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AWaveSystem, nullptr, "HandleZombieDeath", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AWaveSystem_HandleZombieDeath_Statics::Function_MetaDataParams), Z_Construct_UFunction_AWaveSystem_HandleZombieDeath_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_AWaveSystem_HandleZombieDeath()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AWaveSystem_HandleZombieDeath_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(AWaveSystem::execHandleZombieDeath)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->HandleZombieDeath();
+	P_NATIVE_END;
+}
+// End Class AWaveSystem Function HandleZombieDeath
+
 // Begin Class AWaveSystem Function SetupWave
 struct Z_Construct_UFunction_AWaveSystem_SetupWave_Statics
 {
@@ -112,6 +141,7 @@ void AWaveSystem::StaticRegisterNativesAWaveSystem()
 	UClass* Class = AWaveSystem::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
 		{ "CheckEndWave", &AWaveSystem::execCheckEndWave },
+		{ "HandleZombieDeath", &AWaveSystem::execHandleZombieDeath },
 		{ "SetupWave", &AWaveSystem::execSetupWave },
 		{ "SpawnZombies", &AWaveSystem::execSpawnZombies },
 	};
@@ -158,6 +188,7 @@ struct Z_Construct_UClass_AWaveSystem_Statics
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_AWaveSystem_CheckEndWave, "CheckEndWave" }, // 3411985006
+		{ &Z_Construct_UFunction_AWaveSystem_HandleZombieDeath, "HandleZombieDeath" }, // 3773991206
 		{ &Z_Construct_UFunction_AWaveSystem_SetupWave, "SetupWave" }, // 2805051868
 		{ &Z_Construct_UFunction_AWaveSystem_SpawnZombies, "SpawnZombies" }, // 4063744983
 	};
@@ -218,10 +249,10 @@ AWaveSystem::~AWaveSystem() {}
 struct Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_WaveSystem_WaveSystem_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AWaveSystem, AWaveSystem::StaticClass, TEXT("AWaveSystem"), &Z_Registration_Info_UClass_AWaveSystem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AWaveSystem), 4185175349U) },
+		{ Z_Construct_UClass_AWaveSystem, AWaveSystem::StaticClass, TEXT("AWaveSystem"), &Z_Registration_Info_UClass_AWaveSystem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AWaveSystem), 2047441946U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_WaveSystem_WaveSystem_h_2847955407(TEXT("/Script/BanSungOnl"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_WaveSystem_WaveSystem_h_1039427577(TEXT("/Script/BanSungOnl"),
 	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_WaveSystem_WaveSystem_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_WaveSystem_WaveSystem_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

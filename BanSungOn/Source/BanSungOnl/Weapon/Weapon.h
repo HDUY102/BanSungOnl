@@ -21,7 +21,8 @@ protected:
 	virtual void BeginPlay() override;
 	
 	int LastAmmo;
-	float Speed, Damage;
+	float Speed= 0, Damage, SpeedFire;
+	bool bIsShoot;
 
 	// Sound Shoot
 	UPROPERTY()
@@ -41,9 +42,11 @@ public:
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 	
 	void ReloadAmmo();
-	UFUNCTION()
+	UFUNCTION(Client, Unreliable)
+	void Client_ShootSound();
 	virtual void ShootSound();
-	UFUNCTION()
+	UFUNCTION(Client, Unreliable)
+	void Client_ReloadSound();
 	virtual void ReloadSound();
 
 	UFUNCTION()

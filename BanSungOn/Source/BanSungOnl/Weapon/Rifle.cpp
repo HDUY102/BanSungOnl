@@ -27,6 +27,7 @@ void ARifle::BeginPlay()
 	LastAmmo = 0;
 	Damage = 20.f;
 	Speed = 280.f;
+	SpeedFire = 0.3f;
 }
 
 void ARifle::ShootSound()

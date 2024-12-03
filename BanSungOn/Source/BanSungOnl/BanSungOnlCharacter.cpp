@@ -74,14 +74,6 @@ void ABanSungOnlCharacter::BeginPlay()
 		Server_SpawnRifle();
 		Server_EquipRifle();
 	}
-
-	ABanSungOnlGameMode* PlayerGameMode = Cast<ABanSungOnlGameMode>(GetWorld()->GetAuthGameMode());
-	AController* Controllers = GetController();
-	if(PlayerGameMode)
-	{
-		PlayerGameMode->AddPlayer(this);
-	}
-
 	StartLocation = GetActorLocation();
 }
 
@@ -90,39 +82,49 @@ void ABanSungOnlCharacter::OnRep_ChangeHealth()
 	APlayerController* PlayerController = Cast<APlayerController>(GetController());
 	if (PlayerController && PlayerController->IsLocalController() && Health > 0.f)
 	{
-		ShowHealth.Broadcast();
+		if(!bPlusHealth)
+			ShowWBIsAtked.Broadcast();
 	}
 }
 
 void ABanSungOnlCharacter::PlayerTakeDmg(float Dmg)
 {
-	Health -= Dmg;
-	if(Health <= 0.f)
+	if(HasAuthority())
 	{
-		bIsDead = true;
-		ABanSungOnlGameMode* PlayerGameMode = Cast<ABanSungOnlGameMode>(GetWorld()->GetAuthGameMode());
-		if(PlayerGameMode)
+		bPlusHealth = false;
+		Health -= Dmg;
+		if(Health <= 0.f)
 		{
-			PlayerGameMode->DelPlayer(this);
-		}
-		
-		GetMesh()->SetVisibility(false, true);
-		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-		Pistol->SetActorHiddenInGame(true);
-		Rifle->SetActorHiddenInGame(true);
-		
-		if (APlayerController* PlayerController = Cast<APlayerController>(GetController()))
-		{
-			OriginalController = PlayerController;
-			TArray<ABanSungOnlCharacter*> AlivePlayers = PlayerGameMode->GetAlivePlayers();
-
-			if (AlivePlayers.Num() > 0)
+			bIsDead = true;
+			GetMesh()->SetVisibility(false, true);
+			GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+			Pistol->SetActorHiddenInGame(true);
+			Rifle->SetActorHiddenInGame(true);
+			
+			ABanSungOnlGameMode* PlayerGameMode = Cast<ABanSungOnlGameMode>(GetWorld()->GetAuthGameMode());
+			if(PlayerGameMode)
 			{
-				ABanSungOnlCharacter* NewTarget = AlivePlayers[0];
-				PlayerController->SetViewTargetWithBlend(NewTarget, 2.0f, EViewTargetBlendFunction::VTBlend_Cubic, 0.5f);
-			}else
-			{
-				PlayerGameMode->GameOver();
+				TArray<ABanSungOnlCharacter*> AlivePlayers = PlayerGameMode->OnPlayerDead.Execute();
+				for(auto PlayerController : PlayerGameMode->CPlayerAgain)
+				{
+					ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(PlayerController->GetPawn());
+					if (PlayerCharacter && !PlayerCharacter->bIsDead)
+					{
+						AlivePlayers.Add(PlayerCharacter);
+					}
+				}	
+				if (APlayerController* PlayerController = Cast<APlayerController>(GetController()))
+				{
+					OriginalController = PlayerController;
+					if (AlivePlayers.Num() > 0)
+					{
+						ABanSungOnlCharacter* NewTarget = AlivePlayers[0];
+						PlayerController->SetViewTargetWithBlend(NewTarget, 2.0f, EViewTargetBlendFunction::VTBlend_Cubic, 0.5f);
+					}else
+					{
+						PlayerGameMode->GameOver();
+					}
+				}
 			}
 		}
 	}
@@ -181,6 +183,7 @@ void ABanSungOnlCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>&
 	DOREPLIFETIME(ABanSungOnlCharacter, bIsGameOver);
 	DOREPLIFETIME(ABanSungOnlCharacter, bIsGameWin);
 	DOREPLIFETIME(ABanSungOnlCharacter, Score);
+	DOREPLIFETIME(ABanSungOnlCharacter, bPlusHealth);
 }
 
 void ABanSungOnlCharacter::EquipPistol()

@@ -9,7 +9,7 @@
 #include "GameFramework/RotatingMovementComponent.h"
 #include "Items.generated.h"
 
-UCLASS()
+UCLASS(BlueprintType)
 class BANSUNGONL_API AItems : public AActor
 {
 	GENERATED_BODY()

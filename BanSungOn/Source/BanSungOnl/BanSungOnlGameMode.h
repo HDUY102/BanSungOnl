@@ -6,7 +6,8 @@
 #include "BanSungOnlCharacter.h"
 #include "GameFramework/GameModeBase.h"
 #include "BanSungOnlGameMode.generated.h"
-UCLASS(minimalapi)
+DECLARE_DELEGATE_RetVal(TArray<ABanSungOnlCharacter*>, FOnPlayerDead);
+UCLASS(minimalapi, Blueprintable, BlueprintType)
 class ABanSungOnlGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
@@ -32,11 +33,8 @@ public:
 	
 	UPROPERTY(BlueprintReadOnly, Category="Players")
 	TArray<ABanSungOnlCharacter*> PlayerList;
-	
-	UFUNCTION(BlueprintCallable,Category="Game Management")
-	void AddPlayer(ABanSungOnlCharacter* Player);
-	UFUNCTION(BlueprintCallable,Category="Game Management")
-	void DelPlayer(ABanSungOnlCharacter* Player);
+
+	FOnPlayerDead OnPlayerDead;
 	UFUNCTION(BlueprintCallable, Category = "Players")
 	TArray<ABanSungOnlCharacter*> GetAlivePlayers();
 };
