@@ -19,8 +19,8 @@ struct FHitResult;
 
 #define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Projectitle_Bullet_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
 	virtual void SetDirectionBullet_Implementation(const FVector NewDirection); \
-	virtual void SetBulletProperties_Implementation(float Damage, float Speed); \
 	DECLARE_FUNCTION(execOnOverlap); \
+	DECLARE_FUNCTION(execInitBull); \
 	DECLARE_FUNCTION(execSetDirectionBullet); \
 	DECLARE_FUNCTION(execSetBulletProperties);
 

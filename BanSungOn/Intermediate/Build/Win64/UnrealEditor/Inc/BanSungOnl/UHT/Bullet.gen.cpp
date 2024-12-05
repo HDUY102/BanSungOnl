@@ -22,6 +22,61 @@ ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FHitResult();
 UPackage* Z_Construct_UPackage__Script_BanSungOnl();
 // End Cross Module References
 
+// Begin Class ABullet Function InitBull
+struct Z_Construct_UFunction_ABullet_InitBull_Statics
+{
+	struct Bullet_eventInitBull_Parms
+	{
+		float Dmg;
+		float Speed;
+		FVector NewDirection;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Projectitle/Bullet.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_NewDirection_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_Dmg;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_Speed;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_NewDirection;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_ABullet_InitBull_Statics::NewProp_Dmg = { "Dmg", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Bullet_eventInitBull_Parms, Dmg), METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_ABullet_InitBull_Statics::NewProp_Speed = { "Speed", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Bullet_eventInitBull_Parms, Speed), METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_ABullet_InitBull_Statics::NewProp_NewDirection = { "NewDirection", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Bullet_eventInitBull_Parms, NewDirection), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_NewDirection_MetaData), NewProp_NewDirection_MetaData) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ABullet_InitBull_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ABullet_InitBull_Statics::NewProp_Dmg,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ABullet_InitBull_Statics::NewProp_Speed,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ABullet_InitBull_Statics::NewProp_NewDirection,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ABullet_InitBull_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ABullet_InitBull_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ABullet, nullptr, "InitBull", nullptr, nullptr, Z_Construct_UFunction_ABullet_InitBull_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ABullet_InitBull_Statics::PropPointers), sizeof(Z_Construct_UFunction_ABullet_InitBull_Statics::Bullet_eventInitBull_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00C20401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ABullet_InitBull_Statics::Function_MetaDataParams), Z_Construct_UFunction_ABullet_InitBull_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_ABullet_InitBull_Statics::Bullet_eventInitBull_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_ABullet_InitBull()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ABullet_InitBull_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ABullet::execInitBull)
+{
+	P_GET_PROPERTY(FFloatProperty,Z_Param_Dmg);
+	P_GET_PROPERTY(FFloatProperty,Z_Param_Speed);
+	P_GET_STRUCT_REF(FVector,Z_Param_Out_NewDirection);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->InitBull(Z_Param_Dmg,Z_Param_Speed,Z_Param_Out_NewDirection);
+	P_NATIVE_END;
+}
+// End Class ABullet Function InitBull
+
 // Begin Class ABullet Function OnOverlap
 struct Z_Construct_UFunction_ABullet_OnOverlap_Statics
 {
@@ -104,21 +159,13 @@ DEFINE_FUNCTION(ABullet::execOnOverlap)
 // End Class ABullet Function OnOverlap
 
 // Begin Class ABullet Function SetBulletProperties
-struct Bullet_eventSetBulletProperties_Parms
-{
-	float Damage;
-	float Speed;
-};
-static FName NAME_ABullet_SetBulletProperties = FName(TEXT("SetBulletProperties"));
-void ABullet::SetBulletProperties(float Damage, float Speed)
-{
-	Bullet_eventSetBulletProperties_Parms Parms;
-	Parms.Damage=Damage;
-	Parms.Speed=Speed;
-	ProcessEvent(FindFunctionChecked(NAME_ABullet_SetBulletProperties),&Parms);
-}
 struct Z_Construct_UFunction_ABullet_SetBulletProperties_Statics
 {
+	struct Bullet_eventSetBulletProperties_Parms
+	{
+		float Damage;
+		float Speed;
+	};
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
 		{ "ModuleRelativePath", "Projectitle/Bullet.h" },
@@ -136,8 +183,8 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ABulle
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ABullet_SetBulletProperties_Statics::NewProp_Speed,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ABullet_SetBulletProperties_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ABullet_SetBulletProperties_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ABullet, nullptr, "SetBulletProperties", nullptr, nullptr, Z_Construct_UFunction_ABullet_SetBulletProperties_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ABullet_SetBulletProperties_Statics::PropPointers), sizeof(Bullet_eventSetBulletProperties_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00220C40, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ABullet_SetBulletProperties_Statics::Function_MetaDataParams), Z_Construct_UFunction_ABullet_SetBulletProperties_Statics::Function_MetaDataParams) };
-static_assert(sizeof(Bullet_eventSetBulletProperties_Parms) < MAX_uint16);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ABullet_SetBulletProperties_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ABullet, nullptr, "SetBulletProperties", nullptr, nullptr, Z_Construct_UFunction_ABullet_SetBulletProperties_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ABullet_SetBulletProperties_Statics::PropPointers), sizeof(Z_Construct_UFunction_ABullet_SetBulletProperties_Statics::Bullet_eventSetBulletProperties_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ABullet_SetBulletProperties_Statics::Function_MetaDataParams), Z_Construct_UFunction_ABullet_SetBulletProperties_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_ABullet_SetBulletProperties_Statics::Bullet_eventSetBulletProperties_Parms) < MAX_uint16);
 UFunction* Z_Construct_UFunction_ABullet_SetBulletProperties()
 {
 	static UFunction* ReturnFunction = nullptr;
@@ -153,7 +200,7 @@ DEFINE_FUNCTION(ABullet::execSetBulletProperties)
 	P_GET_PROPERTY(FFloatProperty,Z_Param_Speed);
 	P_FINISH;
 	P_NATIVE_BEGIN;
-	P_THIS->SetBulletProperties_Implementation(Z_Param_Damage,Z_Param_Speed);
+	P_THIS->SetBulletProperties(Z_Param_Damage,Z_Param_Speed);
 	P_NATIVE_END;
 }
 // End Class ABullet Function SetBulletProperties
@@ -215,6 +262,7 @@ void ABullet::StaticRegisterNativesABullet()
 {
 	UClass* Class = ABullet::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
+		{ "InitBull", &ABullet::execInitBull },
 		{ "OnOverlap", &ABullet::execOnOverlap },
 		{ "SetBulletProperties", &ABullet::execSetBulletProperties },
 		{ "SetDirectionBullet", &ABullet::execSetDirectionBullet },
@@ -255,8 +303,9 @@ struct Z_Construct_UClass_ABullet_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
+		{ &Z_Construct_UFunction_ABullet_InitBull, "InitBull" }, // 683337132
 		{ &Z_Construct_UFunction_ABullet_OnOverlap, "OnOverlap" }, // 3236999233
-		{ &Z_Construct_UFunction_ABullet_SetBulletProperties, "SetBulletProperties" }, // 3758176783
+		{ &Z_Construct_UFunction_ABullet_SetBulletProperties, "SetBulletProperties" }, // 2106017958
 		{ &Z_Construct_UFunction_ABullet_SetDirectionBullet, "SetDirectionBullet" }, // 2895194506
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
@@ -325,10 +374,10 @@ ABullet::~ABullet() {}
 struct Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Projectitle_Bullet_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ABullet, ABullet::StaticClass, TEXT("ABullet"), &Z_Registration_Info_UClass_ABullet, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABullet), 3685972166U) },
+		{ Z_Construct_UClass_ABullet, ABullet::StaticClass, TEXT("ABullet"), &Z_Registration_Info_UClass_ABullet, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABullet), 3177642506U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Projectitle_Bullet_h_808579591(TEXT("/Script/BanSungOnl"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Projectitle_Bullet_h_1904556677(TEXT("/Script/BanSungOnl"),
 	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Projectitle_Bullet_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Projectitle_Bullet_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

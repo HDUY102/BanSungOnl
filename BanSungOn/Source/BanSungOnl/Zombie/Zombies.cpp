@@ -9,8 +9,8 @@
 #include "BanSungOnl/BanSungOnlPlayerController.h"
 #include "BanSungOnl/Items/ItemAmmoPis.h"
 #include "BanSungOnl/Items/ItemAmmoRif.h"
-#include "BanSungOnl/Items/ItemHealth.h"
 #include "BanSungOnl/Items/Items.h"
+#include "BanSungOnl/Items/ItemsNew.h"
 #include "BanSungOnl/WaveSystem/WaveSystem.h"
 #include "Components/CapsuleComponent.h"
 #include "Engine/RendererSettings.h"
@@ -47,7 +47,7 @@ void AZombies::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	Server_AtkCharacter();
-}
+} 
 
 // Called to bind functionality to input
 void AZombies::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -76,11 +76,7 @@ void AZombies::TakeDmg(float Dmg, ABanSungOnlCharacter* Shooter)
 		{
 			RandomItems(BodyZombie);
 		}
-		if(WaveSystem)
-		{
-			WaveSystem->ZombRemaining--;
-			WaveSystem->CheckEndWave();
-		}
+		OnZombieDeath.ExecuteIfBound();
 		Destroy();
 	}
 }
@@ -91,7 +87,7 @@ void AZombies::RandomItems(FVector BodyZombie)
 	switch (TypeItem)
 	{
 	case EnumItems::Health:
-		GetWorld()->SpawnActor<AItemHealth>(HealthToSpawn, BodyZombie,FRotator::ZeroRotator);
+		GetWorld()->SpawnActor<AItemsNew>(HealthToSpawn, BodyZombie,FRotator::ZeroRotator);
 		break;
 	case EnumItems::AmmoRif:
 		GetWorld()->SpawnActor<AItemAmmoRif>(RifToSpawn, BodyZombie,FRotator::ZeroRotator);

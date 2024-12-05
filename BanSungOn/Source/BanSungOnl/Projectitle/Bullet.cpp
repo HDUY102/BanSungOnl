@@ -17,7 +17,6 @@ ABullet::ABullet()
 	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("RootComponent"));
 	SphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComponent"));
 	SphereComponent->SetupAttachment(RootComponent);
-	SphereComponent->OnComponentBeginOverlap.AddDynamic(this, &ABullet::OnOverlap);
 }
 
 // Called when the game starts or when spawned
@@ -46,8 +45,23 @@ void ABullet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeP
 	DOREPLIFETIME(ABullet, BulletSpeed);
 }
 
+void ABullet::SetBulletProperties(float Damage, float Speed)
+{
+	BulletDmg = Damage;
+	BulletSpeed = Speed;
+	UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("Dmg %f"), Damage));
+}
+
+void ABullet::InitBull(float Dmg, float Speed, const FVector& NewDirection)
+{
+	SetBulletProperties(Dmg, Speed);
+	SetDirectionBullet(NewDirection);
+
+	SphereComponent->OnComponentBeginOverlap.AddDynamic(this, &ABullet::OnOverlap);
+}
+
 void ABullet::OnOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
-	int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+                        int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	if (HasAuthority())
 	{
@@ -56,15 +70,15 @@ void ABullet::OnOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor,
 		{
 			ABanSungOnlCharacter* Shooter = Cast<ABanSungOnlCharacter>(GetOwner());
 			Zombies->TakeDmg(BulletDmg, Shooter);
-			Destroy();
+			FTimerHandle DestroyTimer;
+			GetWorld()->GetTimerManager().SetTimer(DestroyTimer, this, &ABullet::DestroyBull, 0.05f, false);
 		}
 	}
 }
 
-void ABullet::SetBulletProperties_Implementation(float Damage, float Speed)
+void ABullet::DestroyBull()
 {
-	BulletDmg = Damage;
-	BulletSpeed = Speed;
+	Destroy();
 }
 
 void ABullet::SetDirectionBullet_Implementation(const FVector NewDirection)

@@ -284,10 +284,6 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClInclude Include="..\..\Source\BanSungOnl\Items\ItemAmmoRif.h"/>
-    <ClCompile Include="..\..\Source\BanSungOnl\Items\ItemHealth.cpp">
-      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\BanSungOnl\Items\ItemHealth.h"/>
     <ClCompile Include="..\..\Source\BanSungOnl\Items\Items.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>

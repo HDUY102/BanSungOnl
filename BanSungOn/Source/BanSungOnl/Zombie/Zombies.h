@@ -6,8 +6,7 @@
 #include "BanSungOnl/BanSungOnlCharacter.h"
 #include "BanSungOnl/Items/ItemAmmoPis.h"
 #include "BanSungOnl/Items/ItemAmmoRif.h"
-#include "BanSungOnl/Items/ItemHealth.h"
-#include "BanSungOnl/Items/Items.h"
+#include "BanSungOnl/Items/ItemsNew.h"
 #include "Components/SphereComponent.h"
 #include "Components/WidgetComponent.h"
 #include "GameFramework/Character.h"
@@ -21,7 +20,7 @@ enum class EnumItems : uint8
 	AmmoRif UMETA(DisplayName = "Item Rif"),
 	AmmoPis UMETA(DisplayName = "Item Pis"),
 };
-
+DECLARE_DELEGATE(FOnZombieDeath);
 UCLASS()
 class BANSUNGONL_API AZombies : public ACharacter
 {
@@ -32,7 +31,7 @@ public:
 	AZombies();
 	UPROPERTY(BlueprintReadOnly, Replicated)
 	float HealthZomb;
-	UPROPERTY(Replicated)
+	UPROPERTY(BlueprintReadOnly,Replicated)
 	float DamageZomb;
 	UPROPERTY(BlueprintReadOnly)
 	float MaxHealthZomb;
@@ -64,11 +63,13 @@ public:
 
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
+	FOnZombieDeath OnZombieDeath;
+	
 	UFUNCTION()
 	void TakeDmg(float Dmg, ABanSungOnlCharacter* Shooter);
 
 	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="ItemsSpawn")
-	TSubclassOf<AItemHealth> HealthToSpawn;
+	TSubclassOf<AItemsNew> HealthToSpawn;
 	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="ItemsSpawn")
 	TSubclassOf<AItemAmmoPis> PisToSpawn;
 	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category="ItemsSpawn")

@@ -31,8 +31,8 @@ void AItems::BeginPlay()
 void AItems::OnOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
 	int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	if(HasAuthority())
-	{
+	// if(HasAuthority())
+	// {
 		ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(OtherActor);
 		if (PlayerCharacter)
 		{
@@ -50,13 +50,10 @@ void AItems::OnOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, 
 				if(PlayerCharacter->Pistol)
 					PlayerCharacter->Pistol->Ammo = FMath::Min(PlayerCharacter->Pistol->Ammo + AmmoItem, PlayerCharacter->Pistol->MaxAmmo);
 			}
-			if (PlayerCharacter->IsLocallyControlled())
-			{
-				NotifyItemsPickup(PlayerCharacter, static_cast<int32>(Type));
-			}
+			NotifyItemsPickup(PlayerCharacter, static_cast<int32>(Type));
 			Destroy();
 		}
-	}
+	// }
 }
 
 void AItems::SpawnItems()
@@ -66,10 +63,7 @@ void AItems::SpawnItems()
 
 void AItems::NotifyItemsPickup_Implementation(ABanSungOnlCharacter* Player, int32 ItemType)
 {
-	if(!HasAuthority())
-	{
-		Player->ShowNameItem.Broadcast(ItemType);
-	}
+	Player->ShowNameItem.Broadcast(ItemType);
 }
 
 // Called every frame

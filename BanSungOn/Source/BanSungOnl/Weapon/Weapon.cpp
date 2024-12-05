@@ -66,11 +66,10 @@ void AWeapon::ShootBullet(FVector &Location)
 		FActorSpawnParameters spawnParams;
 		spawnParams.Owner = GetOwner();
 		Client_ShootSound();
-		ABullet* SpawnedBullet = GetWorld()->SpawnActor<ABullet>(BulletSpawned,BulletTransform, spawnParams);
+		SpawnedBullet = GetWorld()->SpawnActor<ABullet>(BulletSpawned,BulletTransform, spawnParams);
 		if(IsValid(SpawnedBullet))
 		{
-			SpawnedBullet->SetBulletProperties(Damage, Speed);
-			SpawnedBullet->SetDirectionBullet(Location);
+			SpawnedBullet->InitBull(Damage, Speed, Location);
 		}
 		CurAmmo--;
 		FTimerHandle FireTime;

@@ -57,4 +57,7 @@ public:
 	UPROPERTY(EditAnywhere,BlueprintReadOnly)
 	TSubclassOf<ABullet> BulletSpawned;
 	void ShootBullet(FVector &Location);
+
+	UPROPERTY()
+	ABullet* SpawnedBullet;
 };
