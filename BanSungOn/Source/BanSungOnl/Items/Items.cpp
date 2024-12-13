@@ -50,7 +50,10 @@ void AItems::OnOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, 
 				if(PlayerCharacter->Pistol)
 					PlayerCharacter->Pistol->Ammo = FMath::Min(PlayerCharacter->Pistol->Ammo + AmmoItem, PlayerCharacter->Pistol->MaxAmmo);
 			}
-			NotifyItemsPickup(PlayerCharacter, static_cast<int32>(Type));
+			if(PlayerCharacter->IsLocallyControlled())
+			{
+				NotifyItemsPickup(PlayerCharacter, static_cast<int32>(Type));
+			}
 			Destroy();
 		}
 	// }

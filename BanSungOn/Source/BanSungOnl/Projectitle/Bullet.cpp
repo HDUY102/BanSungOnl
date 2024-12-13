@@ -49,7 +49,6 @@ void ABullet::SetBulletProperties(float Damage, float Speed)
 {
 	BulletDmg = Damage;
 	BulletSpeed = Speed;
-	UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("Dmg %f"), Damage));
 }
 
 void ABullet::InitBull(float Dmg, float Speed, const FVector& NewDirection)

@@ -198,6 +198,7 @@ void ABanSungOnlCharacter::EquipRifle()
 
 void ABanSungOnlCharacter::ResetPlayer()
 {
+	bPlusHealth = true;
 	Health = MaxHealth;
 	Score = 0;
 	Pistol->ResetAmmo();

@@ -111,11 +111,21 @@ TArray<ABanSungOnlCharacter*> ABanSungOnlGameMode::GetAlivePlayers()
 	TArray<ABanSungOnlCharacter*> AlivePlayers;
 	for (auto Player : CPlayerAgain)
 	{
-		ABanSungOnlCharacter* OnlPlayerCharacter = Cast<ABanSungOnlCharacter>(Player);
-		if (OnlPlayerCharacter && !OnlPlayerCharacter->bIsDead)
+		if (AController* Controller = Cast<AController>(Player)) 
 		{
-			AlivePlayers.Add(OnlPlayerCharacter);
+			if (ABanSungOnlCharacter* OnlPlayerCharacter = Cast<ABanSungOnlCharacter>(Controller->GetPawn()))
+			{
+				if (!OnlPlayerCharacter->bIsDead)
+				{
+					AlivePlayers.Add(OnlPlayerCharacter);
+				}
+			}
 		}
+		// ABanSungOnlCharacter* OnlPlayerCharacter = Cast<ABanSungOnlCharacter>(Player);
+		// if (OnlPlayerCharacter && !OnlPlayerCharacter->bIsDead)
+		// {
+		// 	AlivePlayers.Add(OnlPlayerCharacter);
+		// }
 	}
 	return AlivePlayers;
 }

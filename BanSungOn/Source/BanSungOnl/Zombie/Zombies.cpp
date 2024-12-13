@@ -46,7 +46,7 @@ void AZombies::BeginPlay()
 void AZombies::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	Server_AtkCharacter();
+	// Server_AtkCharacter();
 } 
 
 // Called to bind functionality to input
@@ -60,7 +60,6 @@ void AZombies::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetime
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 	DOREPLIFETIME(AZombies, HealthZomb);
 	DOREPLIFETIME(AZombies, DamageZomb);
-	DOREPLIFETIME(AZombies, CanAtk);
 }
 
 void AZombies::TakeDmg(float Dmg, ABanSungOnlCharacter* Shooter)
@@ -103,8 +102,8 @@ void AZombies::RandomItems(FVector BodyZombie)
 void AZombies::OnOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
                          int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	if (HasAuthority())
-	{
+	// if (HasAuthority())
+	// {
 		ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(OtherActor);
 		if(PlayerCharacter && PlayerCharacter->Health>0.f)
 		{
@@ -112,10 +111,9 @@ void AZombies::OnOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor
 			FRotator LookAtRotation = DirectionToPlayer.Rotation();
 
 			SetActorRotation(LookAtRotation);
-			CanAtk = true;
-			Server_AtkCharacter();
+			// Server_AtkCharacter();
 		}
-	}
+	// }
 }
 
 void AZombies::OnEndOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
@@ -124,34 +122,33 @@ void AZombies::OnEndOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherAc
 	ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(OtherActor);
 	if (PlayerCharacter)
 	{
-		CanAtk = false;
 	}
 }
-
-void AZombies::Server_AtkCharacter_Implementation()
-{
-	FVector Start = GetMesh()->GetSocketLocation(FName("A"));
-	FVector End = GetMesh()->GetSocketLocation(FName("B"));
-
-	TArray<AActor*> IgnoreActors;
-	IgnoreActors.Add(this); 
-	FHitResult HitResult;
-	bool bHit = UKismetSystemLibrary::LineTraceSingle(GetWorld(),Start,End,
-		static_cast<ETraceTypeQuery>(ECollisionChannel::ECC_Pawn), 
-		false,
-		IgnoreActors,
-		EDrawDebugTrace::None,
-		HitResult,
-		true);
-	if (bHit)
-	{
-		ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(HitResult.GetActor());
-		if (PlayerCharacter && !Attack)
-		{
-			FTimerHandle CanAttackTime;
-			Attack = true;
-			PlayerCharacter->PlayerTakeDmg(DamageZomb);
-			GetWorld()->GetTimerManager().SetTimer(CanAttackTime, [this]() { Attack = false; }, 2.0f, false);
-		}
-	}
-}
+//
+// void AZombies::Server_AtkCharacter_Implementation()
+// {
+// 	FVector Start = GetMesh()->GetSocketLocation(FName("A"));
+// 	FVector End = GetMesh()->GetSocketLocation(FName("B"));
+//
+// 	TArray<AActor*> IgnoreActors;
+// 	IgnoreActors.Add(this); 
+// 	FHitResult HitResult;
+// 	bool bHit = UKismetSystemLibrary::LineTraceSingle(GetWorld(),Start,End,
+// 		static_cast<ETraceTypeQuery>(ECollisionChannel::ECC_Pawn), 
+// 		false,
+// 		IgnoreActors,
+// 		EDrawDebugTrace::ForDuration,
+// 		HitResult,
+// 		true);
+// 	if (bHit)
+// 	{
+// 		ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(HitResult.GetActor());
+// 		if (PlayerCharacter && !Attack)
+// 		{
+// 			FTimerHandle CanAttackTime;
+// 			Attack = true;
+// 			PlayerCharacter->PlayerTakeDmg(DamageZomb);
+// 			GetWorld()->GetTimerManager().SetTimer(CanAttackTime, [this]() { Attack = false; }, 2.2f, false);
+// 		}
+// 	}
+// }

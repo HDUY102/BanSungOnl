@@ -43,8 +43,8 @@ protected:
 	virtual void BeginPlay() override;
 
 	// Atk
-	UFUNCTION(Server,Unreliable)
-	void Server_AtkCharacter();
+	// UFUNCTION(BlueprintCallable, Server,Unreliable)
+	// void Server_AtkCharacter();
 	
 	UPROPERTY(BlueprintReadOnly,Replicated)
 	bool CanAtk=false;

@@ -272,46 +272,6 @@ DEFINE_FUNCTION(AZombies::execRandomItems)
 }
 // End Class AZombies Function RandomItems
 
-// Begin Class AZombies Function Server_AtkCharacter
-static FName NAME_AZombies_Server_AtkCharacter = FName(TEXT("Server_AtkCharacter"));
-void AZombies::Server_AtkCharacter()
-{
-	ProcessEvent(FindFunctionChecked(NAME_AZombies_Server_AtkCharacter),NULL);
-}
-struct Z_Construct_UFunction_AZombies_Server_AtkCharacter_Statics
-{
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "// Atk\n" },
-#endif
-		{ "ModuleRelativePath", "Zombie/Zombies.h" },
-#if !UE_BUILD_SHIPPING
-		{ "ToolTip", "Atk" },
-#endif
-	};
-#endif // WITH_METADATA
-	static const UECodeGen_Private::FFunctionParams FuncParams;
-};
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AZombies_Server_AtkCharacter_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AZombies, nullptr, "Server_AtkCharacter", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00280C40, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AZombies_Server_AtkCharacter_Statics::Function_MetaDataParams), Z_Construct_UFunction_AZombies_Server_AtkCharacter_Statics::Function_MetaDataParams) };
-UFunction* Z_Construct_UFunction_AZombies_Server_AtkCharacter()
-{
-	static UFunction* ReturnFunction = nullptr;
-	if (!ReturnFunction)
-	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AZombies_Server_AtkCharacter_Statics::FuncParams);
-	}
-	return ReturnFunction;
-}
-DEFINE_FUNCTION(AZombies::execServer_AtkCharacter)
-{
-	P_FINISH;
-	P_NATIVE_BEGIN;
-	P_THIS->Server_AtkCharacter_Implementation();
-	P_NATIVE_END;
-}
-// End Class AZombies Function Server_AtkCharacter
-
 // Begin Class AZombies Function TakeDmg
 struct Z_Construct_UFunction_AZombies_TakeDmg_Statics
 {
@@ -367,7 +327,6 @@ void AZombies::StaticRegisterNativesAZombies()
 		{ "OnEndOverlap", &AZombies::execOnEndOverlap },
 		{ "OnOverlap", &AZombies::execOnOverlap },
 		{ "RandomItems", &AZombies::execRandomItems },
-		{ "Server_AtkCharacter", &AZombies::execServer_AtkCharacter },
 		{ "TakeDmg", &AZombies::execTakeDmg },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
@@ -404,7 +363,13 @@ struct Z_Construct_UClass_AZombies_Statics
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CanAtk_MetaData[] = {
 		{ "Category", "Zombies" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// Atk\n// UFUNCTION(BlueprintCallable, Server,Unreliable)\n// void Server_AtkCharacter();\n" },
+#endif
 		{ "ModuleRelativePath", "Zombie/Zombies.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Atk\nUFUNCTION(BlueprintCallable, Server,Unreliable)\nvoid Server_AtkCharacter();" },
+#endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_WidgetComponent_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
@@ -453,7 +418,6 @@ struct Z_Construct_UClass_AZombies_Statics
 		{ &Z_Construct_UFunction_AZombies_OnEndOverlap, "OnEndOverlap" }, // 4242726135
 		{ &Z_Construct_UFunction_AZombies_OnOverlap, "OnOverlap" }, // 2672535909
 		{ &Z_Construct_UFunction_AZombies_RandomItems, "RandomItems" }, // 1344175222
-		{ &Z_Construct_UFunction_AZombies_Server_AtkCharacter, "Server_AtkCharacter" }, // 2253604985
 		{ &Z_Construct_UFunction_AZombies_TakeDmg, "TakeDmg" }, // 4069674465
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
@@ -545,10 +509,10 @@ struct Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_B
 		{ EnumItems_StaticEnum, TEXT("EnumItems"), &Z_Registration_Info_UEnum_EnumItems, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 1198418091U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AZombies, AZombies::StaticClass, TEXT("AZombies"), &Z_Registration_Info_UClass_AZombies, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AZombies), 3455102078U) },
+		{ Z_Construct_UClass_AZombies, AZombies::StaticClass, TEXT("AZombies"), &Z_Registration_Info_UClass_AZombies, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AZombies), 3913278970U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_2459022228(TEXT("/Script/BanSungOnl"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_1188306127(TEXT("/Script/BanSungOnl"),
 	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_Statics::ClassInfo),
 	nullptr, 0,
 	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_Statics::EnumInfo));

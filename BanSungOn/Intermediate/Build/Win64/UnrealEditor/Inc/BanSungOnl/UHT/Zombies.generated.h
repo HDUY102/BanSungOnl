@@ -19,15 +19,12 @@ struct FHitResult;
 #define BANSUNGONL_Zombies_generated_h
 
 #define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_27_RPC_WRAPPERS_NO_PURE_DECLS \
-	virtual void Server_AtkCharacter_Implementation(); \
 	DECLARE_FUNCTION(execOnEndOverlap); \
 	DECLARE_FUNCTION(execOnOverlap); \
 	DECLARE_FUNCTION(execRandomItems); \
-	DECLARE_FUNCTION(execTakeDmg); \
-	DECLARE_FUNCTION(execServer_AtkCharacter);
+	DECLARE_FUNCTION(execTakeDmg);
 
 
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_27_CALLBACK_WRAPPERS
 #define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_27_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAZombies(); \
@@ -62,7 +59,6 @@ public: \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
 	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_27_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_27_CALLBACK_WRAPPERS \
 	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_27_INCLASS_NO_PURE_DECLS \
 	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_27_ENHANCED_CONSTRUCTORS \
 private: \
