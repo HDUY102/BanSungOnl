@@ -104,7 +104,7 @@ void ABanSungOnlGameMode::OnPostLogin(AController* NewPlayer)
 	Super::OnPostLogin(NewPlayer);
 	if(CPlayerAgain.Num() == 2)
 	{
-		NewPlayer->Destroyed();
+		NewPlayer->Destroy();
 		return;
 	}
 	CPlayerAgain.Add(NewPlayer);

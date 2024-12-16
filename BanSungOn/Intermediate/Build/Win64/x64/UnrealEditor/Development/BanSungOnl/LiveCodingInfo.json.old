@@ -19,21 +19,21 @@
 			"ZombiesBoss.gen.cpp.obj",
 			"ZombiesNor.gen.cpp.obj",
 			"BanSungOnl.cpp.obj",
+			"BanSungOnlCharacter.cpp.obj",
+			"BanSungOnlGameMode.cpp.obj",
+			"BanSungOnlPlayerController.cpp.obj",
 			"ItemAmmoPis.cpp.obj",
 			"ItemAmmoRif.cpp.obj",
 			"Items.cpp.obj",
 			"ItemsNew.cpp.obj",
 			"Bullet.cpp.obj",
+			"WaveSystem.cpp.obj",
 			"Pistol.cpp.obj",
 			"Rifle.cpp.obj",
 			"Weapon.cpp.obj",
+			"Zombies.cpp.obj",
 			"ZombiesBoss.cpp.obj",
-			"ZombiesNor.cpp.obj",
-			"BanSungOnlCharacter.cpp.obj",
-			"BanSungOnlGameMode.cpp.obj",
-			"BanSungOnlPlayerController.cpp.obj",
-			"WaveSystem.cpp.obj",
-			"Zombies.cpp.obj"
+			"ZombiesNor.cpp.obj"
 		]
 	}
 }
