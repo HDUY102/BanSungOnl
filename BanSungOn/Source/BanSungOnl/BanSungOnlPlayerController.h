@@ -94,7 +94,7 @@ protected:
 	void Server_Reload();
 
 	FTimerHandle FireRifleTime,FirePistolTime;
-	bool StepByOne, isReloading;
+	bool StepByOne;
 	void OnFirePistol(); // Fire Input
 	UFUNCTION(Server, Unreliable)
 	void Server_FirePistol();
@@ -110,6 +110,8 @@ public:
 	
 	UPROPERTY(ReplicatedUsing=OnRep_IsPlayAgain)
 	int PlayAgain = 0;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Replicated)
+	bool isReloading;
 
 	UFUNCTION()
 	void OnRep_IsWinPlayAgain();

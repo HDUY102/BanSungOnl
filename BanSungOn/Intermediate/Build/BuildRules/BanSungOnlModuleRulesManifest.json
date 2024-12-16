@@ -1,8 +1,8 @@
 {
 	"SourceFiles": [
-		"D:\\Code_C++_Training\\BanSungOnl\\BanSungOn\\Source\\BanSungOnl\\BanSungOnl.Build.cs",
-		"D:\\Code_C++_Training\\BanSungOnl\\BanSungOn\\Source\\BanSungOnl.Target.cs",
-		"D:\\Code_C++_Training\\BanSungOnl\\BanSungOn\\Source\\BanSungOnlEditor.Target.cs"
+		"D:\\Code_C++_Training\\BanSungOnline\\BanSungOnl\\BanSungOn\\Source\\BanSungOnl\\BanSungOnl.Build.cs",
+		"D:\\Code_C++_Training\\BanSungOnline\\BanSungOnl\\BanSungOn\\Source\\BanSungOnl.Target.cs",
+		"D:\\Code_C++_Training\\BanSungOnline\\BanSungOnl\\BanSungOn\\Source\\BanSungOnlEditor.Target.cs"
 	],
 	"EngineVersion": "5.4.4"
 }

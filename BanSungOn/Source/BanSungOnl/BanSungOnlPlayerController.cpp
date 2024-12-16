@@ -71,11 +71,11 @@ void ABanSungOnlPlayerController::Tick(float DeltaSeconds)
 	Super::Tick(DeltaSeconds);
 	if (!HasAuthority())
 	{
-		bool bHitSuccessful = GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, true, Hit);
-		if (bHitSuccessful)
-		{
-			Server_SetRotation(Hit.ImpactPoint);
-		}
+		FHitResult HitResult;
+		GetHitResultUnderCursorByChannel(ETraceTypeQuery::TraceTypeQuery1, false, HitResult);
+		FVector MouseLocation = HitResult.Location;
+
+		Server_SetRotation(MouseLocation);
 	}
 }
 
@@ -161,10 +161,11 @@ void ABanSungOnlPlayerController::Server_SetRotation_Implementation(const FVecto
 	APawn* ControlledPawn = GetPawn();
 	if(IsValid(ControlledPawn))
 	{
-		FVector Direction = MousePosition - ControlledPawn->GetActorLocation();
-		FRotator NewRotation = Direction.Rotation();
-		NewRotation.Pitch = ControlledPawn->GetActorRotation().Pitch;
-		ControlledPawn->SetActorRotation(NewRotation);
+		ABanSungOnlCharacter* CharacterPlayer = Cast<ABanSungOnlCharacter>(GetPawn());
+		if(IsValid(CharacterPlayer))
+		{
+			CharacterPlayer->Mouse = MousePosition;
+		}
 	}
 }
 
@@ -227,6 +228,7 @@ void ABanSungOnlPlayerController::GetLifetimeReplicatedProps(TArray<class FLifet
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 	DOREPLIFETIME(ABanSungOnlPlayerController, PlayAgain);
 	DOREPLIFETIME(ABanSungOnlPlayerController, WinPlayAgain);
+	DOREPLIFETIME(ABanSungOnlPlayerController, isReloading);
 }
 
 void ABanSungOnlPlayerController::ServerPlayAgain_Implementation()
@@ -253,6 +255,10 @@ void ABanSungOnlPlayerController::Server_FireRifle_Implementation(FVector Mouse)
 				StepByOne = true;
 				PlayerCharacter->CurWeapon->ShootBullet(Mouse);
 			}
+		}
+		if(PlayerCharacter->CurWeapon->CurAmmo < 0 )
+		{
+			Server_Reload();
 		}
 	}
 }

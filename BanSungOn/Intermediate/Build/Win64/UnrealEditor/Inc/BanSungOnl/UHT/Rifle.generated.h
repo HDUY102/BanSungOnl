@@ -14,7 +14,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define BANSUNGONL_Rifle_generated_h
 
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Rifle_h_13_INCLASS_NO_PURE_DECLS \
+#define FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Rifle_h_13_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesARifle(); \
 	friend struct Z_Construct_UClass_ARifle_Statics; \
@@ -23,7 +23,7 @@ public: \
 	DECLARE_SERIALIZER(ARifle)
 
 
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Rifle_h_13_ENHANCED_CONSTRUCTORS \
+#define FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Rifle_h_13_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	ARifle(ARifle&&); \
@@ -35,12 +35,12 @@ public: \
 	NO_API virtual ~ARifle();
 
 
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Rifle_h_10_PROLOG
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Rifle_h_13_GENERATED_BODY \
+#define FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Rifle_h_10_PROLOG
+#define FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Rifle_h_13_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Rifle_h_13_INCLASS_NO_PURE_DECLS \
-	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Rifle_h_13_ENHANCED_CONSTRUCTORS \
+	FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Rifle_h_13_INCLASS_NO_PURE_DECLS \
+	FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Rifle_h_13_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -48,7 +48,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 template<> BANSUNGONL_API UClass* StaticClass<class ARifle>();
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Rifle_h
+#define CURRENT_FILE_ID FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Weapon_Rifle_h
 
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

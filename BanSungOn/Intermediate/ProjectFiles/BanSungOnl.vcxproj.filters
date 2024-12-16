@@ -76,12 +76,6 @@
     <ClInclude Include="..\..\Source\BanSungOnl\Items\ItemAmmoRif.h">
       <Filter>Source\BanSungOnl\Items</Filter>
     </ClInclude>
-    <ClCompile Include="..\..\Source\BanSungOnl\Items\ItemHealth.cpp">
-      <Filter>Source\BanSungOnl\Items</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\BanSungOnl\Items\ItemHealth.h">
-      <Filter>Source\BanSungOnl\Items</Filter>
-    </ClInclude>
     <ClCompile Include="..\..\Source\BanSungOnl\Items\Items.cpp">
       <Filter>Source\BanSungOnl\Items</Filter>
     </ClCompile>

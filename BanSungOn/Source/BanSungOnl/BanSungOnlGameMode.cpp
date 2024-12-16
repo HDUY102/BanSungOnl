@@ -102,8 +102,22 @@ void ABanSungOnlGameMode::GameWin()
 void ABanSungOnlGameMode::OnPostLogin(AController* NewPlayer)
 {
 	Super::OnPostLogin(NewPlayer);
+	if(CPlayerAgain.Num() == 2)
+	{
+		NewPlayer->Destroyed();
+		return;
+	}
 	CPlayerAgain.Add(NewPlayer);
 	OnPlayerDead.BindUObject(this, &ABanSungOnlGameMode::GetAlivePlayers);
+	
+	if (CPlayerAgain.Num() == 2)
+	{
+		AWaveSystem* WaveSystem = Cast<AWaveSystem>(UGameplayStatics::GetActorOfClass(GetWorld(), AWaveSystem::StaticClass()));
+		if (WaveSystem)
+		{
+			WaveSystem->SetupWave();
+		}
+	}
 }
 
 TArray<ABanSungOnlCharacter*> ABanSungOnlGameMode::GetAlivePlayers()

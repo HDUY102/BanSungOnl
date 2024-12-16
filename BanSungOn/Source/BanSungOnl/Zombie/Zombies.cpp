@@ -33,7 +33,6 @@ AZombies::AZombies()
 	SphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComponent"));
 	SphereComponent->SetupAttachment(RootComponent);
 	SphereComponent->OnComponentBeginOverlap.AddDynamic(this, &AZombies::OnOverlap);
-	SphereComponent->OnComponentEndOverlap.AddDynamic(this, &AZombies::OnEndOverlap);
 }
 
 // Called when the game starts or when spawned
@@ -116,14 +115,6 @@ void AZombies::OnOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor
 	// }
 }
 
-void AZombies::OnEndOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
-	int32 OtherBodyIndex)
-{
-	ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(OtherActor);
-	if (PlayerCharacter)
-	{
-	}
-}
 //
 // void AZombies::Server_AtkCharacter_Implementation()
 // {

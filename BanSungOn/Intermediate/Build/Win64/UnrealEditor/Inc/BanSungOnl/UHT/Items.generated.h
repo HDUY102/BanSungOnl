@@ -18,15 +18,15 @@ struct FHitResult;
 #endif
 #define BANSUNGONL_Items_generated_h
 
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
+#define FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
 	virtual void NotifyItemsPickup_Implementation(ABanSungOnlCharacter* Player, int32 ItemType); \
 	DECLARE_FUNCTION(execNotifyItemsPickup); \
 	DECLARE_FUNCTION(execSpawnItems); \
 	DECLARE_FUNCTION(execOnOverlap);
 
 
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_15_CALLBACK_WRAPPERS
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_15_INCLASS_NO_PURE_DECLS \
+#define FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_15_CALLBACK_WRAPPERS
+#define FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_15_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAItems(); \
 	friend struct Z_Construct_UClass_AItems_Statics; \
@@ -41,7 +41,7 @@ public: \
 	NO_API virtual void ValidateGeneratedRepEnums(const TArray<struct FRepRecord>& ClassReps) const override;
 
 
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_15_ENHANCED_CONSTRUCTORS \
+#define FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_15_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	AItems(AItems&&); \
@@ -53,14 +53,14 @@ public: \
 	NO_API virtual ~AItems();
 
 
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_12_PROLOG
-#define FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_15_GENERATED_BODY \
+#define FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_12_PROLOG
+#define FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_15_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_15_CALLBACK_WRAPPERS \
-	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_15_INCLASS_NO_PURE_DECLS \
-	FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_15_ENHANCED_CONSTRUCTORS \
+	FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_15_CALLBACK_WRAPPERS \
+	FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_15_INCLASS_NO_PURE_DECLS \
+	FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h_15_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -68,7 +68,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 template<> BANSUNGONL_API UClass* StaticClass<class AItems>();
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h
+#define CURRENT_FILE_ID FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Items_Items_h
 
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

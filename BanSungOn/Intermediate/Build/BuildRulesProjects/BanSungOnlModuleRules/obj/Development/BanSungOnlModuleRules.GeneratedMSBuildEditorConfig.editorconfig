@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BanSungOnlModuleRules
-build_property.ProjectDir = D:\Code_C++_Training\BanSungOnl\BanSungOn\Intermediate\Build\BuildRulesProjects\BanSungOnlModuleRules\
+build_property.ProjectDir = D:\Code_C++_Training\BanSungOnline\BanSungOnl\BanSungOn\Intermediate\Build\BuildRulesProjects\BanSungOnlModuleRules\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

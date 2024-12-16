@@ -16,6 +16,7 @@
 #include "Materials/Material.h"
 #include "Engine/World.h"
 #include "Kismet/GameplayStatics.h"
+#include "Kismet/KismetMathLibrary.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Net/UnrealNetwork.h"
 
@@ -60,6 +61,15 @@ ABanSungOnlCharacter::ABanSungOnlCharacter()
 void ABanSungOnlCharacter::Tick(float DeltaSeconds)
 {
     Super::Tick(DeltaSeconds);
+
+	if (Health > 0)
+	{
+		FVector Location = GetActorLocation();
+		FRotator Temp =  UKismetMathLibrary::FindLookAtRotation(Location , Mouse);
+		Temp.Roll = GetActorRotation().Roll;
+		Temp.Pitch = GetActorRotation().Pitch;
+		SetActorRotation(Temp);
+	}
 }
 
 void ABanSungOnlCharacter::BeginPlay()
@@ -184,6 +194,7 @@ void ABanSungOnlCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>&
 	DOREPLIFETIME(ABanSungOnlCharacter, bIsGameWin);
 	DOREPLIFETIME(ABanSungOnlCharacter, Score);
 	DOREPLIFETIME(ABanSungOnlCharacter, bPlusHealth);
+	DOREPLIFETIME(ABanSungOnlCharacter, Mouse);
 }
 
 void ABanSungOnlCharacter::EquipPistol()

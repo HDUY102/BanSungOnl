@@ -86,69 +86,6 @@ UEnum* Z_Construct_UEnum_BanSungOnl_EnumItems()
 }
 // End Enum EnumItems
 
-// Begin Class AZombies Function OnEndOverlap
-struct Z_Construct_UFunction_AZombies_OnEndOverlap_Statics
-{
-	struct Zombies_eventOnEndOverlap_Parms
-	{
-		UPrimitiveComponent* OverlappedComp;
-		AActor* OtherActor;
-		UPrimitiveComponent* OtherComp;
-		int32 OtherBodyIndex;
-	};
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "ModuleRelativePath", "Zombie/Zombies.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OverlappedComp_MetaData[] = {
-		{ "EditInline", "true" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OtherComp_MetaData[] = {
-		{ "EditInline", "true" },
-	};
-#endif // WITH_METADATA
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_OverlappedComp;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_OtherActor;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_OtherComp;
-	static const UECodeGen_Private::FIntPropertyParams NewProp_OtherBodyIndex;
-	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
-	static const UECodeGen_Private::FFunctionParams FuncParams;
-};
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AZombies_OnEndOverlap_Statics::NewProp_OverlappedComp = { "OverlappedComp", nullptr, (EPropertyFlags)0x0010000000080080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Zombies_eventOnEndOverlap_Parms, OverlappedComp), Z_Construct_UClass_UPrimitiveComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OverlappedComp_MetaData), NewProp_OverlappedComp_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AZombies_OnEndOverlap_Statics::NewProp_OtherActor = { "OtherActor", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Zombies_eventOnEndOverlap_Parms, OtherActor), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AZombies_OnEndOverlap_Statics::NewProp_OtherComp = { "OtherComp", nullptr, (EPropertyFlags)0x0010000000080080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Zombies_eventOnEndOverlap_Parms, OtherComp), Z_Construct_UClass_UPrimitiveComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OtherComp_MetaData), NewProp_OtherComp_MetaData) };
-const UECodeGen_Private::FIntPropertyParams Z_Construct_UFunction_AZombies_OnEndOverlap_Statics::NewProp_OtherBodyIndex = { "OtherBodyIndex", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Zombies_eventOnEndOverlap_Parms, OtherBodyIndex), METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AZombies_OnEndOverlap_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AZombies_OnEndOverlap_Statics::NewProp_OverlappedComp,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AZombies_OnEndOverlap_Statics::NewProp_OtherActor,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AZombies_OnEndOverlap_Statics::NewProp_OtherComp,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AZombies_OnEndOverlap_Statics::NewProp_OtherBodyIndex,
-};
-static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AZombies_OnEndOverlap_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AZombies_OnEndOverlap_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AZombies, nullptr, "OnEndOverlap", nullptr, nullptr, Z_Construct_UFunction_AZombies_OnEndOverlap_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AZombies_OnEndOverlap_Statics::PropPointers), sizeof(Z_Construct_UFunction_AZombies_OnEndOverlap_Statics::Zombies_eventOnEndOverlap_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AZombies_OnEndOverlap_Statics::Function_MetaDataParams), Z_Construct_UFunction_AZombies_OnEndOverlap_Statics::Function_MetaDataParams) };
-static_assert(sizeof(Z_Construct_UFunction_AZombies_OnEndOverlap_Statics::Zombies_eventOnEndOverlap_Parms) < MAX_uint16);
-UFunction* Z_Construct_UFunction_AZombies_OnEndOverlap()
-{
-	static UFunction* ReturnFunction = nullptr;
-	if (!ReturnFunction)
-	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AZombies_OnEndOverlap_Statics::FuncParams);
-	}
-	return ReturnFunction;
-}
-DEFINE_FUNCTION(AZombies::execOnEndOverlap)
-{
-	P_GET_OBJECT(UPrimitiveComponent,Z_Param_OverlappedComp);
-	P_GET_OBJECT(AActor,Z_Param_OtherActor);
-	P_GET_OBJECT(UPrimitiveComponent,Z_Param_OtherComp);
-	P_GET_PROPERTY(FIntProperty,Z_Param_OtherBodyIndex);
-	P_FINISH;
-	P_NATIVE_BEGIN;
-	P_THIS->OnEndOverlap(Z_Param_OverlappedComp,Z_Param_OtherActor,Z_Param_OtherComp,Z_Param_OtherBodyIndex);
-	P_NATIVE_END;
-}
-// End Class AZombies Function OnEndOverlap
-
 // Begin Class AZombies Function OnOverlap
 struct Z_Construct_UFunction_AZombies_OnOverlap_Statics
 {
@@ -324,7 +261,6 @@ void AZombies::StaticRegisterNativesAZombies()
 {
 	UClass* Class = AZombies::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
-		{ "OnEndOverlap", &AZombies::execOnEndOverlap },
 		{ "OnOverlap", &AZombies::execOnOverlap },
 		{ "RandomItems", &AZombies::execRandomItems },
 		{ "TakeDmg", &AZombies::execTakeDmg },
@@ -415,7 +351,6 @@ struct Z_Construct_UClass_AZombies_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_AZombies_OnEndOverlap, "OnEndOverlap" }, // 4242726135
 		{ &Z_Construct_UFunction_AZombies_OnOverlap, "OnOverlap" }, // 2672535909
 		{ &Z_Construct_UFunction_AZombies_RandomItems, "RandomItems" }, // 1344175222
 		{ &Z_Construct_UFunction_AZombies_TakeDmg, "TakeDmg" }, // 4069674465
@@ -503,18 +438,18 @@ AZombies::~AZombies() {}
 // End Class AZombies
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_Statics
+struct Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_Statics
 {
 	static constexpr FEnumRegisterCompiledInInfo EnumInfo[] = {
 		{ EnumItems_StaticEnum, TEXT("EnumItems"), &Z_Registration_Info_UEnum_EnumItems, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 1198418091U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AZombies, AZombies::StaticClass, TEXT("AZombies"), &Z_Registration_Info_UClass_AZombies, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AZombies), 3913278970U) },
+		{ Z_Construct_UClass_AZombies, AZombies::StaticClass, TEXT("AZombies"), &Z_Registration_Info_UClass_AZombies, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AZombies), 3901553058U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_1188306127(TEXT("/Script/BanSungOnl"),
-	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_2079363248(TEXT("/Script/BanSungOnl"),
+	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_Statics::ClassInfo),
 	nullptr, 0,
-	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_Statics::EnumInfo));
+	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_Statics::EnumInfo));
 // End Registration
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

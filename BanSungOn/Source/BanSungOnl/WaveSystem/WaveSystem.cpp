@@ -24,7 +24,7 @@ void AWaveSystem::BeginPlay()
 	SpawnLocations.Add(FVector(-3773.596643, 187.071928, 8071.220918)); // Location for wave 2
 	SpawnLocations.Add(FVector(796.403357, 267.071928, 8301.220918)); // Location for wave 3
 	
-	SetupWave();
+	// SetupWave();
 }
 
 void AWaveSystem::SetupWave()

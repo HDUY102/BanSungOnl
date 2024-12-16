@@ -1,6 +1,6 @@
 /I "."
-/I "D:\Code_C++_Training\BanSungOnl\BanSungOn\Intermediate\Build\Win64\UnrealEditor\Inc\BanSungOnl\UHT"
-/I "D:\Code_C++_Training\BanSungOnl\BanSungOn\Source"
+/I "D:\Code_C++_Training\BanSungOnline\BanSungOnl\BanSungOn\Intermediate\Build\Win64\UnrealEditor\Inc\BanSungOnl\UHT"
+/I "D:\Code_C++_Training\BanSungOnline\BanSungOnl\BanSungOn\Source"
 /I "Runtime\Core\Public"
 /I "Runtime\Core\Internal"
 /I "Runtime\TraceLog\Public"

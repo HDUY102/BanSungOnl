@@ -39,6 +39,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void PlayerTakeDmg(float Dmg);
 
+	UPROPERTY(Replicated)
+	FVector Mouse;
+	
 	// Dead
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, ReplicatedUsing = OnRep_IsDead)
 	bool bIsDead;
