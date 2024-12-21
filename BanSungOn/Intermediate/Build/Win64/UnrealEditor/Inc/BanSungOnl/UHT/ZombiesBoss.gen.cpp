@@ -80,10 +80,10 @@ AZombiesBoss::~AZombiesBoss() {}
 struct Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_ZombiesBoss_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AZombiesBoss, AZombiesBoss::StaticClass, TEXT("AZombiesBoss"), &Z_Registration_Info_UClass_AZombiesBoss, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AZombiesBoss), 1462451686U) },
+		{ Z_Construct_UClass_AZombiesBoss, AZombiesBoss::StaticClass, TEXT("AZombiesBoss"), &Z_Registration_Info_UClass_AZombiesBoss, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AZombiesBoss), 3635965675U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_ZombiesBoss_h_4113604884(TEXT("/Script/BanSungOnl"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_ZombiesBoss_h_2775153895(TEXT("/Script/BanSungOnl"),
 	Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_ZombiesBoss_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_ZombiesBoss_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

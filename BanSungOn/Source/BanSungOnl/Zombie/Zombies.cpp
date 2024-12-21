@@ -33,6 +33,7 @@ AZombies::AZombies()
 	SphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComponent"));
 	SphereComponent->SetupAttachment(RootComponent);
 	SphereComponent->OnComponentBeginOverlap.AddDynamic(this, &AZombies::OnOverlap);
+	SphereComponent->OnComponentEndOverlap.AddDynamic(this, &AZombies::EndOverlap);
 }
 
 // Called when the game starts or when spawned
@@ -59,6 +60,7 @@ void AZombies::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetime
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 	DOREPLIFETIME(AZombies, HealthZomb);
 	DOREPLIFETIME(AZombies, DamageZomb);
+	DOREPLIFETIME(AZombies, PlayerList);
 }
 
 void AZombies::TakeDmg(float Dmg, ABanSungOnlCharacter* Shooter)
@@ -101,18 +103,25 @@ void AZombies::RandomItems(FVector BodyZombie)
 void AZombies::OnOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
                          int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	// if (HasAuthority())
-	// {
-		ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(OtherActor);
-		if(PlayerCharacter && PlayerCharacter->Health>0.f)
-		{
-			FVector DirectionToPlayer = (PlayerCharacter->GetActorLocation() - GetActorLocation()).GetSafeNormal();
-			FRotator LookAtRotation = DirectionToPlayer.Rotation();
+	ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(OtherActor);
+	if(PlayerCharacter && PlayerCharacter->Health>0.f)
+	{
+		FVector DirectionToPlayer = (PlayerCharacter->GetActorLocation() - GetActorLocation()).GetSafeNormal();
+		FRotator LookAtRotation = DirectionToPlayer.Rotation();
 
-			SetActorRotation(LookAtRotation);
-			// Server_AtkCharacter();
-		}
-	// }
+		SetActorRotation(LookAtRotation);
+		PlayerList.Add(PlayerCharacter);
+	}
+}
+
+void AZombies::EndOverlap(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor,
+	class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+{
+	ABanSungOnlCharacter* PlayerCharacter = Cast<ABanSungOnlCharacter>(OtherActor);
+	if(PlayerCharacter && PlayerCharacter->Health>0.f)
+	{
+		PlayerList.Remove(PlayerCharacter);
+	}
 }
 
 //

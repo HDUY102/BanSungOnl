@@ -45,11 +45,7 @@ protected:
 	// Atk
 	// UFUNCTION(BlueprintCallable, Server,Unreliable)
 	// void Server_AtkCharacter();
-	
-	UPROPERTY(BlueprintReadOnly,Replicated)
-	bool CanAtk=false;
-	bool Attack=false;
-	
+		
 	// Display HealthBar
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UI", meta = (AllowPrivateAccess = "true"))
 	UWidgetComponent* WidgetComponent;
@@ -80,8 +76,13 @@ public:
 	
 	UFUNCTION()
 	void RandomItems(FVector BodyZombie);
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Replicated)
+	TArray<ABanSungOnlCharacter*> PlayerList;
 	
 	UFUNCTION(BlueprintCallable)
 	void OnOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
 		int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+	UFUNCTION(BlueprintCallable)
+	void EndOverlap(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 };

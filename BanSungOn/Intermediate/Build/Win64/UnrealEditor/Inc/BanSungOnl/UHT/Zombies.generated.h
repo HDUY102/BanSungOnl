@@ -19,6 +19,7 @@ struct FHitResult;
 #define BANSUNGONL_Zombies_generated_h
 
 #define FID_Code_C___Training_BanSungOnline_BanSungOnl_BanSungOn_Source_BanSungOnl_Zombie_Zombies_h_27_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execEndOverlap); \
 	DECLARE_FUNCTION(execOnOverlap); \
 	DECLARE_FUNCTION(execRandomItems); \
 	DECLARE_FUNCTION(execTakeDmg);
@@ -36,8 +37,8 @@ public: \
 		NETFIELD_REP_START=(uint16)((int32)Super::ENetFields_Private::NETFIELD_REP_END + (int32)1), \
 		HealthZomb=NETFIELD_REP_START, \
 		DamageZomb, \
-		CanAtk, \
-		NETFIELD_REP_END=CanAtk	}; \
+		PlayerList, \
+		NETFIELD_REP_END=PlayerList	}; \
 	NO_API virtual void ValidateGeneratedRepEnums(const TArray<struct FRepRecord>& ClassReps) const override;
 
 

@@ -256,7 +256,7 @@ void ABanSungOnlPlayerController::Server_FireRifle_Implementation(FVector Mouse)
 				PlayerCharacter->CurWeapon->ShootBullet(Mouse);
 			}
 		}
-		if(PlayerCharacter->CurWeapon->CurAmmo < 0 )
+		if(PlayerCharacter->CurWeapon->CurAmmo <= 0 )
 		{
 			Server_Reload();
 		}
