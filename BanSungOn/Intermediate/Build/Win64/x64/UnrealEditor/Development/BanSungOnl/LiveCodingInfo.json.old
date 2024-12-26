@@ -17,7 +17,6 @@
 			"BanSungOnl.cpp.obj",
 			"BanSungOnlCharacter.cpp.obj",
 			"BanSungOnlGameMode.cpp.obj",
-			"BanSungOnlPlayerController.cpp.obj",
 			"ItemAmmoPis.cpp.obj",
 			"ItemAmmoRif.cpp.obj",
 			"Items.cpp.obj",
@@ -33,6 +32,7 @@
 			"Zombies.gen.cpp.obj",
 			"ZombiesBoss.gen.cpp.obj",
 			"ZombiesNor.gen.cpp.obj",
+			"BanSungOnlPlayerController.cpp.obj",
 			"Zombies.cpp.obj"
 		]
 	}

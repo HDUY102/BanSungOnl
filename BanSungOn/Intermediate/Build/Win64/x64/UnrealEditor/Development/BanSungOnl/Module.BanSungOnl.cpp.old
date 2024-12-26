@@ -14,7 +14,6 @@
 #include "D:/Code_C++_Training/BanSungOnline/BanSungOnl/BanSungOn/Source/BanSungOnl/BanSungOnl.cpp"
 #include "D:/Code_C++_Training/BanSungOnline/BanSungOnl/BanSungOn/Source/BanSungOnl/BanSungOnlCharacter.cpp"
 #include "D:/Code_C++_Training/BanSungOnline/BanSungOnl/BanSungOn/Source/BanSungOnl/BanSungOnlGameMode.cpp"
-#include "D:/Code_C++_Training/BanSungOnline/BanSungOnl/BanSungOn/Source/BanSungOnl/BanSungOnlPlayerController.cpp"
 #include "D:/Code_C++_Training/BanSungOnline/BanSungOnl/BanSungOn/Source/BanSungOnl/Items/ItemAmmoPis.cpp"
 #include "D:/Code_C++_Training/BanSungOnline/BanSungOnl/BanSungOn/Source/BanSungOnl/Items/ItemAmmoRif.cpp"
 #include "D:/Code_C++_Training/BanSungOnline/BanSungOnl/BanSungOn/Source/BanSungOnl/Items/Items.cpp"
